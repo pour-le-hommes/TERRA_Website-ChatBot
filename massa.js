@@ -12,7 +12,7 @@ function Massaterra(event) {
         console.log('Respon Greetings')
         // promises.push(client.replyMessage(event.replyToken, message));
     }
-    if (text === 'hmt? ') {
+    else if (text === 'hmt? ') {
         const message = {
           type: 'text',
           text: 'Himpunan Mahasiswa TERRA',
@@ -20,7 +20,7 @@ function Massaterra(event) {
         console.log('Respon HMT')
         // promises.push(client.replyMessage(event.replyToken, message));
     }
-    if (text === '!terra') {
+    else if (text === '!terra') {
         const message = {
           type: 'image',
           originalContentUrl: 'https://km.itb.ac.id/wp/wp-content/uploads/2020/09/FTTM-HIMATG-_TERRA_-ITB.jpg',
@@ -34,6 +34,7 @@ function Massaterra(event) {
             type : 'text',
             text : 'ngomong apa dah lu?',
         }
+        console.log('Repon nonsense')
     }
     return message;
 }
