@@ -39,9 +39,9 @@ app.post('/webhook', (req, res) => {
   res.status(200)
   const events = req.body.events;
   const promises = [];
-  console.log(ConversationState, EmotionState)
   let ConversationState = req.session.ConversationState || "Massa"
   let EmotionState = "Swasta"
+  console.log(ConversationState, EmotionState)
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
     
