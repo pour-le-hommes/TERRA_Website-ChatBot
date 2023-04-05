@@ -80,9 +80,12 @@ app.post('/webhook', (req, res) => {
         console.log('Massa to Pengurus')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      message =  Massaterra(event)
-      console.log('return message from Massaterra function', message)
-      promises.push(client.replyMessage(event.replyToken, message));
+      if (text.includes("massa")){
+        promises.push(client.replyMessage(event.replyToken, Massaterra(event)));
+      }
+      // message =  Massaterra(event)
+      // console.log('return message from Massaterra function', message)
+      
     }
   Promise.all(promises).then(() => res.status(200).end());
   }

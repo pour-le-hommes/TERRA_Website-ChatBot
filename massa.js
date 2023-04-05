@@ -3,7 +3,6 @@ function Massaterra(event) {
     const text = event.message.text.toLowerCase();
     let message;
     console.log('Massa function called')
-
     if (text === 'selamat pagi'){
         const message = {
           type: 'text',
