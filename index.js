@@ -20,6 +20,9 @@ app.get('/', (req,res) => {
   res.status(200)
 })
 
+let ConversationState = "Massa"
+let EmotionState = "Swasta"
+
 app.post('/webhook', (req, res) => {
   console.log('Received webhook request!')
   res.status(200)
@@ -29,7 +32,7 @@ app.post('/webhook', (req, res) => {
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
     
-    ConversationState = "Massa"
+
     if (event.type === 'message' && event.message.type === 'text') {
       const text = event.message.text.toLowerCase()
 
@@ -39,6 +42,20 @@ app.post('/webhook', (req, res) => {
           text : 'Gua, gua, emang gua temen lu?'
         }
         promises.push(client.replyMessage(event.replyToken, message));
+        EmotionState = "Marah"
+      }
+      elif (text.include('gua mau minta maaf')) {
+        const message = {
+          type : 'text',
+          text : 'aman, sori juga ngegas gitu, nih foto biar semangat',
+        }
+        const image = {
+          type : 'image',
+          originalContentUrl: 'https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*',
+          previewImageUrl: 'https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*',
+        }
+        promises.push(client.replyMessage(event.replyToken, message));
+        promises.push(client.replyMessage(event.replyToken, image));
       }
       if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
         ConversationState = "Pengurus"
