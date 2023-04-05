@@ -1,6 +1,6 @@
 function oaterra(event,EmotionState) {
     const text = event.message.text.toLowerCase();
-    console.log('OA function called')
+    console.log('OA function called',EmotionState)
     if (text.includes('gua') && EmotionState === "Swasta") {
         const message = {
           type : 'text',
