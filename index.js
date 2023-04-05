@@ -38,6 +38,7 @@ app.post('/webhook', (req, res) => {
           type : 'text',
           text : 'Gua, gua, emang gua temen lu?'
         }
+        promises.push(client.replyMessage(event.replyToken, message));
       }
       if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
         ConversationState = "Pengurus"
@@ -48,8 +49,8 @@ app.post('/webhook', (req, res) => {
         console.log('Massa to Pengurus')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      message =  Massaterra(event)
-      promises.push(client.replyMessage(event.replyToken, message));
+      // message =  Massaterra(event)
+      // promises.push(client.replyMessage(event.replyToken, message));
     }
   }
   Promise.all(promises).then(() => res.status(200).end());
