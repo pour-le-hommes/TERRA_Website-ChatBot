@@ -2,7 +2,8 @@ const { Client } = require('@line/bot-sdk');
 const express = require('express')
 const bodyParser = require('body-parser');
 const Massaterra = require('./massa.js');
-const myFunction = require("./oa.js");
+const oaterra = require("./oa.js");
+const pengurusterra = require("./pengurus.js");
 
 const app = express();
 app.use(bodyParser.json());
@@ -81,15 +82,10 @@ app.post('/webhook', (req, res) => {
         console.log('Massa to Pengurus')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      if (text.includes("massa")){
-        myFunction();
+      if (ConversationState === "Swasta"){
         message = Massaterra(event)
-        console.log('return message from Massaterra function', message)
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      // message =  Massaterra(event)
-      // console.log('return message from Massaterra function', message)
-      
     }
   Promise.all(promises).then(() => res.status(200).end());
   }
