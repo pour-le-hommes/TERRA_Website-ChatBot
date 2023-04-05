@@ -44,7 +44,7 @@ app.post('/webhook', (req, res) => {
         promises.push(client.replyMessage(event.replyToken, message));
         EmotionState = "Marah"
       }
-      elif (text.include('gua mau minta maaf')) {
+      else if (text.include('gua mau minta maaf')) {
         const message = {
           type : 'text',
           text : 'aman, sori juga ngegas gitu, nih foto biar semangat',
