@@ -33,7 +33,7 @@ app.post('/webhook', (req, res) => {
         type: 'text',
         text: 'Hello, world!',
       };
-      if (event.message === 'HMT?') {
+      if (event.message.text === 'HMT?') {
         const message = {
           type: 'text',
           text: 'Himpunan Mahasiswa TERRA',
