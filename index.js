@@ -5,6 +5,10 @@ const client = new Client({
   channelSecret: 'fe50c21e3a689c8ce8227c63545f3f51',
 });
 
+app.get('/', (req,res) => {
+  res.status(200)
+})
+
 app.post('/webhook', (req, res) => {
   const events = req.body.events;
   const promises = [];
