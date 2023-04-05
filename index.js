@@ -66,7 +66,7 @@ app.post('/webhook', (req, res) => {
         promises.push(client.replyMessage(event.replyToken, message));
       }
     }
-  req.session.conversationState = conversationState;
+  req.session.conversationState = ConversationState;
   Promise.all(promises).then(() => res.status(200).end());
   }
 });
