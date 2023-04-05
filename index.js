@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const Massaterra = require('./massa.js');
 const oaterra = require("./oa.js");
 const pengurusterra = require("./pengurus.js");
+const session = require('express-session');
 
 const app = express();
 app.use(bodyParser.json());
@@ -22,7 +23,7 @@ app.get('/', (req,res) => {
   res.status(200)
 })
 
-let ConversationState = "Massa"
+let ConversationState = req.session.ConversationState || "Massa"
 let EmotionState = "Swasta"
 
 
@@ -43,35 +44,6 @@ app.post('/webhook', (req, res) => {
         message = oaterra(event,EmotionState)
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      // else if (text.includes('maaf') && EmotionState === "Marah") {
-      //   EmotionState = "Swasta";
-      //   console.log('Marah => Swasta')
-      //   const message = {
-      //     type: 'flex',
-      //     altText: 'This is a cat',
-      //     contents: {
-      //       type: 'bubble',
-      //       hero: {
-      //         type: 'image',
-      //         url: 'https://placekitten.com/200/300',
-      //         size: 'full',
-      //         aspectRatio: '20:13',
-      //         aspectMode: 'cover'
-      //       },
-      //       body: {
-      //         type: 'box',
-      //         layout: 'vertical',
-      //         contents: [
-      //           {
-      //             type: 'text',
-      //             text : 'aman, sori juga ngegas gitu, nih foto biar semangat',
-      //           }
-      //         ]
-      //       }
-      //     }
-      //   }
-      //   promises.push(client.replyMessage(event.replyToken, message));
-      // }
       else if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
         ConversationState = "Pengurus"
         const message = {
@@ -86,6 +58,7 @@ app.post('/webhook', (req, res) => {
         promises.push(client.replyMessage(event.replyToken, message));
       }
     }
+  req.session.conversationState = conversationState;
   Promise.all(promises).then(() => res.status(200).end());
   }
 });
