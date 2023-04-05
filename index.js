@@ -67,7 +67,7 @@ app.post('/webhook', (req, res) => {
     }
   }
   Promise.all(promises).then(() => res.status(200).end());
-  });
+});
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
