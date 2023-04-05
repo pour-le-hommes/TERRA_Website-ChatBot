@@ -34,6 +34,7 @@ app.post('/webhook', (req, res) => {
           type: 'text',
           text: 'Selamat pagi Massa TERRA!',
         };
+        console.log('Respon Greetings')
         promises.push(client.replyMessage(event.replyToken, message));
       }
       if (event.message.text === 'HMT? ') {
@@ -41,9 +42,9 @@ app.post('/webhook', (req, res) => {
           type: 'text',
           text: 'Himpunan Mahasiswa TERRA',
         };
+        console.log('Respon HMT')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      
     }
   }
 
