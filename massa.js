@@ -1,7 +1,6 @@
 // define a function that handles the logic for ordinary user messages
 function Massaterra(event) {
     const text = event.message.text.toLowerCase();
-    let message;
     console.log('Massa function called')
     if (text === 'selamat pagi'){
         const message = {
@@ -9,6 +8,7 @@ function Massaterra(event) {
           text: 'Selamat pagi Massa TERRA!',
         };
         console.log('Respon Greetings')
+        return message;
         // promises.push(client.replyMessage(event.replyToken, message));
     }
     // else if (text === 'hmt? ') {
@@ -34,7 +34,7 @@ function Massaterra(event) {
             text : 'ngomong apa dah lu?',
         };
         console.log('Respon nonsense')
+        return message;
     }
-    return message;
 }
 module.exports = Massaterra;
