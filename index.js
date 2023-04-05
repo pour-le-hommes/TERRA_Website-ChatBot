@@ -36,7 +36,7 @@ app.post('/webhook', (req, res) => {
     if (event.type === 'message' && event.message.type === 'text') {
       const text = event.message.text.toLowerCase()
 
-      if (text.includes('gua')) {
+      if (text.includes('gua') && EmotionState === "Swasta") {
         const message = {
           type : 'text',
           text : 'Gua, gua, emang gua temen lu?'
@@ -44,7 +44,7 @@ app.post('/webhook', (req, res) => {
         promises.push(client.replyMessage(event.replyToken, message));
         EmotionState = "Marah"
       }
-      else if (text.include('gua mau minta maaf')) {
+      else if (text.include('gua mau minta maaf') && EmotionState === "Marah") {
         const message = {
           type : 'text',
           text : 'aman, sori juga ngegas gitu, nih foto biar semangat',
