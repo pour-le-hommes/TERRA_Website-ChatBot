@@ -33,7 +33,12 @@ app.post('/webhook', (req, res) => {
         type: 'text',
         text: 'Hello, world!',
       };
-
+      if (event.message === 'HMT?') {
+        const message = {
+          type: 'text',
+          text: 'Himpunan Mahasiswa TERRA',
+        };
+      }
       promises.push(client.replyMessage(event.replyToken, message));
     }
   }
