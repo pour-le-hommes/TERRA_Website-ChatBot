@@ -44,7 +44,7 @@ app.post('/webhook', (req, res) => {
         promises.push(client.replyMessage(event.replyToken, message));
         EmotionState = "Marah"
       }
-      else if (text.include('maaf') && EmotionState === "Marah") {
+      else if (text.includes('maaf') && EmotionState === "Marah") {
         const message = {
           type : 'text',
           text : 'aman, sori juga ngegas gitu, nih foto biar semangat',
