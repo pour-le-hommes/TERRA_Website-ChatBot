@@ -69,6 +69,7 @@ app.post('/webhook', (req, res) => {
             }
           }
         }
+        promises.push(client.replyMessage(event.replyToken, message));
       }
       if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
         ConversationState = "Pengurus"
