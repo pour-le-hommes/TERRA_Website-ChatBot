@@ -2,7 +2,7 @@ const { Client } = require('@line/bot-sdk');
 const express = require('express')
 const bodyParser = require('body-parser');
 const { Massaterra } = require('./massa.js');
-const myFunction = require("./myModule");
+const myFunction = require("./oa.js");
 
 const app = express();
 app.use(bodyParser.json());
