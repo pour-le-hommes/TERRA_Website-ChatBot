@@ -39,7 +39,6 @@ app.post('/webhook', (req, res) => {
 
     if (event.type === 'message' && event.message.type === 'text') {
       const text = event.message.text.toLowerCase()
-
       if (text.includes('gua') && EmotionState === "Swasta") {
         const message = {
           type : 'text',
@@ -50,6 +49,7 @@ app.post('/webhook', (req, res) => {
       }
       else if (text.includes('maaf') && EmotionState === "Marah") {
         EmotionState = "Swasta";
+        console.log('Marah => Swasta')
         const message = {
           type: 'flex',
           altText: 'This is a cat',
