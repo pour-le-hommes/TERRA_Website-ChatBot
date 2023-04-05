@@ -1,6 +1,7 @@
 const { Client } = require('@line/bot-sdk');
 const express = require('express')
 const bodyParser = require('body-parser');
+const { Massaterra } = require('./massa');
 
 const app = express();
 app.use(bodyParser.json());
@@ -27,17 +28,20 @@ app.post('/webhook', (req, res) => {
 
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
+    
     ConversationState = "Massa"
     if (event.type === 'message' && event.message.type === 'text') {
-      if (event.message.text.toLowerCase() === "saya janji akan membangun himpunan ini menjadi lebih baik") {
+      const text = event.message.text.toLowerCase()
+      if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
         ConversationState = "Pengurus"
         const message = {
           type : 'text',
-          text : 'Halo pengurus HIMA TG "TERRA" ITB'
+          text : 'Halo pengurus HIMA TG "TERRA" ITB, apakah ada yang bisa dibantu?'
         }
         console.log('Massa to Pengurus')
         promises.push(client.replyMessage(event.replyToken, message));
       }
+      Massaterra(event)
 
       if (event.message.text.toLowerCase() === 'selamat pagi'){
         const message = {
