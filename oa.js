@@ -6,8 +6,8 @@ function oaterra(event,EmotionState) {
           type : 'text',
           text : 'Gua, gua, emang gua temen lu?'
         }
-        EmotionState = "Marah"
-        return message
+        EmotionState = "Marah";
+        return message;
     }
     else if (text.includes('maaf') && EmotionState === "Marah") {
         EmotionState = "Swasta";
@@ -36,7 +36,7 @@ function oaterra(event,EmotionState) {
             }
           }
         }
-        return message
+        return message;
     }
 }
 module.exports = oaterra;
