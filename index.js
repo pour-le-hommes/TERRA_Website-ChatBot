@@ -1,7 +1,7 @@
 const { Client } = require('@line/bot-sdk');
 const express = require('express')
 const bodyParser = require('body-parser');
-const { Massaterra } = require('./massa.js');
+const Massaterra = require('./massa.js');
 const myFunction = require("./oa.js");
 
 const app = express();
@@ -83,7 +83,7 @@ app.post('/webhook', (req, res) => {
       }
       if (text.includes("massa")){
         myFunction();
-        // promises.push(client.replyMessage(event.replyToken, Massaterra(event)));
+        promises.push(client.replyMessage(event.replyToken, Massaterra(event)));
       }
       // message =  Massaterra(event)
       // console.log('return message from Massaterra function', message)

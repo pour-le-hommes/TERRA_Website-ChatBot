@@ -37,4 +37,4 @@ function Massaterra(event) {
     }
     return message;
 }
-module.exports = Massaterra
+module.exports = Massaterra;
