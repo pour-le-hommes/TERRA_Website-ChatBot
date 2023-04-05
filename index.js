@@ -27,9 +27,19 @@ app.post('/webhook', (req, res) => {
 
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
-
+    ConversationState = "Massa"
     if (event.type === 'message' && event.message.type === 'text') {
-      if (event.message.text === 'Selamat pagi'){
+      if (event.message.text.toLowerCase() === "saya janji akan membangun himpunan ini menjadi lebih baik") {
+        ConversationState = "Pengurus"
+        const message = {
+          type : 'text',
+          text : 'Halo pengurus HIMA TG "TERRA" ITB'
+        }
+        console.log('Massa to Pengurus')
+        promises.push(client.replyMessage(event.replyToken, message));
+      }
+
+      if (event.message.text.toLowerCase() === 'selamat pagi'){
         const message = {
           type: 'text',
           text: 'Selamat pagi Massa TERRA!',
@@ -37,7 +47,7 @@ app.post('/webhook', (req, res) => {
         console.log('Respon Greetings')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      if (event.message.text === 'HMT? ') {
+      if (event.message.text.toLowerCase() === 'hmt? ') {
         const message = {
           type: 'text',
           text: 'Himpunan Mahasiswa TERRA',
@@ -45,7 +55,7 @@ app.post('/webhook', (req, res) => {
         console.log('Respon HMT')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      if (event.message.text === '!TERRA') {
+      if (event.message.text.toLowerCase() === '!terra') {
         const message = {
           type: 'image',
           originalContentUrl: 'https://km.itb.ac.id/wp/wp-content/uploads/2020/09/FTTM-HIMATG-_TERRA_-ITB.jpg',
