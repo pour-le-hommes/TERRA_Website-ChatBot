@@ -32,6 +32,13 @@ app.post('/webhook', (req, res) => {
     ConversationState = "Massa"
     if (event.type === 'message' && event.message.type === 'text') {
       const text = event.message.text.toLowerCase()
+
+      if (text.includes('gua')) {
+        const message = {
+          type : 'text',
+          text : 'Gua, gua, emang gua temen lu?'
+        }
+      }
       if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
         ConversationState = "Pengurus"
         const message = {
@@ -41,33 +48,8 @@ app.post('/webhook', (req, res) => {
         console.log('Massa to Pengurus')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      Massaterra(promises,event)
-
-      if (event.message.text.toLowerCase() === 'selamat pagi'){
-        const message = {
-          type: 'text',
-          text: 'Selamat pagi Massa TERRA!',
-        };
-        console.log('Respon Greetings')
-        promises.push(client.replyMessage(event.replyToken, message));
-      }
-      if (event.message.text.toLowerCase() === 'hmt? ') {
-        const message = {
-          type: 'text',
-          text: 'Himpunan Mahasiswa TERRA',
-        };
-        console.log('Respon HMT')
-        promises.push(client.replyMessage(event.replyToken, message));
-      }
-      if (event.message.text.toLowerCase() === '!terra') {
-        const message = {
-          type: 'image',
-          originalContentUrl: 'https://km.itb.ac.id/wp/wp-content/uploads/2020/09/FTTM-HIMATG-_TERRA_-ITB.jpg',
-          previewImageUrl: 'https://km.itb.ac.id/wp/wp-content/uploads/2020/09/FTTM-HIMATG-_TERRA_-ITB.jpg',
-        };
-        console.log('Respon TERRA Picture')
-        promises.push(client.replyMessage(event.replyToken, message));
-      }
+      message =  Massaterra(event)
+      promises.push(client.replyMessage(event.replyToken, message));
     }
   }
   Promise.all(promises).then(() => res.status(200).end());

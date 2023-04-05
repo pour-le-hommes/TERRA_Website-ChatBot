@@ -1,5 +1,5 @@
 // define a function that handles the logic for ordinary user messages
-function Massaterra(promises,event) {
+function Massaterra(event) {
     const text = event.message.text.toLowerCase();
     let message;
     console.log('Massa function called')
@@ -10,7 +10,7 @@ function Massaterra(promises,event) {
           text: 'Selamat pagi Massa TERRA!',
         };
         console.log('Respon Greetings')
-        promises.push(client.replyMessage(event.replyToken, message));
+        // promises.push(client.replyMessage(event.replyToken, message));
       }
       if (text === 'hmt? ') {
         const message = {
@@ -18,7 +18,7 @@ function Massaterra(promises,event) {
           text: 'Himpunan Mahasiswa TERRA',
         };
         console.log('Respon HMT')
-        promises.push(client.replyMessage(event.replyToken, message));
+        // promises.push(client.replyMessage(event.replyToken, message));
       }
       if (text === '!terra') {
         const message = {
@@ -27,7 +27,7 @@ function Massaterra(promises,event) {
           previewImageUrl: 'https://km.itb.ac.id/wp/wp-content/uploads/2020/09/FTTM-HIMATG-_TERRA_-ITB.jpg',
         };
         console.log('Respon TERRA Picture')
-        promises.push(client.replyMessage(event.replyToken, message));
+        // promises.push(client.replyMessage(event.replyToken, message));
       }
   
     return message;
