@@ -40,7 +40,7 @@ app.post('/webhook', (req, res) => {
   const events = req.body.events;
   const promises = [];
   let ConversationState = req.session.ConversationState || "Massa"
-  let EmotionState = "Swasta"
+  let EmotionState = req.session.EmotionState || "Swasta"
   console.log(ConversationState, EmotionState)
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
@@ -67,6 +67,7 @@ app.post('/webhook', (req, res) => {
       }
     }
   req.session.ConversationState = ConversationState;
+  req.session.EmotionState = EmotionState;
   Promise.all(promises).then(() => res.status(200).end());
   }
 });
