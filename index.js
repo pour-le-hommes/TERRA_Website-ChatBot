@@ -25,14 +25,14 @@ app.get('/', (req,res) => {
 let ConversationState = "Massa"
 let EmotionState = "Swasta"
 
-console.log(ConversationState, EmotionState)
+
 
 app.post('/webhook', (req, res) => {
   console.log('Received webhook request!')
   res.status(200)
   const events = req.body.events;
   const promises = [];
-
+  console.log(ConversationState, EmotionState)
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
     
@@ -49,6 +49,7 @@ app.post('/webhook', (req, res) => {
         EmotionState = "Marah"
       }
       else if (text.includes('maaf') && EmotionState === "Marah") {
+        ConversationState = "Swasta";
         const message = {
           type: 'flex',
           altText: 'This is a cat',
