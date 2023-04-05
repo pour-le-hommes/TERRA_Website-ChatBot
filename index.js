@@ -6,6 +6,8 @@ const oaterra = require("./oa.js");
 const pengurusterra = require("./pengurus.js");
 const session = require('express-session');
 
+
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -26,7 +28,11 @@ app.get('/', (req,res) => {
 
 
 
-
+app.use(session({
+  secret: 'my-secret-key',
+  resave: false,
+  saveUninitialized: true,
+}));
 
 app.post('/webhook', (req, res) => {
   console.log('Received webhook request!')
