@@ -23,8 +23,8 @@ app.get('/', (req,res) => {
   res.status(200)
 })
 
-let ConversationState = req.session.ConversationState || "Massa"
-let EmotionState = "Swasta"
+
+
 
 
 
@@ -34,6 +34,8 @@ app.post('/webhook', (req, res) => {
   const events = req.body.events;
   const promises = [];
   console.log(ConversationState, EmotionState)
+  let ConversationState = req.session.ConversationState || "Massa"
+  let EmotionState = "Swasta"
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
     
