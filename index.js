@@ -29,11 +29,13 @@ app.post('/webhook', (req, res) => {
     const event = events[i];
 
     if (event.type === 'message' && event.message.type === 'text') {
-      const message = {
-        type: 'text',
-        text: 'Hello, world!',
-      };
-      if (event.message.text === 'HMT?') {
+      if (event.message.text === 'Selamat pagi'){
+        const message = {
+          type: 'text',
+          text: 'Selamat pagi Massa TERRA!',
+        };
+      }
+      if (event.message.text === 'HMT? ') {
         const message = {
           type: 'text',
           text: 'Himpunan Mahasiswa TERRA',
