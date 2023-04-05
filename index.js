@@ -39,7 +39,7 @@ app.post('/webhook', (req, res) => {
 
     if (event.type === 'message' && event.message.type === 'text') {
       const text = event.message.text.toLowerCase()
-      if (text.includes('gua') && EmotionState === "Swasta") {
+      if (text.includes('gua')) {
         message = oaterra(event,EmotionState)
         promises.push(client.replyMessage(event.replyToken, message));
       }
