@@ -8,8 +8,8 @@ function oaterra(event,EmotionState) {
         }
         EmotionState = "Marah"
         return message
-      }
-      else if (text.includes('maaf') && EmotionState === "Marah") {
+    }
+    else if (text.includes('maaf') && EmotionState === "Marah") {
         EmotionState = "Swasta";
         console.log('Marah => Swasta')
         const message = {
