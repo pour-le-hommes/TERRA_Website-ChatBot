@@ -6,6 +6,7 @@ function oaterra(event,EmotionState) {
           type : 'text',
           text : 'Gua, gua, emang gua temen lu?'
         }
+        console.log('swasta => marah')
         EmotionState = "Marah";
         return message;
     }

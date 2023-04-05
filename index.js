@@ -72,7 +72,7 @@ app.post('/webhook', (req, res) => {
       //   }
       //   promises.push(client.replyMessage(event.replyToken, message));
       // }
-      if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
+      else if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
         ConversationState = "Pengurus"
         const message = {
           type : 'text',
@@ -81,7 +81,7 @@ app.post('/webhook', (req, res) => {
         console.log('Massa to Pengurus')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      if (EmotionState === "Swasta"){
+      else if (EmotionState === "Swasta"){
         message = Massaterra(event)
         promises.push(client.replyMessage(event.replyToken, message));
       }
