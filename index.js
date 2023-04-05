@@ -46,16 +46,29 @@ app.post('/webhook', (req, res) => {
       }
       else if (text.includes('maaf') && EmotionState === "Marah") {
         const message = {
-          type : 'text',
-          text : 'aman, sori juga ngegas gitu, nih foto biar semangat',
+          type: 'flex',
+          altText: 'This is a cat',
+          contents: {
+            type: 'bubble',
+            hero: {
+              type: 'image',
+              url: 'https://placekitten.com/200/300',
+              size: 'full',
+              aspectRatio: '20:13',
+              aspectMode: 'cover'
+            },
+            body: {
+              type: 'box',
+              layout: 'vertical',
+              contents: [
+                {
+                  type: 'text',
+                  text : 'aman, sori juga ngegas gitu, nih foto biar semangat',
+                }
+              ]
+            }
+          }
         }
-        const image = {
-          type : 'image',
-          originalContentUrl: 'https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*',
-          previewImageUrl: 'https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*',
-        }
-        promises.push(client.replyMessage(event.replyToken, message));
-        promises.push(client.replyMessage(event.replyToken, image));
       }
       if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
         ConversationState = "Pengurus"
@@ -69,8 +82,8 @@ app.post('/webhook', (req, res) => {
       // message =  Massaterra(event)
       // promises.push(client.replyMessage(event.replyToken, message));
     }
-  }
   Promise.all(promises).then(() => res.status(200).end());
+  }
 });
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
