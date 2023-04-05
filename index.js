@@ -83,7 +83,8 @@ app.post('/webhook', (req, res) => {
       }
       if (text.includes("massa")){
         myFunction();
-        promises.push(client.replyMessage(event.replyToken, Massaterra(event)));
+        message = Massaterra(event)
+        promises.push(client.replyMessage(event.replyToken, message));
       }
       // message =  Massaterra(event)
       // console.log('return message from Massaterra function', message)
