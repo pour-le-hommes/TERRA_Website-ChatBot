@@ -29,6 +29,12 @@ function Massaterra(event) {
         console.log('Respon TERRA Picture')
         // promises.push(client.replyMessage(event.replyToken, message));
     }
+    else {
+        const message = {
+            type : 'text',
+            text : 'ngomong apa dah lu?',
+        }
+    }
     return message;
 }
 
