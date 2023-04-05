@@ -45,6 +45,14 @@ app.post('/webhook', (req, res) => {
         console.log('Respon HMT')
         promises.push(client.replyMessage(event.replyToken, message));
       }
+      if (event.message.text === '!TERRA') {
+        const message = {
+          type: 'image',
+          originalContentUrl: 'https://km.itb.ac.id/wp/wp-content/uploads/2020/09/FTTM-HIMATG-_TERRA_-ITB.jpg',
+          previewImageUrl: 'https://km.itb.ac.id/wp/wp-content/uploads/2020/09/FTTM-HIMATG-_TERRA_-ITB.jpg',
+        };
+        console.log('Respon TERRA Picture')
+        promises.push(client.replyMessage(event.replyToken, message));
     }
   }
 
