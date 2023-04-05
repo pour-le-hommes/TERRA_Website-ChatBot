@@ -41,7 +41,7 @@ app.post('/webhook', (req, res) => {
         console.log('Massa to Pengurus')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      Massaterra(event)
+      Massaterra(promises,event)
 
       if (event.message.text.toLowerCase() === 'selamat pagi'){
         const message = {

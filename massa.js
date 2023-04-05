@@ -1,5 +1,5 @@
 // define a function that handles the logic for ordinary user messages
-function Massaterra(event) {
+function Massaterra(promises,event) {
     const text = event.message.text.toLowerCase();
     let message;
     console.log('Massa function called')
