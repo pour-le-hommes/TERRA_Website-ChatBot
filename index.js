@@ -49,7 +49,7 @@ app.post('/webhook', (req, res) => {
         EmotionState = "Marah"
       }
       else if (text.includes('maaf') && EmotionState === "Marah") {
-        ConversationState = "Swasta";
+        EmotionState = "Swasta";
         const message = {
           type: 'flex',
           altText: 'This is a cat',
@@ -85,7 +85,7 @@ app.post('/webhook', (req, res) => {
         console.log('Massa to Pengurus')
         promises.push(client.replyMessage(event.replyToken, message));
       }
-      if (ConversationState === "Swasta"){
+      if (EmotionState === "Swasta"){
         message = Massaterra(event)
         promises.push(client.replyMessage(event.replyToken, message));
       }

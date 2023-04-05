@@ -10,7 +10,7 @@ function Massaterra(event) {
         console.log('Respon Greetings')
         return message;
     }
-    else if (text === 'hmt? ') {
+    if (text === 'hmt? ') {
         const message = {
           type: 'text',
           text: 'Himpunan Mahasiswa TERRA',
@@ -18,7 +18,7 @@ function Massaterra(event) {
         console.log('Respon HMT')
         return message;
     }
-    else if (text === '!terra') {
+    if (text === '!terra') {
         const message = {
           type: 'image',
           originalContentUrl: 'https://km.itb.ac.id/wp/wp-content/uploads/2020/09/FTTM-HIMATG-_TERRA_-ITB.jpg',
