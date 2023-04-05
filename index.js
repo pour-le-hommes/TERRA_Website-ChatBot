@@ -25,6 +25,8 @@ app.get('/', (req,res) => {
 let ConversationState = "Massa"
 let EmotionState = "Swasta"
 
+console.log(ConversationState, EmotionState)
+
 app.post('/webhook', (req, res) => {
   console.log('Received webhook request!')
   res.status(200)
