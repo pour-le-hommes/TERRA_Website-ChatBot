@@ -1,71 +1,26 @@
-const https = require("https")
-const express = require("express")
-const app = express()
-const PORT = process.env.PORT || 3000
-const TOKEN = process.env.LINE_ACCESS_TOKEN
+const { Client } = require('@line/bot-sdk');
 
-app.use(express.json())
-app.use(express.urlencoded({
-  extended: true
-}))
+const client = new Client({
+  channelAccessToken: 'qkj/lPvrRK5+BEleRc7d3MUv+P8GNNWxsJOE1+mHYXxCtVreNjPrkUs84z1M/6YC3iT99ORZ+8oFQur+e65c9KU8cOJF7p5sXYluNl27t4Vf7BtmXOVzwHeirh7riGCg1xhESoSqpB0Pbq3d5MNnKAdB04t89/1O/w1cDnyilFU=',
+  channelSecret: 'fe50c21e3a689c8ce8227c63545f3f51',
+});
 
-app.get("/", (req, res) => {
-  res.sendStatus(200)
-})
+app.post('/webhook', (req, res) => {
+  const events = req.body.events;
+  const promises = [];
 
-app.post("/webhook", function(req, res) {
-    res.send("HTTP POST request sent to the webhook URL!")
-    res.sendStatus(200)
-    // If the user sends a message to your bot, send a reply message
-    if (req.body.events[0].type === "message") {
-      // Message data, must be stringified
-      const dataString = JSON.stringify({
-        replyToken: req.body.events[0].replyToken,
-        messages: [
-          {
-            "type": "text",
-            "text": "Hello, user"
-          },
-          {
-            "type": "text",
-            "text": "May I help you?"
-          }
-        ]
-      })
-  
-      // Request header
-      const headers = {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + TOKEN
-      }
-  
-      // Options to pass into the request
-      const webhookOptions = {
-        "hostname": "api.line.me",
-        "path": "/v2/bot/message/reply",
-        "method": "POST",
-        "headers": headers,
-        "body": dataString
-      }
-  
-      // Define request
-      const request = https.request(webhookOptions, (res) => {
-        res.on("data", (d) => {
-          process.stdout.write(d)
-        })
-      })
-  
-      // Handle error
-      request.on("error", (err) => {
-        console.error(err)
-      })
-  
-      // Send data
-      request.write(dataString)
-      request.end()
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i];
+
+    if (event.type === 'message' && event.message.type === 'text') {
+      const message = {
+        type: 'text',
+        text: 'Hello, world!',
+      };
+
+      promises.push(client.replyMessage(event.replyToken, message));
     }
-})
+  }
 
-app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
-})
+  Promise.all(promises).then(() => res.status(200).end());
+});
