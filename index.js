@@ -5,7 +5,7 @@ const Massaterra = require('./massa.js');
 const oaterra = require("./oa.js");
 const pengurusterra = require("./pengurus.js");
 const session = require('express-session');
-const MemoryStore = require(MemoryStore)(session)
+const MemoryStore = require('memorystore')(session)
 
 
 
