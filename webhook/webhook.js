@@ -29,6 +29,7 @@ function webhook(event,req) {
         else if (text.includes('gua')) {
             OA = oaterra(event,EmotionalState)
             req.session.EmotionalState = OA.EmotionalState
+            console.log('change emotional state to : ',req.session.EmotionalState)
             return OA.message
             // promises.push(client.replyMessage(event.replyToken, message));
         }
