@@ -1,6 +1,6 @@
 function webhook(req,res) {
     const Massaterra = require('./massa.js');
-    const oaterra = require("./webhook/oa.js");
+    const oaterra = require("./oa.js");
     const pengurusterra = require("./pengurus.js");
     console.log('Received webhook request!')
     res.status(200)
