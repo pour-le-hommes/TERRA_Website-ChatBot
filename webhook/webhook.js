@@ -22,11 +22,11 @@ function webhook(event,req) {
         if(text==='stats'){
             const message = {
                 type : 'text',
-                text : EmotionalState
+                text : EmotionalState, ConversationalState
             }
             return message
         }
-        if (text.includes('gua')) {
+        else if (text.includes('gua')) {
             message,EmotionalState = oaterra(event,EmotionalState)
             req.session.EmotionalState = EmotionalState
             return message
