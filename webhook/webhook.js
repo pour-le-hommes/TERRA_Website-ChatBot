@@ -22,7 +22,7 @@ function webhook(event,req) {
         if(text==='stats'){
             const message = {
                 type : 'text',
-                text : EmotionalState, ConversationalState
+                text : "Emotional State : " +EmotionalState+" Conversational State : " + ConversationalState
             }
             return message
         }
@@ -41,7 +41,7 @@ function webhook(event,req) {
             message = Massaterra(event)
             return message
             // promises.push(client.replyMessage(event.replyToken, message));
-}
+        }
 // req.session.ConversationState = ConversationState;
 // req.session.EmotionState = EmotionState;
 // Promise.all(promises).then(() => res.status(200).end());
