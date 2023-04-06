@@ -1,7 +1,7 @@
 function pengurusterra(event) {
     const text = event.message.text.toLowerCase();
     console.log('Pengurus function called')
-    ConversationState = "Pengurus"
+    ConversationalState = "Pengurus"
     const message = {
     type : 'text',
     text : 'Halo pengurus HIMA TG "TERRA" ITB, apakah ada yang bisa dibantu?'

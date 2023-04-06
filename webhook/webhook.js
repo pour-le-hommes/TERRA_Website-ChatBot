@@ -17,7 +17,15 @@ function webhook(event,req) {
     console.log('Received webhook request!')
     const promises = [];
     if (event.type === 'message' && event.message.type === 'text') {
-    const text = event.message.text.toLowerCase()
+        const text = event.message.text.toLowerCase()
+        
+        if(text==='stats'){
+            const message = {
+                type : 'text',
+                text : EmotionalState
+            }
+            return message
+        }
         if (text.includes('gua')) {
             message,EmotionalState = oaterra(event,EmotionalState)
             req.session.EmotionalState = EmotionalState
@@ -29,11 +37,11 @@ function webhook(event,req) {
             return message
             // promises.push(client.replyMessage(event.replyToken, message));
         }
-        else if (EmotionState === "Swasta"){
+        else if (EmotionalState === "Swasta"){
             message = Massaterra(event)
             return message
             // promises.push(client.replyMessage(event.replyToken, message));
-        }
+}
 // req.session.ConversationState = ConversationState;
 // req.session.EmotionState = EmotionState;
 // Promise.all(promises).then(() => res.status(200).end());
