@@ -43,8 +43,6 @@ app.use(function (req, res, next) {
 
 app.get('/', (req,res) => {
   console.log('Received request!')
-  res.send('Hi')
-  res.status(200)
   console.log(req.session)
   console.log(req.session.views)
   if (req.session.views) {
