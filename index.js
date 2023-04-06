@@ -43,11 +43,11 @@ const client = new Client({
 
 ;(async () => {
   // Store something
-  await s3.putObject({
-    Body: JSON.stringify({"now":new Date().toString()}),
-    Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
-    Key: 'Data/massa.json'
-  }).promise()
+  // await s3.putObject({
+  //   Body: JSON.stringify({"now":new Date().toString()}),
+  //   Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+  //   Key: 'Data/massa.json'
+  // }).promise()
 
   // Read the file
   let my_file = await s3.getObject({
