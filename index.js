@@ -42,6 +42,7 @@ app.get('/', (req,res) => {
 })
 
 app.post('/webhook', (req, res) => {
+  res.status(200)
   const events = req.body.events;
   for (let i = 0; i < events.length; i++) {
     const event = events[i];

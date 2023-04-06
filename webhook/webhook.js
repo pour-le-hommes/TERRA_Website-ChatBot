@@ -14,7 +14,6 @@ function webhook(event) {
     const oaterra = require("./oa.js");
     const pengurusterra = require("./pengurus.js");
     console.log('Received webhook request!')
-    res.status(200)
     const promises = [];
     let ConversationState = req.session.ConversationState || "Massa"
     let EmotionState = req.session.EmotionState || "Swasta"
