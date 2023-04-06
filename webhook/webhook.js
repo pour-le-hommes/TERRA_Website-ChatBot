@@ -41,9 +41,9 @@ function webhook(event,req) {
         }
 // req.session.ConversationState = ConversationState;
 // req.session.EmotionState = EmotionState;
-Promise.all(promises).then(() => res.status(200).end());
-return message
+// Promise.all(promises).then(() => res.status(200).end());
     }
+    return message,promises
 }
 
 module.exports = webhook
