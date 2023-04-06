@@ -18,6 +18,7 @@ const client = new Client({
 });
 
 app.use(function (req, res, next) {
+  console.log(req.session)
   if (!req.session.views) {
     req.session.views = {}
   }
