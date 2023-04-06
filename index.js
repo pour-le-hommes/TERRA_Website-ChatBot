@@ -17,6 +17,16 @@ const client = new Client({
   channelSecret: CHANNEL_SECRET,
 });
 
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'secret-key',
+  resave: false,
+  saveUninitialized: true,
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  })
+}));
+
 app.use(function (req, res, next) {
   console.log(req.session)
   if (!req.session.views) {
@@ -30,14 +40,6 @@ app.use(function (req, res, next) {
   
   next()
 })
-
-app.set('trust proxy', 1) // trust first proxy
-app.use(session({
-  secret: 'secret-key',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}))
 
 app.get('/', (req,res) => {
   console.log('Received request!')
