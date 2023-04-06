@@ -65,7 +65,7 @@ console.log('testing')
 
   console.log(res)
 })()
-
+console.log('testing')
 app.get('/', (req,res) => {
   res.status(200)
   console.log('Received request!')
