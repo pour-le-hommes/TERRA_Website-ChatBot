@@ -45,23 +45,22 @@ app.use(function (req, res, next) {
   // Store something
   await s3.putObject({
     Body: JSON.stringify({"now":new Date().toString()}),
-    Bucket: process.env.BUCKET,
-    Key: "some_files/my_file.json",
+    params
   }).promise()
 
   // Read the file
-  let my_file = await s3.getObject({
-    Bucket: process.env.BUCKET,
-    Key: "some_files/my_file.json",
-  }).promise()
+  // let my_file = await s3.getObject({
+  //   Bucket: process.env.BUCKET,
+  //   Key: "some_files/my_file.json",
+  // }).promise()
 
   // Log file content
-  console.log(JSON.parse(my_file.Body.toString()))
+  // console.log(JSON.parse(my_file.Body.toString()))
 
-  let res = await s3.deleteObject({
-    Bucket: process.env.BUCKET,
-    Key: "some_files/my_file.json",
-  }).promise()
+  // let res = await s3.deleteObject({
+  //   Bucket: process.env.BUCKET,
+  //   Key: "some_files/my_file.json",
+  // }).promise()
 
   console.log(res)
 })()
