@@ -12,6 +12,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.306.0",
     "@line/bot-sdk": "^7.5.2",
+    "aws-sdk": "^2.1351.0",
     "connect-dynamodb": "^2.0.6",
     "dynamodb-doc": "^1.0.0",
     "express": "^4.18.2",

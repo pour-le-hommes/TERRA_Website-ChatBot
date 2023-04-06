@@ -19,7 +19,7 @@ const client = new Client({
 
 
 const sessionStore = new DynamoDBStore({
-  table: 'uninterested-jodhpurs-bearCyclicDB',
+  bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
   AWSConfig: new AWS.Config({
     accessKeyId: 'ASIAXC2WABWQ5BAFSQ7K',
     secretAccessKey: 'mBNz4Tm7gsWywVaNtJPXnjDZ9xjs1A/D6wPgttJ1',
