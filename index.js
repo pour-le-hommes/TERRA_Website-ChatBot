@@ -3,8 +3,8 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const webhook = require('./webhook/webhook.js')
 const session = require('express-session');
-const MemoryStore = require('memorystore')(session)
-const parseurl = require('parseurl')
+const DynamoDBStore = require('connect-dynamodb')(session);
+const AWS = require('aws-sdk');
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,13 +17,26 @@ const client = new Client({
   channelSecret: CHANNEL_SECRET,
 });
 
-app.set('trust proxy', 1) // trust first proxy
+
+const sessionStore = new DynamoDBStore({
+  table: 'uninterested-jodhpurs-bearCyclicDB',
+  AWSConfig: new AWS.Config({
+    accessKeyId: 'ASIAXC2WABWQ5BAFSQ7K',
+    secretAccessKey: 'mBNz4Tm7gsWywVaNtJPXnjDZ9xjs1A/D6wPgttJ1',
+    region: 'ca-central-1'
+  }),
+  ttl: 86400, // session time-to-live in seconds
+});
+
 app.use(session({
-  secret: 'secret-key',
+  secret: 'IQoJb3JpZ2luX2VjEEEaCmFwLXNvdXRoLTEiRjBEAiBCKXb4UFzPat/GMnQZFxoEWr6rgtu9piEUbPYWQxBoIwIgRN7vm91iQ7UwTeFAbdXYfCpB9uvFCwdPvp7ahGo9NA4qtAIIKhAAGgw0ODcxMjIyNzU3NDUiDBL1XwRY8jKcbVdNXSqRApM1VMoqCDcW2b4Wof84f8LXJjru1Uo6MzFnaWZL0U5kGDwLwOLr7W5kS9jnYlRg2JMKNGuDpX7tgzQ6KzOAGBtzl4Uz76PTAi15etwX7Yqlk4psDz8CPo3gY84V9v8fgdGV/y6RYA8kmN3VDr/41Bgc7WsI86rGoguDNjM8hBX9zgItR1y/VtZfA8UUYcmIBbW4TSSWWvoKxwvBSMhv4c9pfFNcPnRTqBb66o2bEkIy9igr5CVbB5oOR+94G6vsEWCIqnHUPMD/9IILGXMMao8DA2zJI4m+wO2ExeA5hH4H5B33PSAwGOjAyiZFH2An5S/BqvSlCEhThq1C82VSFxEN/0zQI+KqNtNB8sP+Gm06jjCPmLqhBjqeAdgGDy5YY9N18t5SJx/ePtVpvRSpDCudg+8PPA0u+5nxT/keXe5ww7HHzOp5jxCiSQD6LVQqMTCIohAJsjR1xGaLMIok6BdV4ZtqZSOSQX9u/u7O/+K75p4OdQXloIubc3UH9e6kX7v04x2kvDedmEQNzWwtdn9Z7We0XWT9BHypmvVa7TXznUW4G7/xv92OfT1REt6yWDv0I/WPw1Ut',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true , maxAge:10*(1000) }
-  }));
+  cookie: {
+    maxAge: 86400000 // session time-to-live in milliseconds
+  },
+  store: sessionStore,
+}));
 
 app.use(function (req, res, next) {
   if (!req.session.EmotionalState) {
