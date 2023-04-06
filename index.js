@@ -29,6 +29,7 @@ app.get('/', (req,res) => {
   res.send('Hi')
   res.status(200)
   console.log(req.session)
+  console.log(req.session.views)
   if (req.session.views) {
     req.session.views++
     res.setHeader('Content-Type', 'text/html')
