@@ -1,4 +1,4 @@
-function webhook(event) {
+function webhook(event,req) {
     const { Client } = require('@line/bot-sdk');
     const CHANNEL_ACCESS_TOKEN = 'qkj/lPvrRK5+BEleRc7d3MUv+P8GNNWxsJOE1+mHYXxCtVreNjPrkUs84z1M/6YC3iT99ORZ+8oFQur+e65c9KU8cOJF7p5sXYluNl27t4Vf7BtmXOVzwHeirh7riGCg1xhESoSqpB0Pbq3d5MNnKAdB04t89/1O/w1cDnyilFU=';
     const CHANNEL_SECRET = 'fe50c21e3a689c8ce8227c63545f3f51';
@@ -8,15 +8,14 @@ function webhook(event) {
     channelSecret: CHANNEL_SECRET,
     });
 
-
+    let ConversationState = req.session.ConversationState || "Massa"
+    let EmotionState = req.session.EmotionState || "Swasta"
 
     const Massaterra = require('./massa.js');
     const oaterra = require("./oa.js");
     const pengurusterra = require("./pengurus.js");
     console.log('Received webhook request!')
     const promises = [];
-    let ConversationState = req.session.ConversationState || "Massa"
-    let EmotionState = req.session.EmotionState || "Swasta"
     console.log(ConversationState, EmotionState)
     if (event.type === 'message' && event.message.type === 'text') {
     const text = event.message.text.toLowerCase()
