@@ -3,8 +3,14 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const webhook = require('./webhook/webhook.js')
 const session = require('express-session');
-const DynamoDBStore = require('connect-dynamodb')(session);
 const AWS = require('aws-sdk');
+const s3 = new AWS.S3()
+
+await s3.putObject({
+  Body: JSON.stringify({key:"value"}),
+  Bucket: "cyclic-uninterested-jodhpurs-bear-ca-central-1",
+  Key: "data/massa.json",
+}).promise()
 
 const app = express();
 app.use(bodyParser.json());
