@@ -4,13 +4,12 @@ const bodyParser = require('body-parser');
 const webhook = require('./webhook/webhook.js')
 const session = require('express-session');
 const AWS = require('aws-sdk');
-const s3 = new AWS.S3()
+const s3 = new AWS.S3();
 
-await s3.putObject({
-  Body: JSON.stringify({key:"value"}),
-  Bucket: "cyclic-uninterested-jodhpurs-bear-ca-central-1",
-  Key: "data/massa.json",
-}).promise()
+const params = {
+  Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+  Key: 'Data/massa.json'
+};
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,17 +20,6 @@ const CHANNEL_SECRET = 'fe50c21e3a689c8ce8227c63545f3f51';
 const client = new Client({
   channelAccessToken: CHANNEL_ACCESS_TOKEN,
   channelSecret: CHANNEL_SECRET,
-});
-
-
-const sessionStore = new DynamoDBStore({
-  bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
-  AWSConfig: new AWS.Config({
-    accessKeyId: 'ASIAXC2WABWQ5BAFSQ7K',
-    secretAccessKey: 'mBNz4Tm7gsWywVaNtJPXnjDZ9xjs1A/D6wPgttJ1',
-    region: 'ca-central-1'
-  }),
-  ttl: 86400, // session time-to-live in seconds
 });
 
 app.use(session({
@@ -61,6 +49,20 @@ app.use(function (req, res, next) {
   req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
   
   next()
+})
+
+app.put('*', async (req,res) => {
+  let filename = req.path.slice(1)
+
+  console.log(typeof req.body)
+
+  await s3.putObject({
+    Body: JSON.stringify(req.body),
+    params
+  }).promise()
+  
+  res.set('Content-type', 'text/plain')
+  res.send('ok').end()
 })
 
 app.get('/', (req,res) => {
