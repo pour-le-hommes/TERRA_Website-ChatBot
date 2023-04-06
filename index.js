@@ -63,8 +63,7 @@ app.get('/foo', function (req, res, next) {
 })
 
 app.post('/webhook', (req, res) => {
-  console.log(req)
-  console.log(req.session)
+  console.log(req.session)  
   console.log(req.session.EmotionalState)
   const promises = [];
   const events = req.body.events;
