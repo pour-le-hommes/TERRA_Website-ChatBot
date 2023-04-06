@@ -8,7 +8,7 @@ function oaterra(event,EmotionState) {
         }
         console.log('swasta => marah')
         EmotionState = "Marah";
-        req.session.EmotionState = EmotionState;
+        // req.session.EmotionState = EmotionState;
         return message;
     }
     if (text.includes('maaf') && EmotionState === "Marah") {
