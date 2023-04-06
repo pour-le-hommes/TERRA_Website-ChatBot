@@ -46,8 +46,6 @@ app.use(function (req, res, next) {
 
 app.get('/', (req,res) => {
   console.log('Received request!')
-  console.log(req.session)
-  console.log(req.session.EmotionalState)
   if (req.session.views) {
     req.session.views++
     res.setHeader('Content-Type', 'text/html')
@@ -65,6 +63,8 @@ app.get('/foo', function (req, res, next) {
 })
 
 app.post('/webhook', (req, res) => {
+  console.log(req.session)
+  console.log(req.session.EmotionalState)
   res.status(200)
   const promises = [];
   const events = req.body.events;
