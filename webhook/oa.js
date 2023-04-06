@@ -8,8 +8,8 @@ function oaterra(event,EmotionalState) {
         }
         console.log('swasta => marah')
         EmotionalState = "Marah";
-        // req.session.EmotionState = EmotionState;
-        return message, EmotionalState;
+        req.session.EmotionalState = EmotionalState
+        return message;
     }
     if (text.includes('maaf') && EmotionalState === "Marah") {
         EmotionalState = "Swasta";
@@ -38,7 +38,8 @@ function oaterra(event,EmotionalState) {
             }
           }
         }
-        return message, EmotionalState;
+        req.session.EmotionalState = EmotionalState
+        return message;
     }
 }
 module.exports = oaterra;
