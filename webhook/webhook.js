@@ -36,8 +36,8 @@ function webhook(event,req) {
             message = Massaterra(event)
             promises.push(client.replyMessage(event.replyToken, message));
         }
-req.session.ConversationState = ConversationState;
-req.session.EmotionState = EmotionState;
+// req.session.ConversationState = ConversationState;
+// req.session.EmotionState = EmotionState;
 Promise.all(promises).then(() => res.status(200).end());
 return message
     }
