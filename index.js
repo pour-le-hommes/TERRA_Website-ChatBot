@@ -27,9 +27,16 @@ app.use(session({
 
 app.use(function (req, res, next) {
   console.log(req.session)
+  if (!req.session.EmotionalState) {
+    req.session.EmotionalState = 'Swasta'
+  }
+  if (!req.session.ConversationalState) {
+    req.session.ConversationalState = 'Massa'
+  }
   if (!req.session.views) {
     req.session.views = {}
   }
+  console.log(req.session)
     // get the url pathname
   var pathname = parseurl(req).pathname
 
