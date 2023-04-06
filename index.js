@@ -5,8 +5,6 @@ const webhook = require('./webhook/webhook.js')
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session)
 
-
-
 const app = express();
 app.use(bodyParser.json());
 
@@ -44,7 +42,12 @@ app.get('/', (req,res) => {
 })
 
 app.post('/webhook', (req, res) => {
-  webhook(req,res)
+  const events = req.body.events;
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i];
+    message = webhook(event)
+    promises.push(client.replyMessage(event.replyToken, message));
+  }
 });
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
