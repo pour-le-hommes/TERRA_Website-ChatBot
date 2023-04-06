@@ -22,7 +22,7 @@ function webhook(event,req) {
         if(text==='stats'){
             const message = {
                 type : 'text',
-                text : "Emotional State : " +EmotionalState+" Conversational State : " + ConversationalState
+                text : "Emotional State : " +EmotionalState+" Conversational State : " + ConversationalState +'Expires in : '+(req.session.cookie.maxAge / 1000)
             }
             return message
         }

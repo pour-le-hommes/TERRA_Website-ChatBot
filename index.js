@@ -22,7 +22,7 @@ app.use(session({
   secret: 'secret-key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true , maxAge:6000 }
+  cookie: { secure: true , maxAge:10*(1000) }
   }));
 
 app.use(function (req, res, next) {
@@ -50,7 +50,7 @@ app.get('/', (req,res) => {
     req.session.views++
     res.setHeader('Content-Type', 'text/html')
     res.write('<p>views: ' + req.session.views + '</p>')
-    res.write('<p>expires in: ' + (req.session.cookie.maxAge / 100) + 's</p>')
+    res.write('<p>expires in: ' + (req.session.cookie.maxAge / 1000) + 's</p>')
     res.end()
   } else {
     req.session.views = 1
