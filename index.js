@@ -71,18 +71,18 @@ app.get('/', (req,res) => {
   console.log('Received request!')
 })
 
-app.post('/webhook', (req, res) => {
-  console.log(req.session)  
-  console.log(req.session.EmotionalState)
-  const promises = [];
-  const events = req.body.events;
-  for (let i = 0; i < events.length; i++) {
-    const event = events[i];
-    message = webhook(event,req)
-    promises.push(client.replyMessage(event.replyToken, message));
-  }
-  Promise.all(promises).then(() => res.status(200).end());
-});
+// app.post('/webhook', (req, res) => {
+//   console.log(req.session)  
+//   console.log(req.session.EmotionalState)
+//   const promises = [];
+//   const events = req.body.events;
+//   for (let i = 0; i < events.length; i++) {
+//     const event = events[i];
+//     message = webhook(event,req)
+//     promises.push(client.replyMessage(event.replyToken, message));
+//   }
+//   Promise.all(promises).then(() => res.status(200).end());
+// });
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
