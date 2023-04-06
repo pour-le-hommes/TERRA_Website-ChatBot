@@ -16,6 +16,19 @@ const client = new Client({
   channelSecret: CHANNEL_SECRET,
 });
 
+app.use(function (req, res, next) {
+  if (!req.session.views) {
+    req.session.views = {}
+  }
+    // get the url pathname
+    var pathname = parseurl(req).pathname
+
+    // count the views
+    req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
+  
+    next()
+})
+
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: 'secret-key',
@@ -42,8 +55,13 @@ app.get('/', (req,res) => {
   }
 })
 
+app.get('/foo', function (req, res, next) {
+  res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+})
+
 app.post('/webhook', (req, res) => {
   res.status(200)
+  const promises = [];
   const events = req.body.events;
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
