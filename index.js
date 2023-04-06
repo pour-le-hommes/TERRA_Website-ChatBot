@@ -19,20 +19,33 @@ const client = new Client({
   channelSecret: CHANNEL_SECRET,
 });
 
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
+
 app.get('/', (req,res) => {
   console.log('Received request!')
   res.send('Hi')
   res.status(200)
+  if (req.session.views) {
+    req.session.views++
+    res.setHeader('Content-Type', 'text/html')
+    res.write('<p>views: ' + req.session.views + '</p>')
+    res.write('<p>expires in: ' + (req.session.cookie.maxAge / 1000) + 's</p>')
+    res.end()
+  } else {
+    req.session.views = 1
+    res.end('welcome to the session demo. refresh!')
+  }
 })
 
 
 
 
-app.use(session({
-  secret: 'my-secret-key',
-  resave: false,
-  saveUninitialized: true,
-}));
 
 app.post('/webhook', (req, res) => {
   console.log('Received webhook request!')
