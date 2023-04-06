@@ -22,10 +22,8 @@ app.use(session({
   secret: 'secret-key',
   resave: false,
   saveUninitialized: true,
-  store: new MemoryStore({
-    checkPeriod: 86400000 // prune expired entries every 24h
-  })
-}));
+  cookie: { secure: true , maxAge:6000 }
+  }));
 
 app.use(function (req, res, next) {
   console.log(req.session)
