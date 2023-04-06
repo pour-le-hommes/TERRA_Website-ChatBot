@@ -24,26 +24,23 @@ function webhook(event,req) {
     const text = event.message.text.toLowerCase()
         if (text.includes('gua')) {
             message = oaterra(event,EmotionState)
-            promises.push(client.replyMessage(event.replyToken, message));
+            return message
+            // promises.push(client.replyMessage(event.replyToken, message));
         }
         else if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
-            ConversationState = "Pengurus"
-            const message = {
-            type : 'text',
-            text : 'Halo pengurus HIMA TG "TERRA" ITB, apakah ada yang bisa dibantu?'
-            }
-            console.log('Massa to Pengurus')
-            promises.push(client.replyMessage(event.replyToken, message));
+            message = pengurusterra(event)
+            return message
+            // promises.push(client.replyMessage(event.replyToken, message));
         }
         else if (EmotionState === "Swasta"){
             message = Massaterra(event)
-            promises.push(client.replyMessage(event.replyToken, message));
+            return message
+            // promises.push(client.replyMessage(event.replyToken, message));
         }
 // req.session.ConversationState = ConversationState;
 // req.session.EmotionState = EmotionState;
 // Promise.all(promises).then(() => res.status(200).end());
     }
-    return message,promises
 }
 
 module.exports = webhook
