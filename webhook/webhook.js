@@ -8,8 +8,11 @@ function webhook(event,req) {
     channelSecret: CHANNEL_SECRET,
     });
 
-    let ConversationState = req.session.ConversationState || "Massa"
-    let EmotionState = req.session.EmotionState || "Swasta"
+    // let ConversationState = req.session.ConversationState || "Massa"
+    // let EmotionState = req.session.EmotionState || "Swasta"
+
+    ConversationState = 'Massa'
+    EmotionState = 'Swasta'
 
     const Massaterra = require('./massa.js');
     const oaterra = require("./oa.js");
