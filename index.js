@@ -22,16 +22,6 @@ const client = new Client({
   channelSecret: CHANNEL_SECRET,
 });
 
-app.use(session({
-  secret: 'IQoJb3JpZ2luX2VjEEEaCmFwLXNvdXRoLTEiRjBEAiBCKXb4UFzPat/GMnQZFxoEWr6rgtu9piEUbPYWQxBoIwIgRN7vm91iQ7UwTeFAbdXYfCpB9uvFCwdPvp7ahGo9NA4qtAIIKhAAGgw0ODcxMjIyNzU3NDUiDBL1XwRY8jKcbVdNXSqRApM1VMoqCDcW2b4Wof84f8LXJjru1Uo6MzFnaWZL0U5kGDwLwOLr7W5kS9jnYlRg2JMKNGuDpX7tgzQ6KzOAGBtzl4Uz76PTAi15etwX7Yqlk4psDz8CPo3gY84V9v8fgdGV/y6RYA8kmN3VDr/41Bgc7WsI86rGoguDNjM8hBX9zgItR1y/VtZfA8UUYcmIBbW4TSSWWvoKxwvBSMhv4c9pfFNcPnRTqBb66o2bEkIy9igr5CVbB5oOR+94G6vsEWCIqnHUPMD/9IILGXMMao8DA2zJI4m+wO2ExeA5hH4H5B33PSAwGOjAyiZFH2An5S/BqvSlCEhThq1C82VSFxEN/0zQI+KqNtNB8sP+Gm06jjCPmLqhBjqeAdgGDy5YY9N18t5SJx/ePtVpvRSpDCudg+8PPA0u+5nxT/keXe5ww7HHzOp5jxCiSQD6LVQqMTCIohAJsjR1xGaLMIok6BdV4ZtqZSOSQX9u/u7O/+K75p4OdQXloIubc3UH9e6kX7v04x2kvDedmEQNzWwtdn9Z7We0XWT9BHypmvVa7TXznUW4G7/xv92OfT1REt6yWDv0I/WPw1Ut',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 86400000 // session time-to-live in milliseconds
-  },
-  store: sessionStore,
-}));
-
 app.use(function (req, res, next) {
   if (!req.session.EmotionalState) {
     req.session.EmotionalState = 'Swasta'
