@@ -41,7 +41,7 @@ app.use(function (req, res, next) {
   next()
 })
 console.log('testing')
-(async () => {
+;(async () => {
   // Store something
   await s3.putObject({
     Body: JSON.stringify({"now":new Date().toString()}),
