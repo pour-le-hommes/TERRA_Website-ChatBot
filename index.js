@@ -51,19 +51,30 @@ app.use(function (req, res, next) {
   next()
 })
 
-app.put('*', async (req,res) => {
-  let filename = req.path.slice(1)
-
-  console.log(typeof req.body)
-
+(async () => {
+  // Store something
   await s3.putObject({
-    Body: JSON.stringify(req.body),
-    params
+    Body: JSON.stringify({"now":new Date().toString()}),
+    Bucket: process.env.BUCKET,
+    Key: "some_files/my_file.json",
   }).promise()
-  
-  res.set('Content-type', 'text/plain')
-  res.send('ok').end()
-})
+
+  // Read the file
+  let my_file = await s3.getObject({
+    Bucket: process.env.BUCKET,
+    Key: "some_files/my_file.json",
+  }).promise()
+
+  // Log file content
+  console.log(JSON.parse(my_file.Body.toString()))
+
+  let res = await s3.deleteObject({
+    Bucket: process.env.BUCKET,
+    Key: "some_files/my_file.json",
+  }).promise()
+
+  console.log(res)
+})()
 
 app.get('/', (req,res) => {
   console.log('Received request!')
