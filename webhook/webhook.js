@@ -27,8 +27,9 @@ function webhook(event,req) {
             return message
         }
         else if (text.includes('gua')) {
-            message = oaterra(event,EmotionalState)
-            return message
+            OA = oaterra(event,EmotionalState)
+            req.session.EmotionalState = OA.EmotionalState
+            return OA.message
             // promises.push(client.replyMessage(event.replyToken, message));
         }
         else if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
