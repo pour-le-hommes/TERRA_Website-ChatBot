@@ -1,18 +1,18 @@
-function oaterra(event,EmotionState) {
+function oaterra(event,EmotionalState) {
     const text = event.message.text.toLowerCase();
-    console.log('OA function called',EmotionState)
-    if (text.includes('gua') && EmotionState === "Swasta") {
+    console.log('OA function called',EmotionalState)
+    if (text.includes('gua') && EmotionalState === "Swasta") {
         const message = {
           type : 'text',
           text : 'Gua, gua, emang gua temen lu?'
         }
         console.log('swasta => marah')
-        EmotionState = "Marah";
+        EmotionalState = "Marah";
         // req.session.EmotionState = EmotionState;
-        return message;
+        return message, EmotionalState;
     }
-    if (text.includes('maaf') && EmotionState === "Marah") {
-        EmotionState = "Swasta";
+    if (text.includes('maaf') && EmotionalState === "Marah") {
+        EmotionalState = "Swasta";
         console.log('Marah => Swasta')
         const message = {
           type: 'flex',
@@ -38,7 +38,7 @@ function oaterra(event,EmotionState) {
             }
           }
         }
-        return message;
+        return message, EmotionalState;
     }
 }
 module.exports = oaterra;

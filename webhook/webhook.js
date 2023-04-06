@@ -8,22 +8,19 @@ function webhook(event,req) {
     channelSecret: CHANNEL_SECRET,
     });
 
-    // let ConversationState = req.session.ConversationState || "Massa"
-    // let EmotionState = req.session.EmotionState || "Swasta"
-
-    ConversationState = 'Massa'
-    EmotionState = 'Swasta'
+    ConversationalState = req.session.ConversationalState
+    EmotionalState = req.session.EmotionalState
 
     const Massaterra = require('./massa.js');
     const oaterra = require("./oa.js");
     const pengurusterra = require("./pengurus.js");
     console.log('Received webhook request!')
     const promises = [];
-    console.log(ConversationState, EmotionState)
     if (event.type === 'message' && event.message.type === 'text') {
     const text = event.message.text.toLowerCase()
         if (text.includes('gua')) {
-            message = oaterra(event,EmotionState)
+            message,EmotionalState = oaterra(event,EmotionalState)
+            req.session.EmotionalState = EmotionalState
             return message
             // promises.push(client.replyMessage(event.replyToken, message));
         }

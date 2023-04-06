@@ -50,7 +50,7 @@ app.get('/', (req,res) => {
     req.session.views++
     res.setHeader('Content-Type', 'text/html')
     res.write('<p>views: ' + req.session.views + '</p>')
-    res.write('<p>expires in: ' + (req.session.cookie.maxAge / 1000) + 's</p>')
+    res.write('<p>expires in: ' + (req.session.cookie.maxAge / 100) + 's</p>')
     res.end()
   } else {
     req.session.views = 1
@@ -69,7 +69,7 @@ app.post('/webhook', (req, res) => {
   const events = req.body.events;
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
-    message = webhook(event)
+    message = webhook(event,req)
     promises.push(client.replyMessage(event.replyToken, message));
   }
   Promise.all(promises).then(() => res.status(200).end());
