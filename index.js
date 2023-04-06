@@ -45,7 +45,8 @@ app.use(function (req, res, next) {
   // Store something
   await s3.putObject({
     Body: JSON.stringify({"now":new Date().toString()}),
-    params
+    Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+    Key: 'Data/massa.json'
   }).promise()
 
   // Read the file
@@ -66,6 +67,7 @@ app.use(function (req, res, next) {
 })()
 
 app.get('/', (req,res) => {
+  res.status(200)
   console.log('Received request!')
 })
 
