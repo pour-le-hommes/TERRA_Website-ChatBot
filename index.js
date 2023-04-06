@@ -26,7 +26,6 @@ app.use(session({
   }));
 
 app.use(function (req, res, next) {
-  console.log(req.session)
   if (!req.session.EmotionalState) {
     req.session.EmotionalState = 'Swasta'
   }
@@ -36,7 +35,6 @@ app.use(function (req, res, next) {
   if (!req.session.views) {
     req.session.views = {}
   }
-  console.log(req.session)
     // get the url pathname
   var pathname = parseurl(req).pathname
 
@@ -49,7 +47,7 @@ app.use(function (req, res, next) {
 app.get('/', (req,res) => {
   console.log('Received request!')
   console.log(req.session)
-  console.log(req.session.views)
+  console.log(req.session.EmotionalState)
   if (req.session.views) {
     req.session.views++
     res.setHeader('Content-Type', 'text/html')
