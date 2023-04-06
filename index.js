@@ -22,24 +22,24 @@ const client = new Client({
   channelSecret: CHANNEL_SECRET,
 });
 
-app.use(function (req, res, next) {
-  if (!req.session.EmotionalState) {
-    req.session.EmotionalState = 'Swasta'
-  }
-  if (!req.session.ConversationalState) {
-    req.session.ConversationalState = 'Massa'
-  }
-  if (!req.session.views) {
-    req.session.views = {}
-  }
-    // get the url pathname
-  var pathname = parseurl(req).pathname
+// app.use(function (req, res, next) {
+//   if (!req.session.EmotionalState) {
+//     req.session.EmotionalState = 'Swasta'
+//   }
+//   if (!req.session.ConversationalState) {
+//     req.session.ConversationalState = 'Massa'
+//   }
+//   if (!req.session.views) {
+//     req.session.views = {}
+//   }
+//     // get the url pathname
+//   var pathname = parseurl(req).pathname
 
-    // count the views
-  req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
+//     // count the views
+//   req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
   
-  next()
-})
+//   next()
+// })
 
 ;(async () => {
   // Store something
