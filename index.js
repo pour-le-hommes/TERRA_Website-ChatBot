@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const webhook = require('./webhook/webhook.js')
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session)
+const parseurl = require('parseurl')
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,12 +22,12 @@ app.use(function (req, res, next) {
     req.session.views = {}
   }
     // get the url pathname
-    var pathname = parseurl(req).pathname
+  var pathname = parseurl(req).pathname
 
     // count the views
-    req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
+  req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
   
-    next()
+  next()
 })
 
 app.set('trust proxy', 1) // trust first proxy
