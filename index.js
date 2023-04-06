@@ -32,6 +32,8 @@ app.get('/', (req,res) => {
   console.log('Received request!')
   res.send('Hi')
   res.status(200)
+  console.log(req)
+  console.log(req.session)
   if (req.session.views) {
     req.session.views++
     res.setHeader('Content-Type', 'text/html')
