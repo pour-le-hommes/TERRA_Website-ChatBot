@@ -29,6 +29,7 @@ app.set('view engine', 'ejs')
 
 // Create Home Page
 app.get('/',(req,res) =>{
+    res.send('What"s up?')
     console.log('Home Page')
     // res.render('index',{text:'suppp'})
     res.status(200)
