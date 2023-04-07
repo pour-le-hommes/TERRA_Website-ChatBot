@@ -34,6 +34,7 @@ app.get('/',(req,res) =>{
     res.status(200)
 })
 
+// Users Pages
 app.use('/users', UserRouter)
 
 // app.get('/add-massa',(req,res) =>{
