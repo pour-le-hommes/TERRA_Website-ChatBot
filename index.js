@@ -79,15 +79,20 @@ app.get('/', async (req,res) => {
     "name": '17066',
     "ip": ip
   };
-  const s3Objects = await s3.listObjects(params).promise();
-
+  const s3Objects = await s3.listObjects({
+    Bucket : 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+  }).promise();
   const retrievedata = await Promise.all(s3Objects.Contents.map(async (obj) => {
     if (obj.Key.includes('17066')) {
-      const fileContent = await s3.getObject({params}).promise();
+      const fileContent = await s3.getObject({
+            Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+            Key:  obj.Key,
+      }).promise();
       return JSON.parse(fileContent.Body.toString());
     }
   }));
   console.log(data)
+  console.log(s3Objects)
   console.log(retrievedata)
   // await s3.putObject({
   //   Body: JSON.stringify(data),
@@ -111,7 +116,5 @@ app.get('/', async (req,res) => {
 //   Promise.all(promises).then(() => res.status(200).end());
 // });
 app.listen(3000, () => {
-  console.log(data)
-  console.log(retrievedata)
   console.log('Server listening on port 3000');
 });
