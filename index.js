@@ -88,7 +88,7 @@ app.get('/', async (req,res) => {
             Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
             Key:  obj.Key,
       }).promise();
-      return JSON.parse(fileContent.Body.toString());
+      return JSON.parse(fileContent.Body.toString('utf-8'));
     }
   }));
   console.log(data)
