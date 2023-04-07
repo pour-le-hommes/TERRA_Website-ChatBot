@@ -30,7 +30,7 @@ app.set('view engine', 'ejs')
 // Create Home Page
 app.get('/',(req,res) =>{
     console.log('Home Page')
-    res.render('index',{text:'suppp'})
+    // res.render('index',{text:'suppp'})
     res.status(200)
 })
 
