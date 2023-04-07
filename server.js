@@ -24,7 +24,7 @@ mongoose.connect(url)
     .catch((err) => console.log(err))
 
 // Create View Engine
-console.log('View Engline')
+console.log('View Engine')
 app.set('view engine', 'ejs')
 
 // Create Home Page
