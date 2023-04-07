@@ -58,17 +58,19 @@ const client = new Client({
   // Log file content
   // console.log(JSON.parse(my_file.Body.toString()))
 
-  let res = await s3.deleteObject({
-    Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
-    Key:  'Data/massa.json',
-  }).promise()
+  // let res = await s3.deleteObject({
+  //   Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+  //   Key:  'Data/massa.json',
+  // }).promise()
 
-  console.log(res)
+  // console.log(res)
 })()
 console.log('testing')
-app.get('/', (req,res) => {
+app.get('/', async (req,res) => {
+  console.log(req)
   res.status(200)
   console.log('Received request!')
+  res.send('Hi')
 })
 
 // app.post('/webhook', (req, res) => {
