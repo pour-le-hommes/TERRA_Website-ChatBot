@@ -17,7 +17,7 @@ const client = new Client({
 });
 
 // Connect To Mongodb
-const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority';
+const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(url)
     .then((result) => app.listen(3000))
     .then(console.log('connect to Mongodb'))
@@ -29,9 +29,10 @@ app.set('view engine', 'ejs')
 
 // Create Home Page
 app.get('/',(req,res) =>{
-    console.log('Home Page');
-    res.render('index',{text:'suppp'});
-});
+    console.log('Home Page')
+    res.status(200)
+    res.render('index',{text:'suppp'})
+})
 
 // Users Pages
 // app.use('/users', UserRouter)
