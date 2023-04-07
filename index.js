@@ -56,7 +56,7 @@ const client = new Client({
   // }).promise()
 
   // Log file content
-  console.log(JSON.parse(my_file.Body.toString()))
+  // console.log(JSON.parse(my_file.Body.toString()))
 
   let res = await s3.deleteObject({
     Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
