@@ -65,7 +65,6 @@ const client = new Client({
 
   // console.log(res)
 })()
-console.log('testing')
 // app.get('/', async (req,res) => {
 //   console.log(req)
 //   res.status(200)
@@ -99,21 +98,6 @@ app.get('/', async (req,res) => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // app.post('/webhook', (req, res) => {
 //   console.log(req.session)  
 //   console.log(req.session.EmotionalState)
@@ -127,5 +111,7 @@ app.get('/', async (req,res) => {
 //   Promise.all(promises).then(() => res.status(200).end());
 // });
 app.listen(3000, () => {
+  console.log(data)
+  console.log(retrievedata)
   console.log('Server listening on port 3000');
 });
