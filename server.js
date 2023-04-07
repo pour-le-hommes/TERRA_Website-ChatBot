@@ -34,6 +34,8 @@ app.get('/',(req,res) =>{
     res.render('index',{text:'suppp'})
 })
 
+app.listen(process.env.PORT||3000)
+
 // Users Pages
 // app.use('/users', UserRouter)
 
