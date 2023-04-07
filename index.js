@@ -92,7 +92,7 @@ app.get('/', async (req,res) => {
     }
   }));
   console.log(data)
-  console.log(s3Objects)
+  console.log(obj)
   console.log(retrievedata)
   // await s3.putObject({
   //   Body: JSON.stringify(data),
