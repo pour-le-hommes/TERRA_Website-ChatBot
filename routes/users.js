@@ -18,7 +18,7 @@ router.get('/create',(req,res) =>{
 })
 
 router.get('/all-massa',(req,res) =>{
-    Massa.find({nama:'TERRA'}).then((result) =>{
+    Massa.find({nim:12317}).then((result) =>{
         res.send(result)
         console.log('Showing Result',result)
     }).catch((err)=>{
