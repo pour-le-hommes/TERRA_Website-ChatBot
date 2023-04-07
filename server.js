@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const UserRouter = require('./routes/users')
-// const { Client } = require('@line/bot-sdk')
+const { Client } = require('@line/bot-sdk')
 // const webhook = require('./webhook/webhook.js')
 // const bodyParser = require('body-parser');
 
