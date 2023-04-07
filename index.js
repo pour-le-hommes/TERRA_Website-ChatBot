@@ -8,7 +8,7 @@ const s3 = new AWS.S3();
 
 const params = {
   Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
-  Key: 'Data/massa.json'
+  Key: 'Data/massa.json',
 };
 
 const app = express();
