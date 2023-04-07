@@ -80,12 +80,24 @@ app.get('/', async (req,res) => {
     "name": '17066',
     "ip": ip
   };
-  await s3.putObject({
-    Body: JSON.stringify(data),
-    Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
-    Key:  'Data/massa.json',
-  }).promise();
-  res.send('Data stored successfully');
+  const s3Objects = await s3.listObjects(params).promise();
+
+  const retrievedata = await Promise.all(s3Objects.Contents.map(async (obj) => {
+    if (obj.Key.includes('17066')) {
+      const fileContent = await s3.getObject({
+      Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+      Key:  'Data/massa.json',
+      }).promise();
+      return JSON.parse(fileContent.Body.toString('utf-8'));
+    }
+  }));
+  console.log(retrievedata)
+  // await s3.putObject({
+  //   Body: JSON.stringify(data),
+  //   Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+  //   Key:  'Data/massa.json',
+  // }).promise();
+  // res.send('Data stored successfully');
 })
 
 
