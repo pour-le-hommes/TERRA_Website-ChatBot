@@ -66,12 +66,43 @@ const client = new Client({
   // console.log(res)
 })()
 console.log('testing')
+// app.get('/', async (req,res) => {
+//   console.log(req)
+//   res.status(200)
+//   console.log('Received request!')
+//   res.send('Hi')
+// })
+
 app.get('/', async (req,res) => {
-  console.log(req)
   res.status(200)
-  console.log('Received request!')
-  res.send('Hi')
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const data = {
+    "name": '17066',
+    "ip": ip
+  };
+  await s3.putObject({
+    Body: JSON.stringify(data),
+    Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+    Key:  'Data/massa.json',
+  }).promise();
+  res.send('Data stored successfully');
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // app.post('/webhook', (req, res) => {
 //   console.log(req.session)  
