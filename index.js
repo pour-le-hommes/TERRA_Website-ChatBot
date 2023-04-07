@@ -50,20 +50,20 @@ const client = new Client({
   // }).promise()
 
   // Read the file
-  let my_file = await s3.getObject({
-    Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
-    Key:  'Data/massa.json',
-  }).promise()
+  // let my_file = await s3.getObject({
+  //   Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+  //   Key:  'Data/massa.json',
+  // }).promise()
 
   // Log file content
   console.log(JSON.parse(my_file.Body.toString()))
 
-  // let res = await s3.deleteObject({
-  //   Bucket: process.env.BUCKET,
-  //   Key: "some_files/my_file.json",
-  // }).promise()
+  let res = await s3.deleteObject({
+    Bucket: process.env.BUCKET,
+    Key: "some_files/my_file.json",
+  }).promise()
 
-  // console.log(res)
+  console.log(res)
 })()
 console.log('testing')
 app.get('/', (req,res) => {
