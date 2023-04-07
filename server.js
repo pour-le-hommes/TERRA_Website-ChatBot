@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-// const UserRouter = require('./routes/users')
+const UserRouter = require('./routes/users')
 const { Client } = require('@line/bot-sdk')
 // const webhook = require('./webhook/webhook.js')
 // const bodyParser = require('body-parser');
@@ -37,7 +37,7 @@ app.get('/',(req,res) =>{
 app.listen(process.env.PORT||3000)
 
 // Users Pages
-// app.use('/users', UserRouter)
+app.use('/users', UserRouter)
 
 // app.post('/webhook', (req, res) => {
 //   console.log(req.session)  
