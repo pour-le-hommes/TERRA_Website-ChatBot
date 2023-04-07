@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const UserRouter = require('./routes/users')
 // const { Client } = require('@line/bot-sdk')
 // const webhook = require('./webhook/webhook.js')
@@ -16,12 +16,12 @@ const UserRouter = require('./routes/users')
 //   channelSecret: CHANNEL_SECRET,
 // });
 
-// // Connect To Mongodb
-const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
-mongoose.connect(url)
-    .then((result) => app.listen(3000))
-    .then(console.log('connect to Mongodb'))
-    .catch((err) => console.log(err))
+// Connect To Mongodb
+// const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
+// mongoose.connect(url)
+//     .then((result) => app.listen(3000))
+//     .then(console.log('connect to Mongodb'))
+//     .catch((err) => console.log(err))
 
 // // Create View Engine
 // console.log('View Engine')
@@ -34,7 +34,7 @@ app.get('/',(req,res) =>{
     res.render('homepage',{text:'suppp'})
 })
 
-// app.listen(process.env.PORT||3000)
+app.listen(process.env.PORT||3000)
 
 // Users Pages
 // app.use('/users', UserRouter)
