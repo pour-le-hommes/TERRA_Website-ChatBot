@@ -4,9 +4,9 @@ const mongoose = require('mongoose')
 const UserRouter = require('./routes/users')
 const { Client } = require('@line/bot-sdk')
 // const webhook = require('./webhook/webhook.js')
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
 const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
@@ -34,7 +34,7 @@ app.get('/',(req,res) =>{
     res.render('homepage',{text:'suppp'})
 })
 
-// app.listen(process.env.PORT||3000)
+app.listen(process.env.PORT||3000)
 
 // Users Pages
 app.use('/users', UserRouter)
