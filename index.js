@@ -86,7 +86,7 @@ app.get('/', async (req,res) => {
     if (obj.Key.includes('17066')) {
       const fileContent = await s3.getObject({
             Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
-            Key:  obj.Key,
+            Key:  'Data/massa.json',
       }).promise();
       return JSON.parse(fileContent.Body.toString('utf-8'));
     }
