@@ -37,14 +37,14 @@ app.get('/',(req,res) =>{
 
 app.use('/users', UserRouter)
 
-app.get('/add-massa',(req,res) =>{
+// app.get('/add-massa',(req,res) =>{
 
-    massa.save().then(console.log('Data saved')).then((result) => {
-        res.send(result)
-    }).catch((err) => {
-        console.log('There"s an error : ',err)
-    })
-})
+//     massa.save().then(console.log('Data saved')).then((result) => {
+//         res.send(result)
+//     }).catch((err) => {
+//         console.log('There"s an error : ',err)
+//     })
+// })
 
 app.post('/webhook', (req, res) => {
   console.log(req.session)  
