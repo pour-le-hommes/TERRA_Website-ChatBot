@@ -86,13 +86,14 @@ app.get('/', async (req,res) => {
     if (obj.Key.includes('17066')) {
       const fileContent = await s3.getObject({
             Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
-            Key:  'Data/massa.json',
+            Key:  obj.Key,
       }).promise();
       return JSON.parse(fileContent.Body.toString('utf-8'));
     }
   }));
   console.log(data)
   console.log(obj)
+  console.log("the content" + fileContent)
   console.log(retrievedata)
   // await s3.putObject({
   //   Body: JSON.stringify(data),
