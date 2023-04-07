@@ -7,11 +7,11 @@ const massaschema = new schema({
         required: true
     },
     nim: {
-        type: String,
+        type: Number,
         required: true
     },
     
 }, {timestamps : true});
 
-const Massaschema = mongoose.model('massa',massaschema)
-module.exports = Massaschema;
+const Massa = mongoose.model('massa',massaschema);
+module.exports = Massa;

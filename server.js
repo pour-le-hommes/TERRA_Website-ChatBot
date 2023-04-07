@@ -8,13 +8,13 @@ const { Client } = require('@line/bot-sdk')
 
 // app.use(bodyParser.json());
 
-const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
-const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
+// const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
+// const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
 
-const client = new Client({
-  channelAccessToken: CHANNEL_ACCESS_TOKEN,
-  channelSecret: CHANNEL_SECRET,
-});
+// const client = new Client({
+//   channelAccessToken: CHANNEL_ACCESS_TOKEN,
+//   channelSecret: CHANNEL_SECRET,
+// });
 
 // Connect To Mongodb
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
@@ -31,10 +31,10 @@ app.set('view engine', 'ejs')
 app.get('/',(req,res) =>{
     console.log('Home Page')
     res.status(200)
-    res.render('index',{text:'suppp'})
+    res.render('homepage',{text:'suppp'})
 })
 
-app.listen(process.env.PORT||3000)
+// app.listen(process.env.PORT||3000)
 
 // Users Pages
 app.use('/users', UserRouter)
