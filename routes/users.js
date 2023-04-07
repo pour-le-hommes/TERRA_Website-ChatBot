@@ -4,6 +4,7 @@ router.use(express.urlencoded({ extended : true }));
 const Massaschema = require('../model/massa.js')
 
 router.get('/', (req,res) =>{
+    console.log('Users')
     res.send('aenfkse')
 })
 

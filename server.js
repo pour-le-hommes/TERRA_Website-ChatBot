@@ -16,8 +16,6 @@ const client = new Client({
   channelSecret: CHANNEL_SECRET,
 });
 
-
-
 // Connect To Mongodb
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(url)
@@ -26,6 +24,7 @@ mongoose.connect(url)
     .catch((err) => console.log(err))
 
 // Create View Engine
+console.log('View Engline')
 app.set('view engine', 'ejs')
 
 // Create Home Page
