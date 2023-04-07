@@ -40,14 +40,20 @@ app.listen(process.env.PORT||3000)
 // app.use('/users', UserRouter)
 
 app.post('/webhook', (req, res) => {
-  console.log(req.session)  
-  console.log(req.session.EmotionalState)
-  const promises = [];
-  const events = req.body.events;
-  for (let i = 0; i < events.length; i++) {
-    const event = events[i];
-    message = webhook(event,req)
-    promises.push(client.replyMessage(event.replyToken, message));
-  }
-  Promise.all(promises).then(() => res.status(200).end());
+    if(!req.session.EmotionalState){
+        req.session.EmotionalState = 'Swasta'
+    }
+    if(!req.session.ConversationalState){
+        req.session.ConversationalState = 'Massa'
+    }
+    console.log(req.session)  
+    console.log(req.session.EmotionalState)
+    const promises = [];
+    const events = req.body.events;
+    for (let i = 0; i < events.length; i++) {
+        const event = events[i];
+        message = webhook(event,req)
+        promises.push(client.replyMessage(event.replyToken, message));
+    }
+    Promise.all(promises).then(() => res.status(200).end());
 });
