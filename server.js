@@ -35,26 +35,17 @@ app.get('/',(req,res) =>{
 })
 
 // Users Pages
-app.use('/users', UserRouter)
+// app.use('/users', UserRouter)
 
-// app.get('/add-massa',(req,res) =>{
-
-//     massa.save().then(console.log('Data saved')).then((result) => {
-//         res.send(result)
-//     }).catch((err) => {
-//         console.log('There"s an error : ',err)
-//     })
-// })
-
-app.post('/webhook', (req, res) => {
-  console.log(req.session)  
-  console.log(req.session.EmotionalState)
-  const promises = [];
-  const events = req.body.events;
-  for (let i = 0; i < events.length; i++) {
-    const event = events[i];
-    message = webhook(event,req)
-    promises.push(client.replyMessage(event.replyToken, message));
-  }
-  Promise.all(promises).then(() => res.status(200).end());
-});
+// app.post('/webhook', (req, res) => {
+//   console.log(req.session)  
+//   console.log(req.session.EmotionalState)
+//   const promises = [];
+//   const events = req.body.events;
+//   for (let i = 0; i < events.length; i++) {
+//     const event = events[i];
+//     message = webhook(event,req)
+//     promises.push(client.replyMessage(event.replyToken, message));
+//   }
+//   Promise.all(promises).then(() => res.status(200).end());
+// });
