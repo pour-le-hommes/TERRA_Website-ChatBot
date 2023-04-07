@@ -59,8 +59,8 @@ const client = new Client({
   console.log(JSON.parse(my_file.Body.toString()))
 
   let res = await s3.deleteObject({
-    Bucket: process.env.BUCKET,
-    Key: "some_files/my_file.json",
+    Bucket: 'cyclic-uninterested-jodhpurs-bear-ca-central-1',
+    Key:  'Data/massa.json',
   }).promise()
 
   console.log(res)
