@@ -2,19 +2,22 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const UserRouter = require('./routes/users')
-const { Client } = require('@line/bot-sdk')
+const Massaschema = require('./model/massa.js')
+const Massa = require('./model/massa.js');
+app.use(express.urlencoded({ extended : true }));
+// const { Client } = require('@line/bot-sdk')
 // const webhook = require('./webhook/webhook.js')
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
-const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
-const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
+// const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
+// const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
 
-const client = new Client({
-  channelAccessToken: CHANNEL_ACCESS_TOKEN,
-  channelSecret: CHANNEL_SECRET,
-});
+// const client = new Client({
+//   channelAccessToken: CHANNEL_ACCESS_TOKEN,
+//   channelSecret: CHANNEL_SECRET,
+// });
 
 // Connect To Mongodb
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
@@ -30,14 +33,36 @@ app.set('view engine', 'ejs')
 // Create Home Page
 app.get('/',(req,res) =>{
     console.log('Home Page')
-    res.status(200)
     res.render('homepage',{text:'suppp'})
 })
 
-app.listen(process.env.PORT||3000)
+// app.listen(process.env.PORT||3000)
 
 // Users Pages
 app.use('/users', UserRouter)
+
+// Verify
+app.post('/verify', (req,res) =>{
+  // const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
+  // mongoose.connect(url)
+  // .then((result) => console.log('Trying to verify, connecting to Mongodb'))
+  // .then(console.log('connected to Mongodb'))
+  // .catch((err) => console.log(err))
+
+  const massa = new Massaschema(req.body);
+  Massa.find({nim:massa.nim}).then((result) =>{
+      if(!result[0]){
+          massa.save().then(console.log(`${massa.nama} is successfully added!`)).then((result) =>{
+              res.redirect('/')})
+          res.redirect('/')
+      }else{
+          console.log(`Register failed, ${massa.nim} is already used`)
+          res.redirect('/users/create');
+      }
+  }).catch((err)=>{
+      console.log('Error in finding all massa ',err)
+  })
+})
 
 // app.post('/webhook', (req, res) => {
 //     if(!req.session.EmotionalState){

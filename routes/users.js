@@ -1,8 +1,6 @@
 const express = require('express');
 const Massa = require('../model/massa.js');
 const router = express.Router()
-router.use(express.urlencoded({ extended : true }));
-const Massaschema = require('../model/massa.js')
 const mongoose = require('mongoose')
 
 router.get('/', (req,res) =>{
@@ -22,28 +20,6 @@ router.get('/all-massa',(req,res) =>{
     Massa.find({nim:12317}).then((result) =>{
         res.send(result)
         console.log('Showing Result',result)
-    }).catch((err)=>{
-        console.log('Error in finding all massa ',err)
-    })
-})
-
-router.post('/verify', (req,res) =>{
-    const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
-    mongoose.connect(url)
-    .then((result) => console.log('Trying to verify, connecting to Mongodb'))
-    .then(console.log('connected to Mongodb'))
-    .catch((err) => console.log(err))
-
-    const massa = new Massaschema(req.body);
-    Massa.find({nim:massa.nim}).then((result) =>{
-        if(!result[0]){
-            massa.save().then(console.log(`${massa.nama} is successfully added!`)).then((result) =>{
-                res.redirect('/')})
-            res.redirect('/')
-        }else{
-            console.log(`Register failed, ${massa.nama} is already used`)
-            res.redirect('/users/create');
-        }
     }).catch((err)=>{
         console.log('Error in finding all massa ',err)
     })
