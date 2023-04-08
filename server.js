@@ -58,13 +58,15 @@ app.post('/verify', (req,res) =>{
   })
 })
 
+if(!req.session.EmotionalState){
+  req.session.EmotionalState = 'Swasta'
+}
+if(!req.session.ConversationalState){
+  req.session.ConversationalState = 'Massa'
+}
+
 app.post('/webhook', (req, res) => {
-    if(!req.session.EmotionalState){
-        req.session.EmotionalState = 'Swasta'
-    }
-    if(!req.session.ConversationalState){
-        req.session.ConversationalState = 'Massa'
-    }
+
     console.log(req.session)  
     console.log(req.session.EmotionalState)
     const promises = [];
