@@ -5,19 +5,19 @@ const UserRouter = require('./routes/users')
 const Massaschema = require('./model/massa.js')
 const Massa = require('./model/massa.js');
 app.use(express.urlencoded({ extended : true }));
-const { Client } = require('@line/bot-sdk')
-const webhook = require('./webhook/webhook.js')
-const bodyParser = require('body-parser');
+// const { Client } = require('@line/bot-sdk')
+// const webhook = require('./webhook/webhook.js')
+// const bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
-const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
-const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
+// const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
+// const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
 
-const client = new Client({
-  channelAccessToken: CHANNEL_ACCESS_TOKEN,
-  channelSecret: CHANNEL_SECRET,
-});
+// const client = new Client({
+//   channelAccessToken: CHANNEL_ACCESS_TOKEN,
+//   channelSecret: CHANNEL_SECRET,
+// });
 
 // Connect To Mongodb
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
@@ -58,27 +58,27 @@ app.post('/verify', (req,res) =>{
   })
 })
 
-app.post('/webhook', (req, res) => {
-//   if(!req.session.EmotionalState){
-//     req.session.EmotionalState = 'Swasta'
-//   }
-//   if(!req.session.ConversationalState){
-//     req.session.ConversationalState = 'Massa'
-//   }
-//   console.log(req.session)  
-//   console.log(req.session.EmotionalState)
-  const promises = [];
-  const events = req.body.events;
+// app.post('/webhook', (req, res) => {
+// //   if(!req.session.EmotionalState){
+// //     req.session.EmotionalState = 'Swasta'
+// //   }
+// //   if(!req.session.ConversationalState){
+// //     req.session.ConversationalState = 'Massa'
+// //   }
+// //   console.log(req.session)  
+// //   console.log(req.session.EmotionalState)
+//   const promises = [];
+//   const events = req.body.events;
 
-  for (let i = 0; i < events.length; i++) {
-    const event = events[i];
-    const message = {
-      type : 'text',
-      text : 'ngomong apa dah lu?',
-    };
-  console.log('Respon nonsense')
-    // message = webhook(event,req)
-  promises.push(client.replyMessage(event.replyToken, message));
-  }
-  Promise.all(promises).then(() => res.status(200).end());
-});
+//   for (let i = 0; i < events.length; i++) {
+//     const event = events[i];
+//     const message = {
+//       type : 'text',
+//       text : 'ngomong apa dah lu?',
+//     };
+//   console.log('Respon nonsense')
+//     // message = webhook(event,req)
+//   promises.push(client.replyMessage(event.replyToken, message));
+//   }
+//   Promise.all(promises).then(() => res.status(200).end());
+// });
