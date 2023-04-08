@@ -3,6 +3,7 @@ const Massa = require('../model/massa.js');
 const router = express.Router()
 router.use(express.urlencoded({ extended : true }));
 const Massaschema = require('../model/massa.js')
+const mongoose = require('mongoose')
 
 router.get('/', (req,res) =>{
     console.log('Users')
@@ -27,6 +28,12 @@ router.get('/all-massa',(req,res) =>{
 })
 
 router.post('/verify', (req,res) =>{
+    const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
+    mongoose.connect(url)
+    .then((result) => console.log('Trying to verify, connecting to Mongodb'))
+    .then(console.log('connected to Mongodb'))
+    .catch((err) => console.log(err))
+
     const massa = new Massaschema(req.body);
     Massa.find({nim:massa.nim}).then((result) =>{
         if(!result[0]){

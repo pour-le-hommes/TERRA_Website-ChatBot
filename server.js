@@ -20,7 +20,7 @@ const client = new Client({
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(url)
     .then((result) => app.listen(3000))
-    .then(console.log('connect to Mongodb'))
+    .then(console.log('connected to Mongodb'))
     .catch((err) => console.log(err))
 
 // Create View Engine
