@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -62,20 +64,20 @@ body, html {
       <i class="fa fa-bars"></i>
     </a>
     <a href="#home" class="w3-bar-item w3-button">HOME</a>
-    <a href="./users/create" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> CREATE</a>
-    <a href="#documents" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-bars"></i> DOCUMENTS</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+    <a href="#terra" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TERRA</a>
+    <a href="#documents" class="w3-bar-item w3-button w3-hide-small"><i class="glyphicon glyphicon-file"></i> DOCUMENTS</a>
+    <a href="#sejarahpenemu" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> MT ZEN</a>
+    <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red"> -->
       <i class="fa fa-search"></i>
     </a>
   </div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="./users/create" class="w3-bar-item w3-button" onclick="toggleFunction()">CREATE</a>
+    <a href="#terra" class="w3-bar-item w3-button" onclick="toggleFunction()">TERRA</a>
     <a href="#documents" class="w3-bar-item w3-button" onclick="toggleFunction()">DOCUMENTS</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+    <a href="#sejarahpenemu" class="w3-bar-item w3-button" onclick="toggleFunction()">MT ZEN</a>
+    <!-- <a href="#" class="w3-bar-item w3-button">SEARCH</a> -->
   </div>
 </div>
 
@@ -87,8 +89,8 @@ body, html {
 </div>
 
 <!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">TERRA</h3>
+<div class="w3-content w3-container w3-padding-64" id="terra">
+  <h3 class="w3-xxlarge w3-text-black w3-wide w3-center">TERRA</h3>
   <p class="w3-center"><em>Himpunan Mahasiswa Teknik Geofisika "TERRA" Institut Teknologi Bandung</em></p>
   <p>Saya adalah organisasi mahasiswa yang berasas kemahasiswaan yangberdasarkan nilai-nilai kebenaran
     hakiki yang universal, dengan sifat yang saya miliki : </p>
@@ -151,76 +153,77 @@ body, html {
 
 <div id="documents"></div>
 <div class="w3-row w3-center w3-deep-orange w3-padding-16">
-  <span class="w3-xxlarge">Dokumen Resmi</span>
+  <span class="w3-xxlarge w3-text-black w3-wide">Dokumen Resmi</span>
 </div>
 <div class="w3-row w3-center w3-deep-orange w3-padding-16">
   <div class="w3-half w3-section">
-    <span class="w3-xlarge">Anggaran Dasar dan Anggaran Rumah Tangga</span><br>
-    <a href="/public/files/ANGGARAN DASAR DAN ANGGARAN RUMAH TANGGA HIMA TG TERRA ITB Amandemen 2022.pdf" download>AD/ART</a>
+    <a href="/public/files/ANGGARAN DASAR DAN ANGGARAN RUMAH TANGGA HIMA TG TERRA ITB Amandemen 2022.pdf" class="w3-xlarge w3-text-black w3-wide" download>Anggaran Dasar dan Anggaran Rumah Tangga</a>
   </div>
   <div class="w3-half w3-section">
-    <span class="w3-xlarge">Grand Design Kaderisasi</span><br>
-    <a href="/public/files/GDK HIMA TG TERRA ITB .pdf" download>GDK</a>
+    <a href="/public/files/GDK HIMA TG TERRA ITB .pdf" class="w3-xlarge w3-text-black w3-wide" download>Grand Design Kaderisasi</a>
   </div>
   <!-- <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">89+</span><br>
-    Happy Clients
-  </div>
-  <div class="w3-quarter w3-section">
     <span class="w3-xlarge">150+</span><br>
     Meetings
   </div> -->
 </div>
 
 <!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
+<div class="w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
+    <span class="w3-xxlarge w3-text-black w3-wide"><br>Sejarah Penemu</span>
   </div>
 </div>
 
 <!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center">MY WORK</h3>
-  <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
+<div class="w3-content w3-container w3-padding-64" id="sejarahpenemu">
+  <h3 class="w3-center">Tanggapan</h3>
+  <p class="w3-center">Dari bertemu Soe Hok Gie, Idjon Djanbi, Habibie dan juga Soekarno, sebelum ada hal yang
+    namanya semangat TERRA, terlihat bahwa walaupun namanya belum ada, tetapi tindakannya sudah.<br>
+    <br><em>Lakukanlah kewajiban sebagai mahasiswa saat kalian masih disini, jangan kalian 
+    gembar-gembor keresahan kalian saat sudah keluar dari kampus. <br> Lakukanlah tanggung jawab kalian sesuai 
+    posisi yang kalian punya sekarang dan itulah kalian sebagai mahasiswa.
+    <br><br> Izinkan saya memberitahu kepada kalian yang baca ini, bagaimana
+    seorang profesor yang menciptakan nama TERRA bertindak saat menjadi mahasiswa dan saat lulus.</em></p><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="/public/images/terra_selpay.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist over the mountains">
+      <img src="/public/images/buku tuhan, aku dan alam.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Buku : Tuhan, Aku, dan Alam">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Coffee beans">
+      <img src="/public/images/Khawatir Negara Gagal.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Artikel Pandangan Kondisi Negara">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Bear closeup">
+      <img src="/public/images/Pak daharta dan mt zen bertemu habibie.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Perancis, Habibie dan MT Zen">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quiet ocean">
+      <img src="/public/images/peta zonasi mt zen.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Peta Zonasi Gempa">
     </div>
   </div>
 
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3">
-      <img src="/w3images/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist">
+      <img src="/public/images/sembilan kesengsaraan rakyat.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Jawaban MT Zen Kepada Soekarno">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="My beloved typewriter">
+      <img src="/public/images/sociopolitica soe hok gie mt zen.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Ungkapan MT Zen dalam PKI">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Empty ghost train">
+      <img src="/public/images/soe hok gie mt zen.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soe Hok Gie, PKI, dan MT Zen">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Sailing">
+      <img src="/public/images/Epilog_MTZen.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Epilog MT Zen">
     </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>
+    <!-- <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button> -->
   </div>
+  <p class="w3-center">Click on the images to make it bigger</p>
 </div>
 
 <!-- Modal for full size images on click-->
@@ -232,16 +235,16 @@ body, html {
   </div>
 </div>
 
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
+<!-- Third Parallax Image with Portfolio Text
+<div class="w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
      <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>
   </div>
-</div>
+</div> -->
 
 <!-- Container (Contact Section) -->
-<div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">WHERE I WORK</h3>
+<!-- <div class="w3-content w3-container w3-padding-64" id="contact">
+  <h3 class="w3-center">The End</h3>
   <p class="w3-center"><em>I'd love your feedback!</em></p>
 
   <div class="w3-row w3-padding-32 w3-section">
@@ -250,9 +253,9 @@ body, html {
     </div>
     <div class="w3-col m8 w3-panel">
       <div class="w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
-        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
-        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Terres Des Hommes, Bandung, Indonesia<br>
+        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +62 12317066<br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: pourleterres@gmail.com<br>
       </div>
       <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
       <form action="/action_page.php" target="_blank">
@@ -271,20 +274,20 @@ body, html {
       </form>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+<footer class="bgimg-1 w3-center w3-black w3-padding-64 w3-hover-opacity-off">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <div class="w3-xlarge w3-section">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
     <i class="fa fa-snapchat w3-hover-opacity"></i>
     <i class="fa fa-pinterest-p w3-hover-opacity"></i>
     <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i> -->
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <p>Powered by <a href="semangat terra" title="TERRA" target="_blank" class="w3-hover-text-green">TERRA</a></p>
 </footer>
  
 <script>
