@@ -5,6 +5,7 @@ const UserRouter = require('./routes/users')
 const Massaschema = require('./model/massa.js')
 const Massa = require('./model/massa.js');
 app.use(express.urlencoded({ extended : true }));
+app.use('/public', express.static('public'))
 // const { Client } = require('@line/bot-sdk')
 // const webhook = require('./webhook/webhook.js')
 // const bodyParser = require('body-parser');
@@ -34,6 +35,10 @@ app.set('view engine', 'ejs')
 app.get('/',(req,res) =>{
     console.log('Home Page')
     res.render('homepage',{text:'suppp'})
+})
+
+app.get('/testing', (req,res) =>{
+    res.render('testing')
 })
 
 // app.listen(process.env.PORT||3000)
