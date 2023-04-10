@@ -1,5 +1,5 @@
 const express = require('express');
-const Massa = require('../model/massa.js');
+const Massa = require('../model/register.js');
 const router = express.Router()
 const mongoose = require('mongoose')
 
@@ -12,31 +12,25 @@ router.get('/new', (req,res) =>{
     res.send('aenfkgrgse')
 })
 
-router.get('/create',(req,res) =>{
-    res.render('create', {title: 'Create new user'})
-})
-
 router.get('/all-massa',(req,res) =>{
-    Massa.find({nim:12317}).then((result) =>{
-        res.send(result)
-        console.log('Showing Result',result)
-    }).catch((err)=>{
-        console.log('Error in finding all massa ',err)
-    })
+    res.render('all-massa-list')
 })
 
-router.post('/create',(req,res) =>{
-    const massa = new Massaschema(req.body);
-    massa.save().then(console.log('New massa saved')).then((result) =>{
-        res.redirect('/')
-    }).catch((err) =>{
-        console.log("Something's wrong, i can feel it ",err);
+router.get('/:nim', (req,res) =>{
+    Massa.find({nim:req.params.nim}).then((result) =>{
+        console.log(result[0].nim)
+        console.log(result[0].nim.trim()==='12317066')
+        if(!result[0]){
+            res.send(`User with ID ${req.params.nim} not found. Register at the home page`)
+        }
+        else if(result[0].nim==='12317066'){
+            res.redirect('/about-me')
+        }
+        else{
+            console.log(result[0].role)
+            res.send(`User with ID ${req.params.nim}, Welcome ${result[0].nama}`)
+        }
     })
 })
-
-// router.get('/:nim', (req,res) =>{
-//     req.params.nim
-//     res.send(`User with ID ${req.params.nim}`)
-// })
 
 module.exports= router

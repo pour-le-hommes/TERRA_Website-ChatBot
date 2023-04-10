@@ -2,8 +2,8 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const UserRouter = require('./routes/users')
-const Massaschema = require('./model/massa.js')
-const Massa = require('./model/massa.js');
+const Massaschema = require('./model/register.js')
+const Massa = require('./model/register.js');
 app.use(express.urlencoded({ extended : true }));
 app.use('/public', express.static('public'))
 // const { Client } = require('@line/bot-sdk')
@@ -37,6 +37,11 @@ app.get('/',(req,res) =>{
     res.render('homepage')
 })
 
+app.get('/register',(req,res) =>{
+    console.log('Register Page')
+    res.render('register')
+})
+
 app.get('/about-me',(req,res) =>{
     console.log('About Me')
     res.render('aboutpage',{text:'suppp'})
@@ -54,19 +59,34 @@ app.use('/users', UserRouter)
 // Verify
 app.post('/verify', (req,res) =>{
   const massa = new Massaschema(req.body);
+  if (massa.role==='Pengurus'&& massa.password!=='Saya berjanji akan membangun himpunan ini menjadi lebih baik'){
+    console.log(massa.nama,' wrong password')
+    console.log(massa)
+    res.redirect('/register')
+  }else{
   Massa.find({nim:massa.nim}).then((result) =>{
-      if(!result[0]){
-          massa.save().then(console.log(`${massa.nama} is successfully added!`)).then((result) =>{
-              res.redirect('/')})
-          res.redirect('/')
-      }else{
-          console.log(`Register failed, ${massa.nim} is already used`)
-          res.redirect('/users/create');
-      }
+    if(!result[0]){
+        massa.save().then(console.log(`${massa.nama} is successfully added!`)).then((result) =>{
+            res.redirect('/')})
+    }else{
+        console.log(`Register failed, ${massa.nim} is already used`)
+        console.log(massa)
+        res.redirect('/register');
+    }
   }).catch((err)=>{
       console.log('Error in finding all massa ',err)
-  })
+  })}
 })
+
+// Verify
+app.post('/verifyregis', (req,res) =>{
+    const massa = new Massaschema(req.body);
+    console.log(req.body)
+    console.log(massa.role)
+    console.log(massa.nim.substring(0,3))
+    massa.nim=massa.nim.substring(0,3)
+    console.log(massa)
+  })
 
 // app.post('/webhook', (req, res) => {
 // //   if(!req.session.EmotionalState){

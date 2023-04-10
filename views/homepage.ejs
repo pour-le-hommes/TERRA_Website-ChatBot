@@ -12,37 +12,25 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
-body, html {
-  height: 100%;
-  color: #000000; /*#ff2600*/
-  line-height: 1.8;
-}
+.parallax {
+  /* The image used */
+  background-image: url('/public/images/Logo_TERRA_ITB.jpg');
 
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3 {
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* First image (Logo. Full height) */
-.bgimg-1 {
-  background-image: url('/public/images/Logo_TERRA_ITB.jpg');
-  min-height: 500px;
-}
-
-/* Second image (Portfolio) */
-.bgimg-2 {
-  background-image: url("/public/images/Epilog_MTZen.png");
-  min-height: 400px;
-}
-
-/* Third image (Contact) */
-.bgimg-3 {
-  background-image: url("/public/images/Epilog_MTZen.png");
-  min-height: 400px;
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #000000; /*#ff2600*/
+  line-height: 1.8;
 }
 
 .w3-wide {letter-spacing: 10px;}
@@ -69,7 +57,8 @@ body, html {
     <a href="#terra" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TERRA</a>
     <a href="#documents" class="w3-bar-item w3-button w3-hide-small"><i class="glyphicon glyphicon-file"></i> DOCUMENTS</a>
     <a href="#sejarahpenemu" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> MT ZEN</a>
-    <a href="./about-me" class="w3-bar-item w3-button w3-hide-small w3-right"><i class="fa f"></i></a>
+    <a href="./register" class="w3-bar-item w3-button w3-hide-small"><i class="icon-pencil"></i> REGISTER</a>
+    <a href="./about-me" class="w3-bar-item w3-button w3-hide-small w3-right"><i class=""></i></a>
     <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
     </a> -->
@@ -80,12 +69,13 @@ body, html {
     <a href="#terra" class="w3-bar-item w3-button" onclick="toggleFunction()">TERRA</a>
     <a href="#documents" class="w3-bar-item w3-button" onclick="toggleFunction()">DOCUMENTS</a>
     <a href="#sejarahpenemu" class="w3-bar-item w3-button" onclick="toggleFunction()">MT ZEN</a>
+    <a href="./register" class="w3-bar-item w3-button" onclick="toggleFunction()">REGISTER</a>
     <!-- <a href="#" class="w3-bar-item w3-button">SEARCH</a> -->
   </div>
 </div>
 
 <!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+<div class="parallax w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
     <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"> <span class="w3-hide-small">HIMA TG "</span>TERRA<span class="w3-hide-small">"ITB</span></span>
   </div>
