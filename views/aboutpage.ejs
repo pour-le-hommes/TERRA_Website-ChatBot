@@ -24,6 +24,14 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 600px) {
+.parallax {
+    background-attachment: scroll;
+    min-height: 250px;
+    background-size: 1200px;
+}
+}
 body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .w3-row-padding img {margin-bottom: 12px}
 /* Set the width of the sidebar to 120px */
@@ -61,21 +69,18 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
   <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
-    <a href="#certificates" class="w3-bar-item w3-button" style="width:25% !important">CERTIFICATES</a>
-    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
-    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
     <a href="/" class="w3-bar-item w3-button" style="width:25% !important">TERRA</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#certificates" class="w3-bar-item w3-button" style="width:50% !important">CERTIFICATES</a>
   </div>
 </div>
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
   <!-- Header/Home -->
   <header class="w3-container w3-padding-32 w3-center w3-black parallax" id="home">
-    <h1 class="w3-jumbo w3-text-black"><span class="w3-hide-small">TERRA </span> 17066.</h1>
-    <p class="w3-text-black">Calon Insinyur</p><br>
-    <p class="w3-text-white"><em>Kuliah di ITB bukan untuk akademik,<br> tapi gimana caranya lulus dari ITB TAHAN BANTING - Afnimar, M.Sc., Ph.D.</em></p>
+    <h1 class="w3-jumbo w3-text-black"><span class="w3-hide-small">TERRA  17066</span></h1>
+    <p class="w3-text-black"><span class="w3-hide-small">Calon Insinyur </span></p><br>
+    <p class="w3-text-white"><em>Kuliah di ITB bukan untuk akademik, tapi  <br> gimana caranya lulus dari ITB tahan banting - Afnimar, M.Sc., Ph.D.</em></p>
     <!-- <img src="/public/about-images/288024.jpg" alt="boy" class="w3-image" width="992" height="1108"> -->
   </header>
 
@@ -83,6 +88,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
     <h2 class="w3-text-light-grey">Bima Ilyasa</h2>
     <hr style="width:200px" class="w3-opacity">
+    <div class="w3-col m6 w3-center w3-padding-large w3-hide-medium w3-hide-large">
+      <p><b><i class="w3-left"></i>Foto Tingkat 2</b></p>
+      <img src="/public/about-images/288027.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="100%">
+    </div>
     <p>
         Sebagai bentuk pelarian pada tugas akhir, aku ciptakan website ini, terutama sebagai belajar ilmu baru
         dan juga sebagai pembelajaran kepada himpunan tercinta aku, bahwa aku akan selalu berusaha sebisa aku
@@ -92,7 +101,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
         kepemimpinan dari teori sampai praktis di jalanan. Ilmu yang aku yakin ga semua bakal di pake di dunia
         kerja, tapi ilmu yang dipakai selama menjalani hidup yang berat untuk kita semua.
     </p>
-    <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
+    
+    <h3 class="w3-padding-16 w3-text-light-grey w3-center">My Skills</h3>
     <p class="w3-wide">Python</p>
     <div class="w3-white">
       <div class="w3-dark-grey" style="height:28px;width:95%"></div>
@@ -124,11 +134,11 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
         <em>Existential Crisis (2018-2023)</em>
       </div>
     </div>
-<div class="w3-light-grey w3-center w3-padding-small w3-section">
+<!-- <div class="w3-light-grey w3-center w3-padding-small w3-section">
     <button class="w3-button w3-light-grey w3-padding-small w3-section">
       <i class="fa fa-download"></i> Download Resume
     </button>
-</div>
+</div> -->
 </div>
 
     <!-- Grid for pricing tables -->
@@ -175,38 +185,63 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <img src="/public/about-images/certificates/Data Set 169.jpg" alt="Avatar" class="w3-right  w3-mobile" style="width:500px">
     <p><span class="w3-large w3-margin-right">KM ITB</span> Panitia Lapangan - Keamanan</p>
     <p></p>
+    <hr style="width:100%" class="w3-opacity w3-center w3-hide-medium w3-hide-large">
+    <div class="w3-hide-small">
+      <hr style="width:56.5%" class="w3-opacity w3-left">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
 
-    <div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-
-    <img src="/public/about-images/certificates/Bima Ilyasa - Intro to Programming.png" alt="Avatar" class="w3-left w3-margin-right" style="width:500px">
+    <img src="/public/about-images/certificates/Bima Ilyasa - Intro to Programming.png" alt="Avatar" class="w3-left w3-margin-right w3-mobile" style="width:500px">
     <p><span class="w3-large w3-margin-right">Kaggle</span> Intro to Programming</p>
     <p>Learning the basics of programming in general, to know the flow of thinking in programming</p>
 
-    <div><br><br><br><br><br><br><br><br><br><br></div>
+    <hr style="width:100%" class="w3-opacity w3-center w3-hide-medium w3-hide-large">
+    <div class="w3-hide-small">
+      <hr style="width:55%" class="w3-opacity w3-right">
+      <br><br><br><br><br><br><br><br><br><br>
+    </div>
 
-    <img src="/public/about-images/certificates/Bima Ilyasa - Python.png" alt="Avatar" class="w3-right w3-margin-right" style="width:500px">
+    <img src="/public/about-images/certificates/Bima Ilyasa - Python.png" alt="Avatar" class="w3-right w3-margin-right  w3-mobile" style="width:500px">
     <p><span class="w3-large w3-margin-right">Kaggle</span> Intro to Programming</p>
     <p>Starting the basics of python, from if statements, booleans, objects, and working with external libraries</p><br>
     
-    <div><br><br><br><br><br><br><br><br><br></div>
+    <hr style="width:100%" class="w3-opacity w3-center w3-hide-medium w3-hide-large">
+    <div class="w3-hide-small"></div>
+    <div class="w3-hide-small">
+      <hr style="width:55%" class="w3-opacity w3-left">
+      <br><br><br><br><br><br><br><br><br>
+    </div>
 
-    <img src="/public/about-images/certificates/Bima Ilyasa - Pandas.png" alt="Avatar" class="w3-left w3-margin-right" style="width:500px">
+    <img src="/public/about-images/certificates/Bima Ilyasa - Pandas.png" alt="Avatar" class="w3-left w3-margin-right  w3-mobile" style="width:500px">
     <p><span class="w3-large w3-margin-right">Kaggle</span> Pandas</p>
     <p>The basics of data analysis, working with data frames from preprocessing like filtering the datas to analyzing the data with graphs</p>
 
-    <div><br><br><br><br><br><br><br><br><br><br></div>
+    <hr style="width:100%" class="w3-opacity w3-center w3-hide-medium w3-hide-large">
+    <div class="w3-hide-small">
+      <hr style="width:55%" class="w3-opacity w3-right">
+      <br><br><br><br><br><br><br><br><br><br>
+    </div>
 
-    <img src="/public/about-images/certificates/Bima Ilyasa - Intro to Machine Learning.png" alt="Avatar" class="w3-right w3-margin-right" style="width:500px">
+    <img src="/public/about-images/certificates/Bima Ilyasa - Intro to Machine Learning.png" alt="Avatar" class="w3-right w3-margin-right  w3-mobile" style="width:500px">
     <p><span class="w3-large w3-margin-right">Kaggle</span> Intro to Machine Learning</p>
     <p>The start of scikit learn machine learning, with mostly learning random forest classifier</p>
 
-    <div><br><br><br><br><br><br><br><br><br><br></div>
+    <hr style="width:100%" class="w3-opacity w3-center w3-hide-medium w3-hide-large">
+    <div class="w3-hide-small">
+      <hr style="width:55%" class="w3-opacity w3-left">
+      <br><br><br><br><br><br><br><br><br><br>
+    </div>
 
-    <img src="/public/about-images/certificates/Bima Ilyasa - Intermediate Machine Learning.png" alt="Avatar" class="w3-left w3-margin-right" style="width:500px">
+    <img src="/public/about-images/certificates/Bima Ilyasa - Intermediate Machine Learning.png" alt="Avatar" class="w3-left w3-margin-right  w3-mobile" style="width:500px">
     <p><span class="w3-large w3-margin-right">Kaggle</span> Intermediate Machine Learning</p>
     <p>A review of the introduction, with a continuation into pipelines, XGBoost, cross correlation, and validations</p>
 
-    <br><br><br><br><br><br><br><br><br><br>
+    <hr style="width:100%" class="w3-opacity w3-center w3-hide-medium w3-hide-large">
+    <div class="w3-hide-small">
+      <hr style="width:55%" class="w3-opacity w3-right">
+      <br><br><br><br><br><br><br><br><br><br>
+    </div>
+    
   
   <!-- End About Section -->
   </div>
@@ -236,9 +271,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </div>
 
   <!-- Contact Section -->
-  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+  <div class="w3-padding-64 w3-content w3-text-grey w3-center" id="contact">
     <h2 class="w3-text-light-grey">Contact Me</h2>
-    <hr style="width:200px" class="w3-opacity">
+    <hr style="width:100%" class="w3-opacity w3-center">
 
     <div class="w3-section">
       <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Bandung, Indonesia</p>
