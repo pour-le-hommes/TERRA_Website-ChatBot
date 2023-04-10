@@ -34,7 +34,12 @@ app.set('view engine', 'ejs')
 // Create Home Page
 app.get('/',(req,res) =>{
     console.log('Home Page')
-    res.render('homepage',{text:'suppp'})
+    res.render('homepage')
+})
+
+app.get('/about-me',(req,res) =>{
+    console.log('About Me')
+    res.render('aboutpage',{text:'suppp'})
 })
 
 app.get('/testing', (req,res) =>{
