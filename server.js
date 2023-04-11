@@ -114,6 +114,8 @@ app.post('/webhook', (req, res) => {
                     }
                     promises.push(client.replyMessage(event.replyToken, message));
                 }
+                console.log(promises)
+                console.log(message)
                 Promise.all(promises).then(() => res.status(200).end());
             })
         }else{
