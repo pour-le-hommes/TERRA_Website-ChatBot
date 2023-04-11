@@ -7,8 +7,6 @@ function commands(text,lineid){
     if(text.includes('rename')){
         Line.find({lineid:lineid}).then((result) =>{
             const splittext = text.split(" ")
-            console.log('number on variable : ', splittext.length)
-            console.log('name : ', text)
             if(splittext.length<2){
                 const message={
                     type:'text',
@@ -24,7 +22,7 @@ function commands(text,lineid){
                 }else if(splittext.length===2){
                     newname = splittext[1]
                 }else{
-                    console.log('Text is more than 4')
+                    console.log('Text is')
                     const message={
                         type:'text',
                         text:`woy ${text}, seriuslah, panjang kali namamu anjing, ini bukan paragraf`
@@ -41,6 +39,8 @@ function commands(text,lineid){
                     return message
                 })
             }
+        }).then((message)=>{
+            return message
         })
     }else{
         const message = {

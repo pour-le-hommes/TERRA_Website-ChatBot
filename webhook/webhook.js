@@ -10,7 +10,6 @@ function webhook(event,lineid) {
 
     const Line = require('../model/line');
     const commands = require('./commands.js');
-    console.log("commands.js = ",commands)
 
     Line.find({lineid:lineid}).then((result) =>{
         if(!result[0]){
