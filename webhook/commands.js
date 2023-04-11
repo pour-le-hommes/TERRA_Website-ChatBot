@@ -7,6 +7,8 @@ function commands(text,lineid){
     if(text.includes('rename')){
         Line.find({lineid:lineid}).then((result) =>{
             const splittext = text.split(" ")
+            console.log('number on variable : ', splittext.length)
+            console.log('name : ', text)
             if(splittext.length<1){
                 const message={
                     type:'text',
@@ -14,12 +16,13 @@ function commands(text,lineid){
                 }
                 return message
             }else{
+                let newname=''
                 if(splittext.length===4){
-                    const newname = splittext[1]+' '+splittext[2]+' '+splittext[3]
+                    newname = splittext[1]+' '+splittext[2]+' '+splittext[3]
                 }if(splittext.length===3){
-                    const newname = splittext[1]+' '+splittext[2]
+                    newname = splittext[1]+' '+splittext[2]
                 }else if(splittext.length===2){
-                    const newname = splittext[1]
+                    newname = splittext[1]
                 }else{
                     const message={
                         type:'text',
