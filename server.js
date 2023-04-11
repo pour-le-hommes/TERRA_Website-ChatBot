@@ -91,14 +91,16 @@ app.post('/webhook', (req, res) => {
         if(text === '!register'){
             Line.find({lineid:lineid}).then((result) =>{
                 if(!result[0]){
+                    console.log('Already registered user')
                     const message = {
                         type:'text',
                         text: 'You\'re already registered dumbass'
                     }
                     promises.push(client.replyMessage(event.replyToken, message));
                 }else{
+                    console.log('Registering user')
                     const line = new lineschema({
-                        lineid:userid,
+                        lineid:lineid,
                         nama:'User',
                         jadwal:{},
                         tugas:{}

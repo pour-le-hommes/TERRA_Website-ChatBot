@@ -8,7 +8,7 @@ function webhook(event,lineid) {
     channelSecret: CHANNEL_SECRET,
     });
 
-    const Line = require('./model/line.js');
+    const Line = require('../model/line');
 
     Line.find({lineid:lineid}).then((result) =>{
         if(!result[0]){

@@ -1,5 +1,5 @@
-const lineschema = require('./model/line.js')
-const Line = require('./model/line.js');
+const lineschema = require('../model/line.js');
+const Line = require('../model/line.js');
 
 function commands(text,lineid){
     if(text.includes('register')){
