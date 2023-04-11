@@ -20,6 +20,10 @@ function commands(text,lineid){
         Line.find({lineid:lineid}).then((result) =>{
             const splittext = text.split("")
             const newname = splittext[1]
+            console.log('new name to ',newname)
+            const filter = { _id: new ObjectId(id) };
+            const update = { $set: { nama: newname } };
+            const result = collection.updateOne(filter, update);
         })
     }else{
         const message = {

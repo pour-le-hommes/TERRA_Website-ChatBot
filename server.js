@@ -9,8 +9,8 @@ app.use('/public', express.static('public'))
 const { Client } = require('@line/bot-sdk')
 const webhook = require('./webhook/webhook.js')
 const bodyParser = require('body-parser');
-const lineschema = require('./model/line.js');
-const Line = require('./model/line.js');
+const lineschema = require('./model/line');
+const Line = require('./model/line');
 
 app.use(bodyParser.json());
 
@@ -91,13 +91,6 @@ app.post('/webhook', (req, res) => {
         if(text === '!register'){
             Line.find({lineid:lineid}).then((result) =>{
                 if(!result[0]){
-                    console.log('Already registered user')
-                    const message = {
-                        type:'text',
-                        text: 'You\'re already registered dumbass'
-                    }
-                    promises.push(client.replyMessage(event.replyToken, message));
-                }else{
                     console.log('Registering user')
                     const line = new lineschema({
                         lineid:lineid,
@@ -110,6 +103,13 @@ app.post('/webhook', (req, res) => {
                         type : 'text',
                         text : `Registry Successful, welcome ${line.nama}`,
                     };
+                    promises.push(client.replyMessage(event.replyToken, message));
+                }else{
+                    console.log('Already registered user')
+                    const message = {
+                        type:'text',
+                        text: 'You\'re already registered dumbass'
+                    }
                     promises.push(client.replyMessage(event.replyToken, message));
                 }
             })
