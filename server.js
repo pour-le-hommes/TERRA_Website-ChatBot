@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const UserRouter = require('./routes/users')
 const Massaschema = require('./model/register.js')
 const Massa = require('./model/register.js');
+const lineschema = require('./model/line.js')
+const Line = require('./model/line.js');
 app.use(express.urlencoded({ extended : true }));
 app.use('/public', express.static('public'))
 // const { Client } = require('@line/bot-sdk')
@@ -78,37 +80,32 @@ app.post('/verify', (req,res) =>{
   })}
 })
 
-// Verify
-app.post('/verifyregis', (req,res) =>{
-    const massa = new Massaschema(req.body);
-    console.log(req.body)
-    console.log(massa.role)
-    console.log(massa.nim.substring(0,3))
-    massa.nim=massa.nim.substring(0,3)
-    console.log(massa)
-  })
+app.post('/webhook', (req, res) => {
+    const promises = [];
+    const events = req.body.events;
 
-// app.post('/webhook', (req, res) => {
-// //   if(!req.session.EmotionalState){
-// //     req.session.EmotionalState = 'Swasta'
-// //   }
-// //   if(!req.session.ConversationalState){
-// //     req.session.ConversationalState = 'Massa'
-// //   }
-// //   console.log(req.session)  
-// //   console.log(req.session.EmotionalState)
-//   const promises = [];
-//   const events = req.body.events;
+    for (let i = 0; i < events.length; i++) {
+        const event = events[i];
+        const text = event.text;
 
-//   for (let i = 0; i < events.length; i++) {
-//     const event = events[i];
-//     const message = {
-//       type : 'text',
-//       text : 'ngomong apa dah lu?',
-//     };
-//   console.log('Respon nonsense')
-//     // message = webhook(event,req)
-//   promises.push(client.replyMessage(event.replyToken, message));
-//   }
-//   Promise.all(promises).then(() => res.status(200).end());
-// });
+        if(text==='!register'){
+            const line = new lineschema(events[2].userId);
+            line.save().then(console.log(`${line.nama} is successfully added!`))
+            const message = {
+                type : 'text',
+                text : `Registry Successful, welcome ${line.nama}`,
+            };
+            promises.push(client.replyMessage(event.replyToken, message));
+        }else{
+            const message = {
+                type : 'text',
+                text : 'ngomong apa dah lu?',
+            };
+            promises.push(client.replyMessage(event.replyToken, message));
+        }
+    //   console.log('Respon nonsense')
+        // message = webhook(event,req)
+    //   promises.push(client.replyMessage(event.replyToken, message));
+    }
+    Promise.all(promises).then(() => res.status(200).end());
+    });
