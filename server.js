@@ -109,7 +109,7 @@ app.post('/webhook', (req, res) => {
                     }).catch((err)=>{
                         console.error('Error in Registering ',err)
                     })
-                    Promise.all(promises).then(() => res.status(200).end());
+                    // Promise.all(promises).then(() => res.status(200).end());
                 }
                 else{
                     console.log('Already registered user')
@@ -121,13 +121,13 @@ app.post('/webhook', (req, res) => {
                 }
                 console.log(promises)
                 console.log(message)
-                Promise.all(promises).then(() => res.status(200).end());
+                // Promise.all(promises).then(() => res.status(200).end());
             })
         }else{
             message = webhook(event,lineid)
             console.log('message in server ',message)
             promises.push(client.replyMessage(event.replyToken, message));
         }
-        Promise.all(promises).then(() => res.status(200).end());
+        // Promise.all(promises).then(() => res.status(200).end());
     }
     });
