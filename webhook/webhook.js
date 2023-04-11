@@ -33,6 +33,7 @@ function webhook(event,lineid) {
         const text = event.message.text.toLowerCase()
         if(text.includes('!')){
             message = commands(text,lineid)
+            console.log('message in webhook ',message)
             return message
         }else{
             const message = {

@@ -30,10 +30,10 @@ function commands(text,lineid){
                     }
                     console.log('Name changed successfully!')
                     return message
+                }).then((message)=>{
+                    return message
                 })
             }
-        }).then((message)=>{
-            return message
         })
     }else{
         const message = {
