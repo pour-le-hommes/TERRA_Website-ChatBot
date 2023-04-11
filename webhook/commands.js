@@ -9,6 +9,11 @@ function commands(text,lineid){
 
     let less2 = false;
     let two = false;
+
+    let message ={
+        type:'text',
+        message:'testing',
+    }
     
     if(text.includes('rename')){
         Line.find({lineid:lineid})
@@ -36,27 +41,27 @@ function commands(text,lineid){
         })
         return message
     }
-    console.log('trues : ',less2,two)
-    if(less2===true){
-        message={
-            type:'text',
-            text:`Use !rename [name], not just ${text} dumbass!`
-        }
-        return message
-    }else if(two===true){
-        message={
-            type:'text',
-            text:`Renamed successfully!, welcome ${newname}`,
-        }
-        return message
-    }else{
-        const message = {
-            type : 'text',
-            text : 'ngomong apa dah lu?',
-        };
-        console.log('respond to nonesense')
-        return message
-    }
+    // console.log('trues : ',less2,two)
+    // if(less2===true){
+    //     message={
+    //         type:'text',
+    //         text:`Use !rename [name], not just ${text} dumbass!`
+    //     }
+    //     return message
+    // }else if(two===true){
+    //     message={
+    //         type:'text',
+    //         text:`Renamed successfully!, welcome ${newname}`,
+    //     }
+    //     return message
+    // }else{
+    //     const message = {
+    //         type : 'text',
+    //         text : 'ngomong apa dah lu?',
+    //     };
+    //     console.log('respond to nonesense')
+    //     return message
+    // }
 }
 
 module.exports = commands
