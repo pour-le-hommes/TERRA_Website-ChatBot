@@ -1,7 +1,9 @@
-const lineschema = require('../model/line.js');
-const Line = require('../model/line.js');
-
 function commands(text,lineid){
+    const lineschema = require('../model/line.js');
+    const Line = require('../model/line.js');
+
+    console.log('command activated')
+    
     if(text.includes('register')){
         const line = new lineschema({
             lineid:userid,
@@ -18,16 +20,36 @@ function commands(text,lineid){
     }
     else if(text.includes('rename')){
         Line.find({lineid:lineid}).then((result) =>{
-            const splittext = text.split("")
-            const newname = splittext[1]
-            console.log('new name to ',newname)
-            Line.updateOne({lineid:lineid},{nama:newname}).then(() =>{
+            const splittext = text.split(" ")
+            if(splittext.length<1){
                 const message={
                     type:'text',
-                    text:`Renamed successfully!, welcome ${newname}`
+                    text:`Use !rename [name], not ${text} dumbass!`
                 }
                 return message
-            })
+            }else{
+                if(splittext.length===4){
+                    const newname = splittext[1]+' '+splittext[2]+' '+splittext[3]
+                }if(splittext.length===3){
+                    const newname = splittext[1]+' '+splittext[2]
+                }else if(splittext.length===2){
+                    const newname = splittext[1]
+                }else{
+                    const message={
+                        type:'text',
+                        text:`woy ${text}, seriuslah, panjang kali namamu anjing, ini bukan paragraf`
+                    }
+                    return message
+                }
+                console.log('new name to ',newname)
+                Line.updateOne({lineid:lineid},{nama:newname}).then(() =>{
+                    const message={
+                        type:'text',
+                        text:`Renamed successfully!, welcome ${newname}`
+                    }
+                    return message
+                })
+            }
         })
     }else{
         const message = {
