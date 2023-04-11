@@ -106,6 +106,7 @@ app.post('/webhook', (req, res) => {
                             text : `Registry Successful, welcome ${line.nama}`,
                         };
                         promises.push(client.replyMessage(event.replyToken, message))
+                        return message
                        
                     }).catch((err)=>{
                         console.error('Error in Registering ',err)
