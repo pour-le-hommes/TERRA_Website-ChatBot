@@ -1,7 +1,11 @@
 function commands(text,lineid){
     const lineschema = require('../model/line.js');
     const Line = require('../model/line.js');
-
+ 
+    // EDIT NAMA JADI 1 DULU
+    // EDIT NAMA INCLUDE TERRA GA BISA DIGANTI
+    // EDIT REPLACE DATABASE JD FUNCTION
+    // EDIT BANYAKLAH ANJING
     console.log('command activated')
     
     if(text.includes('rename')){

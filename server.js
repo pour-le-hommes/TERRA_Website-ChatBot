@@ -108,7 +108,7 @@ app.post('/webhook', (req, res) => {
                     console.log('Already registered user')
                     const message = {
                         type:'text',
-                        text: 'You\'re already registered dumbass'
+                        text: `Woy ${line.nama} dah registered lu anjing`
                     }
                     promises.push(client.replyMessage(event.replyToken, message));
                 }
