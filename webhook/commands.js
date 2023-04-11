@@ -11,18 +11,30 @@ function commands(text,lineid){
     let two = false;
     
     if(text.includes('rename')){
-        Line.find({lineid:lineid}).then(() =>{
+        Line.find({lineid:lineid})
+        .then(() =>{
             const splittext = text.split(" ")
             if(splittext.length<2){
                 less2=true
+                message={
+                    type:'text',
+                    text:`Use !rename [name], not just ${text} dumbass!`
+                }
+                return message
             }else{
                 newname = splittext[1]
                 console.log('new name to ',newname)
                 Line.updateOne({lineid:lineid},{nama:newname})
                 two=true
                 console.log('Name changed successfully!')
+                message={
+                    type:'text',
+                    text:`Renamed successfully!, welcome ${newname}`,
+                }
+                return message
             }
         })
+        return message
     }
     console.log('trues : ',less2,two)
     if(less2===true){
