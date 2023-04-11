@@ -1,4 +1,4 @@
-function webhook(event,req) {
+function webhook(event,lineid) {
     const { Client } = require('@line/bot-sdk');
     const CHANNEL_ACCESS_TOKEN = 'qkj/lPvrRK5+BEleRc7d3MUv+P8GNNWxsJOE1+mHYXxCtVreNjPrkUs84z1M/6YC3iT99ORZ+8oFQur+e65c9KU8cOJF7p5sXYluNl27t4Vf7BtmXOVzwHeirh7riGCg1xhESoSqpB0Pbq3d5MNnKAdB04t89/1O/w1cDnyilFU=';
     const CHANNEL_SECRET = 'fe50c21e3a689c8ce8227c63545f3f51';
@@ -8,44 +8,40 @@ function webhook(event,req) {
     channelSecret: CHANNEL_SECRET,
     });
 
-    ConversationalState = req.session.ConversationalState
-    EmotionalState = req.session.EmotionalState
+    const Line = require('./model/line.js');
 
-    const Massaterra = require('./massa.js');
-    const oaterra = require("./oa.js");
-    const pengurusterra = require("./pengurus.js");
-    console.log('Received webhook request!')
-    const promises = [];
-    if (event.type === 'message' && event.message.type === 'text') {
-        const text = event.message.text.toLowerCase()
-        
-        if(text==='stats'){
+    Line.find({lineid:lineid}).then((result) =>{
+        if(!result[0]){
             const message = {
-                type : 'text',
-                text : "Emotional State : " +EmotionalState+" Conversational State : " + ConversationalState +' Expires in : '+(req.session.cookie.maxAge / 1000)
+                type:'text',
+                text: 'You\'re not registered yet dumbass, type !register'
             }
             return message
         }
-        else if (text.includes('gua')) {
-            OA = oaterra(event,EmotionalState)
-            req.session.EmotionalState = OA.EmotionalState
-            console.log('change emotional state to : ',req.session.EmotionalState)
-            return OA.message
-            // promises.push(client.replyMessage(event.replyToken, message));
-        }
-        else if (text === "saya janji akan membangun himpunan ini menjadi lebih baik") {
-            message = pengurusterra(event)
+    })
+
+    // const Massaterra = require('./massa.js');
+    // const oaterra = require("./oa.js");
+    // const pengurusterra = require("./pengurus.js");
+
+    console.log('Received webhook request!')
+
+    const promises = [];
+
+    if (event.type === 'message' && event.message.type === 'text') {
+        const text = event.message.text.toLowerCase()
+        if(text.includes('!')){
+            console.log('command activated')
+            message = commands.js(text,lineid)
             return message
-            // promises.push(client.replyMessage(event.replyToken, message));
-        }
-        else if (EmotionalState === "Swasta"){
-            message = Massaterra(event)
+        }else{
+            const message = {
+                type : 'text',
+                text : 'ngomong apa dah lu?',
+            };
+            console.log('respond to nonesense')
             return message
-            // promises.push(client.replyMessage(event.replyToken, message));
         }
-// req.session.ConversationState = ConversationState;
-// req.session.EmotionState = EmotionState;
-// Promise.all(promises).then(() => res.status(200).end());
     }
 }
 

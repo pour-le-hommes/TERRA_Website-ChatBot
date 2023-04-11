@@ -4,13 +4,13 @@ const mongoose = require('mongoose')
 const UserRouter = require('./routes/users')
 const Massaschema = require('./model/register.js')
 const Massa = require('./model/register.js');
-const lineschema = require('./model/line.js')
-const Line = require('./model/line.js');
 app.use(express.urlencoded({ extended : true }));
 app.use('/public', express.static('public'))
 const { Client } = require('@line/bot-sdk')
 const webhook = require('./webhook/webhook.js')
 const bodyParser = require('body-parser');
+const lineschema = require('./model/line.js');
+const Line = require('./model/line.js');
 
 app.use(bodyParser.json());
 
@@ -86,32 +86,36 @@ app.post('/webhook', (req, res) => {
 
     for (let i = 0; i < events.length; i++) {
         const event = events[i];
-        const text = event.message.text;
-        const userid = event.source.userId;
-
-        if(text==='!register'){
-            const line = new lineschema({
-                lineid:userid,
-                nama:'',
-                jadwal:{},
-                tugas:{}
-            });
-            line.save().then(console.log(`${line.nama} is successfully added!`))
-            const message = {
-                type : 'text',
-                text : `Registry Successful, welcome ${line.nama}`,
-            };
-            promises.push(client.replyMessage(event.replyToken, message));
+        const text = event.message.text
+        const lineid = event.source.userId
+        if(text === '!register'){
+            Line.find({lineid:lineid}).then((result) =>{
+                if(!result[0]){
+                    const message = {
+                        type:'text',
+                        text: 'You\'re already registered dumbass'
+                    }
+                    promises.push(client.replyMessage(event.replyToken, message));
+                }else{
+                    const line = new lineschema({
+                        lineid:userid,
+                        nama:'User',
+                        jadwal:{},
+                        tugas:{}
+                    });
+                    line.save().then(console.log(`${line.nama} is successfully added!`))
+                    const message = {
+                        type : 'text',
+                        text : `Registry Successful, welcome ${line.nama}`,
+                    };
+                    promises.push(client.replyMessage(event.replyToken, message));
+                }
+            })
         }else{
-            const message = {
-                type : 'text',
-                text : 'ngomong apa dah lu?',
-            };
+            message = webhook(event,lineid)
             promises.push(client.replyMessage(event.replyToken, message));
         }
-    //   console.log('Respon nonsense')
-        // message = webhook(event,req)
-    //   promises.push(client.replyMessage(event.replyToken, message));
+        
     }
     Promise.all(promises).then(() => res.status(200).end());
     });
