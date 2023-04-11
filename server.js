@@ -6,21 +6,21 @@ const Massaschema = require('./model/register.js')
 const Massa = require('./model/register.js');
 app.use(express.urlencoded({ extended : true }));
 app.use('/public', express.static('public'))
-const { Client } = require('@line/bot-sdk')
+// const { Client } = require('@line/bot-sdk')
 const webhook = require('./webhook/webhook.js')
-const bodyParser = require('body-parser');
-const lineschema = require('./model/line');
-const Line = require('./model/line');
+// const bodyParser = require('body-parser');
+const lineschema = require('./model/line')
+const Line = require('./model/line')
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
-const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
-const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
+// const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
+// const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
 
-const client = new Client({
-  channelAccessToken: CHANNEL_ACCESS_TOKEN,
-  channelSecret: CHANNEL_SECRET,
-});
+// const client = new Client({
+//   channelAccessToken: CHANNEL_ACCESS_TOKEN,
+//   channelSecret: CHANNEL_SECRET,
+// });
 
 // Connect To Mongodb
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
@@ -53,7 +53,7 @@ app.get('/testing', (req,res) =>{
     res.render('testing')
 })
 
-// app.listen(process.env.PORT||3000)
+app.listen(process.env.PORT||3000)
 
 // Users Pages
 app.use('/users', UserRouter)
@@ -81,7 +81,7 @@ app.post('/verify', (req,res) =>{
 })
 
 app.post('/webhook', (req, res) => {
-    const promises = [];
+    const promises = []
     const events = req.body.events;
 
     for (let i = 0; i < events.length; i++) {
@@ -103,12 +103,12 @@ app.post('/webhook', (req, res) => {
                         type : 'text',
                         text : `Registry Successful, welcome ${line.nama}`,
                     };
-                    promises.push(client.replyMessage(event.replyToken, message));
+                    promises.push(client.replyMessage(event.replyToken, message))
                 }else{
                     console.log('Already registered user')
                     const message = {
                         type:'text',
-                        text: `Woy ${line.nama} dah registered lu anjing`
+                        text: `Woy ${result[0].nama} dah registered lu anjing`
                     }
                     promises.push(client.replyMessage(event.replyToken, message));
                 }
