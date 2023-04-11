@@ -6,32 +6,37 @@ function commands(text,lineid){
     // EDIT REPLACE DATABASE JD FUNCTION
     // EDIT BANYAKLAH ANJING
     console.log('command activated')
+
+    let less2 = false;
+    let two = false;
     
     if(text.includes('rename')){
         Line.find({lineid:lineid}).then(() =>{
             const splittext = text.split(" ")
-            let message={
-                type:'text',
-                text:`Message not working`
-            }
             if(splittext.length<2){
-                message={
-                    type:'text',
-                    text:`Use !rename [name], not just ${text} dumbass!`
-                }
-                return message
+                less2=true
             }else{
                 newname = splittext[1]
                 console.log('new name to ',newname)
                 Line.updateOne({lineid:lineid},{nama:newname})
-                    message={
-                        type:'text',
-                        text:`Renamed successfully!, welcome ${newname}`,
-                    }
-                    console.log('Name changed successfully!')
-                    return message
+                two=true
+                console.log('Name changed successfully!')
             }
         })
+    }
+
+    if(less2===true){
+        message={
+            type:'text',
+            text:`Use !rename [name], not just ${text} dumbass!`
+        }
+        return message
+    }else if(two===true){
+        message={
+            type:'text',
+            text:`Renamed successfully!, welcome ${newname}`,
+        }
+        return message
     }else{
         const message = {
             type : 'text',
