@@ -19,14 +19,7 @@ function commands(text,lineid){
         Line.find({lineid:lineid})
         .then(() =>{
             const splittext = text.split(" ")
-            if(splittext.length<2){
-                console.log('Naming error')
-                message={
-                    type:'text',
-                    text:`Use !rename [name], not just ${text} dumbass!`
-                }
-                return message
-            }else{
+            if(splittext.length===2){
                 newname = splittext[1]
                 console.log('new name to ',newname)
                 Line.updateOne({lineid:lineid},{nama:newname})
@@ -35,9 +28,11 @@ function commands(text,lineid){
                     type:'text',
                     text:`Renamed successfully!, welcome ${newname}`,
                 }
-                return message
             }
-        }).catch((err)=>{
+        }).then((message)=>{
+            return message
+        })
+        .catch((err)=>{
             console.error('Error in renaming ',err)
         })
     }

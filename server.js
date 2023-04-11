@@ -98,12 +98,14 @@ app.post('/webhook', (req, res) => {
                         jadwal:{},
                         tugas:{}
                     });
-                    line.save().then(console.log(`${line.nama} is successfully added!`))
-                    const message = {
-                        type : 'text',
-                        text : `Registry Successful, welcome ${line.nama}`,
-                    };
-                    promises.push(client.replyMessage(event.replyToken, message))
+                    line.save().then(()=>{
+                        console.log(`${line.nama} is successfully added!`)
+                        const message = {
+                            type : 'text',
+                            text : `Registry Successful, welcome ${line.nama}`,
+                        };
+                        promises.push(client.replyMessage(event.replyToken, message))
+                    })
                 }else{
                     console.log('Already registered user')
                     const message = {
@@ -118,7 +120,6 @@ app.post('/webhook', (req, res) => {
             console.log('message in server ',message)
             promises.push(client.replyMessage(event.replyToken, message));
         }
-        
+        Promise.all(promises).then(() => res.status(200).end());
     }
-    Promise.all(promises).then(() => res.status(200).end());
     });
