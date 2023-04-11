@@ -122,7 +122,6 @@ app.post('/webhook', (req, res) => {
                         text: `Woy ${result[0].nama} dah registered lu anjing`
                     }
                     promises.push(client.replyMessage(event.replyToken, message));
-                    return message
                 }
                 console.log(promises)
                 console.log(message)
