@@ -86,6 +86,7 @@ app.post('/webhook', (req, res) => {
 
     for (let i = 0; i < events.length; i++) {
         const event = events[i];
+        console.log('events :',event)
         const text = event.message.text
         const lineid = event.source.userId
         if(text === '!register'){
