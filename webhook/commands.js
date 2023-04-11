@@ -9,10 +9,10 @@ function commands(text,lineid){
             const splittext = text.split(" ")
             console.log('number on variable : ', splittext.length)
             console.log('name : ', text)
-            if(splittext.length<1){
+            if(splittext.length<2){
                 const message={
                     type:'text',
-                    text:`Use !rename [name], not ${text} dumbass!`
+                    text:`Use !rename [name], not just ${text} dumbass!`
                 }
                 return message
             }else{
@@ -24,6 +24,7 @@ function commands(text,lineid){
                 }else if(splittext.length===2){
                     newname = splittext[1]
                 }else{
+                    console.log('Text is more than 4')
                     const message={
                         type:'text',
                         text:`woy ${text}, seriuslah, panjang kali namamu anjing, ini bukan paragraf`
@@ -36,6 +37,7 @@ function commands(text,lineid){
                         type:'text',
                         text:`Renamed successfully!, welcome ${newname}`
                     }
+                    console.log('Name changed successfully!')
                     return message
                 })
             }
