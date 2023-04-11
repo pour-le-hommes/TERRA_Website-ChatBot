@@ -4,21 +4,7 @@ function commands(text,lineid){
 
     console.log('command activated')
     
-    if(text.includes('register')){
-        const line = new lineschema({
-            lineid:userid,
-            nama:'User',
-            jadwal:{},
-            tugas:{}
-        });
-        line.save().then(console.log(`${line.nama} is successfully added!`))
-        const message = {
-            type : 'text',
-            text : `Registry Successful, welcome ${line.nama}`,
-        };
-        return message
-    }
-    else if(text.includes('rename')){
+    if(text.includes('rename')){
         Line.find({lineid:lineid}).then((result) =>{
             const splittext = text.split(" ")
             if(splittext.length<1){
@@ -61,4 +47,4 @@ function commands(text,lineid){
     }
 }
 
-module.exports =commands
+module.exports = commands

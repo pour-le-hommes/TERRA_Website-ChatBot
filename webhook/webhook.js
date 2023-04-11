@@ -9,7 +9,8 @@ function webhook(event,lineid) {
     });
 
     const Line = require('../model/line');
-    const commands = require('./commands')
+    const commands = require('./commands.js');
+    console.log("commands.js = ",commands)
 
     Line.find({lineid:lineid}).then((result) =>{
         if(!result[0]){
@@ -32,7 +33,7 @@ function webhook(event,lineid) {
     if (event.type === 'message' && event.message.type === 'text') {
         const text = event.message.text.toLowerCase()
         if(text.includes('!')){
-            message = commands.js(text,lineid)
+            message = commands(text,lineid)
             return message
         }else{
             const message = {
