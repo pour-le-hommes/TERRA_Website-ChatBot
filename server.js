@@ -98,8 +98,7 @@ app.post('/webhook', (req, res) => {
                         nama:'User',
                         jadwal:{},
                         tugas:{}
-                    }).then(()=>{
-
+                    })
                     line.save().then(()=>{
                         console.log(`${line.nama} is successfully added!`)
                         const message = {
@@ -112,7 +111,6 @@ app.post('/webhook', (req, res) => {
                         console.error('Error in Registering ',err)
                     })
                     Promise.all(promises).then(() => res.status(200).end());
-                })
                 }
                 else{
                     console.log('Already registered user')
