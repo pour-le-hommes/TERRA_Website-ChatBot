@@ -83,17 +83,19 @@ app.post('/verify', (req,res) =>{
 app.post('/webhook', (req, res) => {
     const promises = [];
     const events = req.body.events;
-    console.log('req = ',req)
-    console.log('req.body = ',req.body)
-    console.log('events = ',events)
 
     for (let i = 0; i < events.length; i++) {
         const event = events[i];
-        const text = event.text;
+        const text = event.message.text;
+        const userid = event.source.userId;
 
         if(text==='!register'){
-            const line = new lineschema(events[2]);
-            line.nama = events[2].userId;
+            const line = new lineschema({
+                lineid:userid,
+                nama:'',
+                jadwal:{},
+                tugas:{}
+            });
             line.save().then(console.log(`${line.nama} is successfully added!`))
             const message = {
                 type : 'text',
