@@ -83,6 +83,8 @@ app.post('/verify', (req,res) =>{
 app.post('/webhook', (req, res) => {
     const promises = [];
     const events = req.body.events;
+    console.log(req)
+    console.log(events)
 
     for (let i = 0; i < events.length; i++) {
         const event = events[i];
