@@ -24,7 +24,7 @@ function commands(text,lineid){
             }
         })
     }
-
+    console.log('trues : ',less2,two)
     if(less2===true){
         message={
             type:'text',
