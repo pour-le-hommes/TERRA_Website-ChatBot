@@ -8,19 +8,19 @@ const lineschema = require('./model/line.js')
 const Line = require('./model/line.js');
 app.use(express.urlencoded({ extended : true }));
 app.use('/public', express.static('public'))
-// const { Client } = require('@line/bot-sdk')
-// const webhook = require('./webhook/webhook.js')
-// const bodyParser = require('body-parser');
+const { Client } = require('@line/bot-sdk')
+const webhook = require('./webhook/webhook.js')
+const bodyParser = require('body-parser');
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
-// const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
-// const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
+const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
+const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
 
-// const client = new Client({
-//   channelAccessToken: CHANNEL_ACCESS_TOKEN,
-//   channelSecret: CHANNEL_SECRET,
-// });
+const client = new Client({
+  channelAccessToken: CHANNEL_ACCESS_TOKEN,
+  channelSecret: CHANNEL_SECRET,
+});
 
 // Connect To Mongodb
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
@@ -83,14 +83,17 @@ app.post('/verify', (req,res) =>{
 app.post('/webhook', (req, res) => {
     const promises = [];
     const events = req.body.events;
-    console.log(req.body)
+    console.log('req = ',req)
+    console.log('req.body = ',req.body)
+    console.log('events = ',events)
 
     for (let i = 0; i < events.length; i++) {
         const event = events[i];
         const text = event.text;
 
         if(text==='!register'){
-            const line = new lineschema(events[2].userId);
+            const line = new lineschema(events[2]);
+            line.nama = events[2].userId;
             line.save().then(console.log(`${line.nama} is successfully added!`))
             const message = {
                 type : 'text',
