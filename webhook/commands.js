@@ -7,12 +7,15 @@ function commands(text,lineid){
     if(text.includes('rename')){
         Line.find({lineid:lineid}).then((result) =>{
             const splittext = text.split(" ")
+            let message={
+                type:'text',
+                text:`Message not working`
+            }
             if(splittext.length<2){
-                const message={
+                message={
                     type:'text',
                     text:`Use !rename [name], not just ${text} dumbass!`
                 }
-                return message
             }else{
                 let newname=''
                 if(splittext.length===4){
@@ -23,20 +26,18 @@ function commands(text,lineid){
                     newname = splittext[1]
                 }else{
                     console.log('Text is')
-                    const message={
+                    message={
                         type:'text',
                         text:`woy ${text}, seriuslah, panjang kali namamu anjing, ini bukan paragraf`
                     }
-                    return message
                 }
                 console.log('new name to ',newname)
                 Line.updateOne({lineid:lineid},{nama:newname}).then(() =>{
-                    const message={
+                    message={
                         type:'text',
                         text:`Renamed successfully!, welcome ${newname}`
                     }
                     console.log('Name changed successfully!')
-                    return message
                 })
             }
         }).then((message)=>{
