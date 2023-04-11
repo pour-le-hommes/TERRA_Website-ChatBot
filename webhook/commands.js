@@ -21,9 +21,13 @@ function commands(text,lineid){
             const splittext = text.split("")
             const newname = splittext[1]
             console.log('new name to ',newname)
-            const filter = { _id: new ObjectId(id) };
-            const update = { $set: { nama: newname } };
-            const result = collection.updateOne(filter, update);
+            Line.updateOne({lineid:lineid},{nama:newname}).then(() =>{
+                const message={
+                    type:'text',
+                    text:`Renamed successfully!, welcome ${newname}`
+                }
+                return message
+            })
         })
     }else{
         const message = {
@@ -34,3 +38,5 @@ function commands(text,lineid){
         return message
     }
 }
+
+module.exports =commands
