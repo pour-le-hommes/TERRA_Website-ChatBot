@@ -14,13 +14,13 @@ const Line = require('./model/line');
 
 app.use(bodyParser.json());
 
-const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
-const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
+// const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
+// const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
 
-const client = new Client({
-  channelAccessToken: CHANNEL_ACCESS_TOKEN,
-  channelSecret: CHANNEL_SECRET,
-});
+// const client = new Client({
+//   channelAccessToken: CHANNEL_ACCESS_TOKEN,
+//   channelSecret: CHANNEL_SECRET,
+// });
 
 // Connect To Mongodb
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
@@ -54,6 +54,7 @@ app.get('/testing', (req,res) =>{
 })
 
 // app.listen(process.env.PORT||3000)
+app.listen(process.env.PORT||4000)
 
 // Users Pages
 app.use('/users', UserRouter)
@@ -83,6 +84,7 @@ app.post('/verify', (req,res) =>{
 app.post('/webhook', (req, res) => {
     const promises = [];
     const events = req.body.events;
+    console.log(events);
 
     for (let i = 0; i < events.length; i++) {
         const event = events[i];
