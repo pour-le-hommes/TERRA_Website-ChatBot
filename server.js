@@ -86,43 +86,48 @@ app.post('/webhook', (req, res) => {
 
     for (let i = 0; i < events.length; i++) {
         const event = events[i];
-        const text = event.message.text;
-        const lineid = event.source.userId;
-        if (text === '!register') {
-          Line.findOne({ lineid: lineid }).then((result) => {
-            if (!result) {
-              console.log('Registering user');
-              const line = new Line({
-                lineid: lineid,
-                nama: 'User',
-                jadwal: {},
-                tugas: {},
-              });
-              line
-                .save()
-                .then(() =>
-                  console.log(`${line.nama} is successfully added!`),
-                );
-              const message = {
-                type: 'text',
-                text: `Registry Successful, welcome ${line.nama}`,
-              };
-              promises.push(client.replyMessage(event.replyToken, message));
-            } else {
-              console.log('Already registered user');
-              const message = {
-                type: 'text',
-                text: `Woy ${result.nama} dah registered lu anjing`,
-              };
-              promises.push(client.replyMessage(event.replyToken, message));
-            }
-          });
-        } else {
-          const message = webhook(event, lineid);
-          console.log('message in server ', message);
-          promises.push(client.replyMessage(event.replyToken, message));
+        console.log('events :',event)
+        const text = event.message.text
+        const lineid = event.source.userId
+        if(text === '!register'){
+            Line.find({lineid:lineid}).then((result) =>{
+                if(!result[0]){
+                    console.log('Registering user')
+                    const line = new lineschema({
+                        lineid:lineid,
+                        nama:'User',
+                        jadwal:{},
+                        tugas:{}
+                    });
+                    line.save().then(()=>{
+                        console.log(`${line.nama} is successfully added!`)
+                        const message = {
+                            type : 'text',
+                            text : `Registry Successful, welcome ${line.nama}`,
+                        };
+                        promises.push(client.replyMessage(event.replyToken, message))
+                    }).catch((err)=>{
+                        console.error('Error in Registering ',err)
+                    })
+                    Promise.all(promises).then(() => res.status(200).end());
+                }
+                else{
+                    console.log('Already registered user')
+                    const message = {
+                        type:'text',
+                        text: `Woy ${result[0].nama} dah registered lu anjing`
+                    }
+                    promises.push(client.replyMessage(event.replyToken, message));
+                }
+                console.log(promises)
+                console.log(message)
+                Promise.all(promises).then(() => res.status(200).end());
+            })
+        }else{
+            message = webhook(event,lineid)
+            console.log('message in server ',message)
+            promises.push(client.replyMessage(event.replyToken, message));
         }
-      }
-      
-      Promise.all(promises).then(() => res.status(200).end());
+        Promise.all(promises).then(() => res.status(200).end());
+    }
     });
