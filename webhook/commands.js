@@ -23,11 +23,13 @@ function commands(text,lineid){
                 newname = splittext[1]
                 console.log('new name to ',newname)
                 Line.updateOne({lineid:lineid},{nama:newname})
-                console.log('Name changed successfully!')
-                message={
-                    type:'text',
-                    text:`Renamed successfully!, welcome ${newname}`,
-                }
+                console.log('Name changed successfully!').then(()=>{
+                    message={
+                        type:'text',
+                        text:`Renamed successfully!, welcome ${newname}`,
+                    }
+                    return message
+                })
             }
         }).then((message)=>{
             return message
