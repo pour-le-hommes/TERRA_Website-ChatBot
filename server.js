@@ -86,11 +86,12 @@ app.post('/webhook', (req, res) => {
 
     for (let i = 0; i < events.length; i++) {
         const event = events[i];
-        console.log('events :',event)
         const text = event.message.text
         const lineid = event.source.userId
         if(text === '!register'){
+            console.log('Testing registry')
             Line.find({lineid:lineid}).then((result) =>{
+                console.log(result)
                 if(!result[0]){
                     console.log('Registering user')
                     const line = new lineschema({
@@ -122,12 +123,15 @@ app.post('/webhook', (req, res) => {
                     console.log('inside else if',message)
                     promises.push(client.replyMessage(event.replyToken, message))
                 }
+                Promise.all(promises).then(() => res.status(200).end());
+            }).catch((err)=>{
+                console.log('Error in matching the database ',err)
             })
         }else{
             message = webhook(event,lineid)
             console.log('message in server ',message)
             promises.push(client.replyMessage(event.replyToken, message))
+            Promise.all(promises).then(() => res.status(200).end());
         }
-        Promise.all(promises).then(() => res.status(200).end());
     }
     });
