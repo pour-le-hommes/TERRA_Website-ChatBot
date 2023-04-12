@@ -105,12 +105,9 @@ app.post('/webhook', (req, res) => {
                             type : 'text',
                             text : `Registry Successful, welcome ${line.nama}`,
                         };
-                        promises.push(client.replyMessage(event.replyToken, message)).then(()=>{
-                            return
-                        })
+                        promises.push(client.replyMessage(event.replyToken, message))
                         console.log('inside if',promises)
                         console.log('inside if',message)
-                       
                     }).catch((err)=>{
                         console.error('Error in Registering ',err)
                     })
@@ -123,17 +120,13 @@ app.post('/webhook', (req, res) => {
                     }
                     console.log('inside else if',promises)
                     console.log('inside else if',message)
-                    promises.push(client.replyMessage(event.replyToken, message)).then(()=>{
-                        return
-                    });
+                    promises.push(client.replyMessage(event.replyToken, message))
                 }
             })
         }else{
             message = webhook(event,lineid)
             console.log('message in server ',message)
-            promises.push(client.replyMessage(event.replyToken, message)).then(()=>{
-                return
-            });
+            promises.push(client.replyMessage(event.replyToken, message))
         }
         Promise.all(promises).then(() => res.status(200).end());
     }
