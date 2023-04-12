@@ -11,13 +11,21 @@ function webhook(event,lineid) {
     const Line = require('../model/line');
     const commands = require('./commands.js');
 
+    let checking=True
+
     Line.find({lineid:lineid}).then((result) =>{
         if(!result[0]){
             const message = {
                 type:'text',
                 text: 'You\'re not registered yet dumbass, type !register'
             }
-            return message
+            checking=False
+            return message,checking
+        }
+        else{
+            nama = result[0].nama
+            nim = result[0].nim
+            return nama,nim
         }
     })
 
@@ -29,16 +37,16 @@ function webhook(event,lineid) {
 
     const promises = [];
 
-    if (event.type === 'message' && event.message.type === 'text') {
+    if (event.type === 'message' && event.message.type === 'text'&& checking===True) {
         const text = event.message.text.toLowerCase()
         if(text.includes('!')){
-            message = commands(text,lineid)
+            message = commands(text,lineid,nama,nim)
             console.log('message in webhook ',message)
             return message
         }else{
             const message = {
                 type : 'text',
-                text : 'ngomong apa dah lu?',
+                text : `Woy ${nama}, ngomong apa dah lu`,
             };
             console.log('respond to nonesense')
             return message
