@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const lineschema = new schema({
-    lineid:{
+    Lineid:{
         type: String,
         required: true
     },
-    nama: {
+    Nama: {
         type: String,
         required: false
     },
-    jadwal: {
+    Jadwal: {
         type: Map,
         of: String,
         required: false
     },
-    tugas: {
+    Tugas: {
         type: Map,
         of: String,
         required: false

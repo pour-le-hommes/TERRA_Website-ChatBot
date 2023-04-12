@@ -13,7 +13,7 @@ function webhook(event,lineid) {
 
     let checking=true
 
-    Line.find({lineid:lineid}).then((result) =>{
+    Line.find({Lineid:lineid}).then((result) =>{
         if(!result[0]){
             const message = {
                 type:'text',
@@ -23,9 +23,8 @@ function webhook(event,lineid) {
             return {message,checking}
         }
         else{
-            nama = result[0].nama
-            nim = result[0].nim
-            return {nama,nim}
+            nama = result[0].Nama
+            return nama
         }
     })
 

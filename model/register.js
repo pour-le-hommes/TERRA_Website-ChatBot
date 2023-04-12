@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const massaschema = new schema({
-    role:{
+    Role:{
         type: String,
         required: true
     },
-    nama: {
+    Nama: {
         type: String,
         required: true
     },
-    nim: {
+    Nim: {
         type: String,
         required: true
     },
-    password: {
+    Password: {
         type: String,
         required: false
     }

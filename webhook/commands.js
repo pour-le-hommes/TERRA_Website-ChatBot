@@ -17,7 +17,7 @@ async function commands(text,lineid,nama,nim){
         if(splittext.length===2){
             newname = splittext[1]
             console.log('new name to ',newname)
-            await Line.updateOne({lineid:lineid},{nama:newname})
+            await Line.updateOne({Lineid:lineid},{Nama:newname})
             console.log('Name changed successfully!')
             message={
                 type:'text',

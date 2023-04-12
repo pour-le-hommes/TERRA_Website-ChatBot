@@ -61,17 +61,17 @@ app.use('/users', UserRouter)
 // Verify
 app.post('/verify', (req,res) =>{
   const massa = new Massaschema(req.body);
-  if (massa.role==='Pengurus'&& massa.password!=='Saya berjanji akan membangun himpunan ini menjadi lebih baik'){
-    console.log(massa.nama,' wrong password')
+  if (massa.Role==='Pengurus'&& massa.Password!=='Saya berjanji akan membangun himpunan ini menjadi lebih baik'){
+    console.log(massa.Nama,' wrong password')
     console.log(massa)
     res.redirect('/register')
   }else{
   Massa.find({nim:massa.nim}).then((result) =>{
     if(!result[0]){
-        massa.save().then(console.log(`${massa.nama} is successfully added!`)).then((result) =>{
+        massa.save().then(console.log(`${massa.Nama} is successfully added!`)).then((result) =>{
             res.redirect('/')})
     }else{
-        console.log(`Register failed, ${massa.nim} is already used`)
+        console.log(`Register failed, ${massa.Nim} is already used`)
         console.log(massa)
         res.redirect('/register');
     }
@@ -95,16 +95,16 @@ app.post('/webhook', (req, res) => {
                 if(!result[0]){
                     console.log('Registering user')
                     const line = new lineschema({
-                        lineid:lineid,
-                        nama:'User',
-                        jadwal:{},
-                        tugas:{}
+                        Lineid:lineid,
+                        Nama:'User',
+                        Jadwal:{},
+                        Tugas:{}
                     })
                     line.save().then(()=>{
-                        console.log(`${line.nama.toLowerCase()} is successfully added!`)
+                        console.log(`${line.Nama.toLowerCase()} is successfully added!`)
                         const message = {
                             type : 'text',
-                            text : `Registry Successful, welcome ${line.nama}`,
+                            text : `Registry Successful, welcome ${line.Nama}`,
                         };
                         promises.push(client.replyMessage(event.replyToken, message))
                         Promise.all(promises).then(() => res.status(200).end());
@@ -116,7 +116,7 @@ app.post('/webhook', (req, res) => {
                     console.log('Already registered user')
                     const message = {
                         type:'text',
-                        text: `Woy ${result[0].nama.toLowerCase()} dah registered lu anjing`
+                        text: `Woy ${result[0].Nama.toLowerCase()} dah registered lu anjing`
                     }
                     promises.push(client.replyMessage(event.replyToken, message))
                     Promise.all(promises).then(() => res.status(200).end());
