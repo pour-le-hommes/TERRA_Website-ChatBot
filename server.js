@@ -107,6 +107,7 @@ app.post('/webhook', (req, res) => {
                             text : `Registry Successful, welcome ${line.nama}`,
                         };
                         promises.push(client.replyMessage(event.replyToken, message))
+                        Promise.all(promises).then(() => res.status(200).end());
                         console.log('inside if',promises)
                         console.log('inside if',message)
                     }).catch((err)=>{
@@ -122,8 +123,9 @@ app.post('/webhook', (req, res) => {
                     console.log('inside else if',promises)
                     console.log('inside else if',message)
                     promises.push(client.replyMessage(event.replyToken, message))
+                    Promise.all(promises).then(() => res.status(200).end());
                 }
-                Promise.all(promises).then(() => res.status(200).end());
+                
             }).catch((err)=>{
                 console.log('Error in matching the database ',err)
             })
