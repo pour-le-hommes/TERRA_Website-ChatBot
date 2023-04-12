@@ -26,6 +26,13 @@ async function commands(text,lineid,nama,nim){
             return message
         }
     }
+    else if(text.includes('stats')){
+        message={
+            type:'text',
+            text:`Name : ${nama}\nNim : ${nim}`
+        }
+        return message
+    }
 }
 
 module.exports = commands

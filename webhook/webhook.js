@@ -11,7 +11,7 @@ function webhook(event,lineid) {
     const Line = require('../model/line');
     const commands = require('./commands.js');
 
-    let checking=True
+    let checking=true
 
     Line.find({lineid:lineid}).then((result) =>{
         if(!result[0]){
@@ -19,7 +19,7 @@ function webhook(event,lineid) {
                 type:'text',
                 text: 'You\'re not registered yet dumbass, type !register'
             }
-            checking=False
+            checking=false
             return message,checking
         }
         else{
@@ -37,7 +37,7 @@ function webhook(event,lineid) {
 
     const promises = [];
 
-    if (event.type === 'message' && event.message.type === 'text'&& checking===True) {
+    if (event.type === 'message' && event.message.type === 'text'&& checking===true) {
         const text = event.message.text.toLowerCase()
         if(text.includes('!')){
             message = commands(text,lineid,nama,nim)
