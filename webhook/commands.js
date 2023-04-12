@@ -1,4 +1,4 @@
-async function commands(text,lineid,nama,nim){
+async function commands(text,lineid,nama){
     const lineschema = require('../model/line.js');
     const Line = require('../model/line.js');
  
@@ -29,7 +29,7 @@ async function commands(text,lineid,nama,nim){
     else if(text.includes('stats')){
         message={
             type:'text',
-            text:`Name : ${nama}\nNim : ${nim}`
+            text:`Name : ${nama}`
         }
         return message
     }

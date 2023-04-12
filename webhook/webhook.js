@@ -27,6 +27,7 @@ function webhook(event,lineid) {
             return nama
         }
     })
+    console.log(nama,checking, message)
 
     // const Massaterra = require('./massa.js');
     // const oaterra = require("./oa.js");
@@ -39,7 +40,7 @@ function webhook(event,lineid) {
     if (event.type === 'message' && event.message.type === 'text'&& checking===true) {
         const text = event.message.text.toLowerCase()
         if(text.includes('!')){
-            message = commands(text,lineid,nama,nim)
+            message = commands(text,lineid,nama)
             console.log('message in webhook ',message)
             return message
         }else{
