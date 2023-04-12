@@ -90,7 +90,7 @@ app.post('/webhook', (req, res) => {
         const lineid = event.source.userId
         if(text === '!register'){
             console.log('Testing registry')
-            Line.find({lineid:lineid}).then((result) =>{
+            Line.find({Lineid:lineid}).then((result) =>{
                 console.log(result)
                 if(!result[0]){
                     console.log('Registering user')
