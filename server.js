@@ -116,7 +116,7 @@ app.post('/webhook', (req, res) => {
                     console.log('Already registered user')
                     const message = {
                         type:'text',
-                        text: `Woy ${result[0].nama} dah registered lu anjing`
+                        text: `Woy ${result[0].nama.toLowerCase()} dah registered lu anjing`
                     }
                     promises.push(client.replyMessage(event.replyToken, message))
                     Promise.all(promises).then(() => res.status(200).end());

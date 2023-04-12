@@ -20,12 +20,12 @@ function webhook(event,lineid) {
                 text: 'You\'re not registered yet dumbass, type !register'
             }
             checking=false
-            return message,checking
+            return {message,checking}
         }
         else{
             nama = result[0].nama
             nim = result[0].nim
-            return nama,nim
+            return {nama,nim}
         }
     })
 
@@ -46,7 +46,7 @@ function webhook(event,lineid) {
         }else{
             const message = {
                 type : 'text',
-                text : `Woy ${nama}, ngomong apa dah lu`,
+                text : `Woy ${nama.toLowerCase()}, ngomong apa dah lu`,
             };
             console.log('respond to nonesense')
             return message
