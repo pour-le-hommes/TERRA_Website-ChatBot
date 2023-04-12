@@ -24,10 +24,10 @@ function webhook(event,lineid) {
         }
         else{
             nama = result[0].Nama
+            console.log(nama)
             return nama
         }
     })
-    console.log(nama,checking, message)
 
     // const Massaterra = require('./massa.js');
     // const oaterra = require("./oa.js");
