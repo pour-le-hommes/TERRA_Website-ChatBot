@@ -6,21 +6,22 @@ const Massaschema = require('./model/register.js')
 const Massa = require('./model/register.js');
 app.use(express.urlencoded({ extended : true }));
 app.use('/public', express.static('public'))
-const { Client } = require('@line/bot-sdk')
-const webhook = require('./webhook/webhook.js')
 const bodyParser = require('body-parser');
 const lineschema = require('./model/line')
 const Line = require('./model/line')
 
-app.use(bodyParser.json());
+// const { Client } = require('@line/bot-sdk')
+// const webhook = require('./webhook/webhook.js')
 
-const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
-const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
+// app.use(bodyParser.json());
 
-const client = new Client({
-  channelAccessToken: CHANNEL_ACCESS_TOKEN,
-  channelSecret: CHANNEL_SECRET,
-});
+// const CHANNEL_ACCESS_TOKEN = process.env.CHANNEL_ACCESS_TOKEN;
+// const CHANNEL_SECRET = process.env.CHANNEL_SECRET;
+
+// const client = new Client({
+//   channelAccessToken: CHANNEL_ACCESS_TOKEN,
+//   channelSecret: CHANNEL_SECRET,
+// });
 
 // Connect To Mongodb
 const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
@@ -53,7 +54,7 @@ app.get('/testing', (req,res) =>{
     res.render('testing')
 })
 
-// app.listen(process.env.PORT||3000)
+app.listen(process.env.PORT||3000)
 
 // Users Pages
 app.use('/users', UserRouter)

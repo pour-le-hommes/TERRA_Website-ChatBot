@@ -10,6 +10,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="css-circular-prog-bar.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <style>
 .parallax {
@@ -25,12 +29,121 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.miniparallax1,.miniparallax2,.miniparallax3, .miniparallax4{
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+/* First image (Logo. Full height) */
+.miniparallax1 {
+  background-image: url('/public/images/indonesia-flag-wrinkled-dark-background-3d-render_1379-584.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.miniparallax2 {
+  background-image: url("/public/images/geophysics.png");
+  background-color: #444;
+  background-size: 30%;
+  min-height: 100%;
+}
+
+/* Third image (Contact) */
+.miniparallax3 {
+  background-image: url("/public/images/zenstoic-iconrough_dark.png");
+  background-position: right;
+  background-color: #444;
+  background-size: 40%;
+  min-height: 100%;
+}
+.miniparallax4 {
+  background-image: url("/public/images/Logo_Institut_Teknologi_Bandung.png");
+  background-position: center;
+  background-color: #1F1A17;
+  background-size: 60%;
+  min-height: 30%;
+}
+
+h1 {
+  font-family: "Arial Black";
+  font-size: 32px;
+}
+h2,h3{
+  font-family: "Arial Bold";
+  font-size: 22px;
+}
+h4,h5,h6 {
+  font-family: "Arial";
+  font-size: 16px;
+  text-align: justify;
+}
 body, html {
   height: 100%;
   color: #000000; /*#ff2600*/
   line-height: 1.8;
+}
+.text-justify {
+  display: flex;
+  justify-content: space-around;
+}
+.clear {
+  opacity: 1;
+}
+#mnt {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: space-around;
+}
+#mnt div {
+  width: 30%;
+  height: 100%;
+}
+#inmnt {
+  width: 100%;
+  height: 250px;
+}
+#inmnt div {
+  width: 100%;
+  height: 200px;
+}
+.historycolor {
+  background-color:#1F1A17;
+  width: 100%;
+}
+.circle-bar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(closest-side, white 79%, transparent 80% 100%),
+    conic-gradient(hotpink 75%, pink 0);    
+}
+.line1 {
+  width: 98%;
+  height: 15%;
+  border: 3px solid #C4C4C4;
+  border-radius: 50px 50px 50px 50px;
+  margin: 3px;
+  display:inline-block;
+}
+.line2 {
+  width: 47%;
+  height: 15%;
+  border: 3px solid #C4C4C4;
+  border-radius: 50px 50px 50px 50px;
+  margin: 3px;
+  display:inline-block;
+}
+.line3 {
+  width: 60%;
+  height: 15%;
+  border: 3px solid #C4C4C4;
+  border-radius: 50px 50px 50px 50px;
+  margin: 3px;
+  display:inline-block;
 }
 
 .w3-wide {letter-spacing: 10px;}
@@ -38,7 +151,7 @@ body, html {
 
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 600px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
+  .miniparallax1,.miniparallax2,.miniparallax3, .miniparallax4{
     background-attachment: scroll;
     min-height: 200px;
   }
@@ -49,133 +162,175 @@ body, html {
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
-  <div class="w3-bar" id="myNavbar">
+  <div class="w3-bar w3-text-white" id="myNavbar">
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-      <i class="fa fa-bars"></i>
+      <i class="fa fa-bars w3-black"></i>
     </a>
+
     <a href="#home" class="w3-bar-item w3-button">HOME</a>
     <a href="#terra" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> TERRA</a>
-    <a href="#documents" class="w3-bar-item w3-button w3-hide-small"><i class="glyphicon glyphicon-file"></i> DOCUMENTS</a>
+    <div class="w3-dropdown-hover w3-animate-top">
+      <button class="w3-button w3-hide-small"><i class="fa fa-arrow-up"></i> DOCUMENTS</button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-black">
+        <a href="/public/files/ANGGARAN DASAR DAN ANGGARAN RUMAH TANGGA HIMA TG TERRA ITB Amandemen 2022.pdf" class="w3-bar-item w3-button w3-animate-right" download>AD/ART</a>
+        <a href="/public/files/GDK HIMA TG TERRA ITB .pdf" class="w3-bar-item w3-button w3-animate-left" download>GDK</a>
+      </div>
+    </div>
     <a href="#sejarahpenemu" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> MT ZEN</a>
     <a href="./register" class="w3-bar-item w3-button w3-hide-small"><i class="icon-pencil"></i> REGISTER</a>
-    <a href="./about-me" class="w3-bar-item w3-button w3-hide-small w3-right"><i class=""></i></a>
+    <a href="./about-me" class="w3-bar-item w3-button w3-hide-small w3-right"></a>
     <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
     </a> -->
   </div>
 
   <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
     <a href="#terra" class="w3-bar-item w3-button" onclick="toggleFunction()">TERRA</a>
-    <a href="#documents" class="w3-bar-item w3-button" onclick="toggleFunction()">DOCUMENTS</a>
+
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-black" href="javascript:void(0);" onclick="Opendoc()" title="Toggle Navigation Menu">
+      DOCUMENTS
+    </a>
+
+    <div id="document" class="w3-bar-block w3-black w3-hide" onclick="Opendoc()">
+      <a href="/public/files/ANGGARAN DASAR DAN ANGGARAN RUMAH TANGGA HIMA TG TERRA ITB Amandemen 2022.pdf" class="w3-bar-item w3-button w3-black  w3-animate-left" download>Anggaran Dasar dan Anggaran Rumah Tangga</a>
+      <a href="/public/files/GDK HIMA TG TERRA ITB .pdf" class="w3-bar-item w3-button w3-black w3-animate-right" download>Grand Design Kaderisasi</a>
+    </div>
     <a href="#sejarahpenemu" class="w3-bar-item w3-button" onclick="toggleFunction()">MT ZEN</a>
     <a href="./register" class="w3-bar-item w3-button" onclick="toggleFunction()">REGISTER</a>
     <!-- <a href="#" class="w3-bar-item w3-button">SEARCH</a> -->
   </div>
 </div>
 
-<!-- First Parallax Image with Logo Text -->
-<div class="parallax w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"> <span class="w3-hide-small">HIMA TG "</span>TERRA<span class="w3-hide-small">"ITB</span></span>
+<!-- Keterangan TERRA -->
+<div class="parallax w3-display-container clear" id="home">
+  <div class="w3-display-middle">
+    <span class="w3-center w3-padding-large w3-text-white w3-xxlarge w3-wide" style="text-shadow:3px 3px 0 #444"> <b><span class="w3-hide-small w3-hide-medium">HIMA TG "</span>TERRA<span class="w3-hide-small w3-hide-medium">"ITB</span></b></span>
   </div>
 </div>
 
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="terra">
-  <h3 class="w3-xxlarge w3-text-black w3-wide w3-center">TERRA</h3>
-  <p class="w3-center"><em>Himpunan Mahasiswa Teknik Geofisika "TERRA" Institut Teknologi Bandung</em></p>
-  <p>Saya adalah organisasi mahasiswa yang berasas kemahasiswaan yangberdasarkan nilai-nilai kebenaran
-    hakiki yang universal, dengan sifat yang saya miliki : </p>
-  <ol>
-    <li>Kekeluargaan yang demokratis, kemahasiswaan, dan profesionalisme yang tinggi.</li>
-    <li>Berdaulat sepenuhnya dalam menentukan kebijaksanaan dan saling menghormati
-      dengan pihak manapun di luar HIMA TG “TERRA” ITB serta bertanggung jawab
-      secara kelembagaan ITB.</li>
-    <li>Menjunjung tinggi lembaga kemahasiswaan tertinggi yang membawa aspirasi seluruh
-      mahasiswa ITB.</li>
-  </ol>
-  <p>Saya juga memiliki maksud dan tujuan untuk keberadaan saya, yaitu :</p>
-  <ol>
-    <li>Ikut menunjang dan membantu penyelenggaraan pendidikan di ITB dalam pencapaian
-      tujuan pendidikan nasional.</li>
-    <li>Ikut membimbing dan menyalurkan cipta, karsa dan karya mahasiswa Teknik
-      Geofisika ITB dalam rangka membentuk sarjana teknik geofisika yang menjunjung
-      tinggi nilai-nilai kebenaran dan profesionalisme.</li>
-    <li> Memelihara dan mempererat rasa kekeluargaan serta mengusahakan kesejahteraan
-      materiel dan spritual anggota HIMA TG “TERRA” ITB dalam proses pembaharuan
-      menuju ke arah perbaikan dunia perguruan tinggi khususnya di ITB dan perguruan
-      tinggi di Indonesia pada umumnya.</li>
-  </ol>
-  <div class="w3-row">
-    <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>Logo</b></p><br>
-      <img src="/public/images/Logo_TERRA_ITB.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+<!-- Container (Sejarah TERRA) -->
+<div class="w3-center w3-container w3-padding-64 w3-text-black" id="terra">
+  <h1 class="w3-xxlarge w3-wide w3-center w3-text-black">TERRA</h1>
+  <h2 class="w3-center">Himpunan Mahasiswa Teknik Geofisika "TERRA" Institut Teknologi Bandung</h3>
+    <br>
+  <h5 style="text-align: center;">
+    Saya adalah organisasi mahasiswa yang berasas kemahasiswaan yang berdasarkan nilai-nilai kebenaran
+    hakiki yang universal, dengan sifat yang saya miliki : 
+  </h5>
+  <br>
+  <h5 style="text-align: center;">Kekeluargaan yang demokratis, kemahasiswaan, dan profesionalisme yang tinggi.</h5>
+  <div class="line2"></div>
+  <h5 style="text-align: center;">Berdaulat sepenuhnya dalam menentukan kebijaksanaan dan saling menghormati
+    dengan pihak manapun di luar HIMA TG “TERRA” ITB serta bertanggung jawab
+    secara kelembagaan ITB.</h5>
+    <div class="line1"></div>
+  <h5 style="text-align: center;">Menjunjung tinggi lembaga kemahasiswaan tertinggi yang membawa aspirasi seluruh
+    mahasiswa ITB.</h5>
+    <div class="line3"></div>
+</div>
+
+
+<!-- Container (Maksud dan Tujuan TERRA) -->
+<div class="w3-container">
+  <h2 class="w3-xxlarge w3-padding-16 w3-center w3-text-white w3-round-xlarge">Maksud dan Tujuan Saya</h2>
+  <div id="mnt" class="w3-row-padding">
+    <div id="inmnt" class="miniparallax1 w3-deep-orange w3-row-padding w3-round-xlarge w3-opacity-max w3-hover-opacity-off" style="box-shadow:3px 3px 0 #444">
+      <h3 class="w3-row-padding w3-xlarge w3-round-xlarge w3-center">Pertama</h3>
+      <div class="w3-row-padding w3-padding-16">Ikut menunjang dan membantu penyelenggaraan pendidikan di ITB dalam pencapaian
+        tujuan pendidikan nasional.</div>
     </div>
 
-    <!-- Hide this text on small devices -->
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>Diciptakan pada tanggal 13 Juli 1998 di Bandung dengan panggilan saya dicetuskan oleh 
+    <div id="inmnt" class="miniparallax2 w3-text-white w3-row-padding w3-round-xlarge w3-opacity w3-hover-opacity-off" style="box-shadow:3px 3px 0 #444">
+      <h3 class="w3-row-padding w3-xlarge w3-round-xlarge w3-center">Kedua</h3>
+      <div class="w3-row-padding w3-padding-16">Ikut membimbing dan menyalurkan cipta, karsa dan karya mahasiswa Teknik
+        Geofisika ITB dalam rangka membentuk sarjana teknik geofisika yang menjunjung
+        tinggi nilai-nilai kebenaran dan profesionalisme.</div>
+    </div>
+
+    <div id="inmnt" class="miniparallax3 w3-text-white w3-row-padding w3-round-xlarge w3-opacity w3-hover-opacity-off" style="box-shadow:3px 3px 0 #444">
+      <h3 class="w3-row-padding w3-xlarge w3-round-xlarge w3-center">Ketiga</h3>
+      <div class="w3-row-padding w3-padding-16">Memelihara dan mempererat rasa kekeluargaan serta mengusahakan kesejahteraan
+        materiel dan spritual anggota HIMA TG “TERRA” ITB dalam proses pembaharuan
+        menuju ke arah perbaikan dunia perguruan tinggi khususnya di ITB dan perguruan
+        tinggi di Indonesia pada umumnya.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Sejarah Lanjutan TERRA) -->
+<br>
+<div class="w3-row w3-container w3-display-container" style="block-size: 85%;">
+  <div class="historycolor w3-text-white w3-col m6 w3-center w3-padding-large">
+    <p><b><i class="w3-text-white fa fa-user w3-margin-right"></i>Logo TERRA</b></p><br>
+    <img src="/public/images/Logo_TERRA_ITB.jpg" class="w3-round w3-image" alt="Photo of TERRA" width="500" height="333">
+  </div>
+  <!-- Hide this text on small devices -->
+  <div class="w3-text-white w3-col m7 w3-hide-small w3-padding-large" style="background-color: rgb(35, 35, 35);position:absolute; top:50px; right:0;z-index: -1;">
+    <h5 class="w3-text-yellow" style="margin-left: 95px" >&#9866;SEJARAH AKU</h5>
+    <h2 class="w3-xxlarge" style="margin-left: 95px">Nama dan Berbagai Himpunan Sebelumku</h2>
+    <span class="w3-container w3-content" style="display: inline-block;margin-left: 80px;font-size: 16px;text-align: justify;font-family: Arial;color: #d2d3d3;">
+        Diciptakan pada tanggal 13 Juli 1998 di Bandung dengan nama panggilan saya dicetuskan oleh 
         Mudaham Taufick Zen (MT Zen), saya menjadi organisasi berbasis keprofesian jurusan Teknik Geofisika 
         Institut Teknologi Bandung. Walaupun sejarah saya baru sebentar, teknik geofisika sudah berada jauh 
-        sebelum saya.</p>
-        <ul>
-          <li>Dari geologi, teknik geofisika terbentuk pada tahun 1988 lalu memisahkan dirinya
-            dari geologi pada tahun 1998.</li>
-          <li>Dari meteorologi, tahun 1961 terbentuk departemen geofisika dan
-            meteorologi (GM) dengan himpunan mereka (HMGM) pada tahun 1998 terjadi perpecahan menjadi KMGP, KMO 
-            dan KMME</li>
-          <li>Dari fisika, terutama pada kelompok keahlian fisika bumi dan sistem kompleks.</li>
-        </ul>
-    </div>
-  </div>
-  <div style="width:90%">
-    <p class="w3-large w3-center w3-padding-16">Kondisi Aku Sekarang : </p>
-    <p class="w3-wide"><i class="fa fa-user"></i>Kekeluargaan</p>
-    <div class="w3-light-grey">
-      <div class="w3-container w3-padding-small w3-deep-orange w3-center" style="width:80%">??%</div>
-    </div>
-    <p class="w3-wide"><i class="fa fa-laptop"></i>Profesionalitas</p>
-    <div class="w3-light-grey">
-      <div class="w3-container w3-padding-small w3-deep-orange w3-center" style="width:80%">??%</div>
-    </div>
-    <p class="w3-wide"><i class="fa fa-arrow-up"></i>Semangat</p>
-    <div class="w3-light-grey" style="width:110%">
-      <div class="w3-container w3-padding-small w3-deep-orange w3-center" style="width:100%">110%</div>
-    </div>
+        sebelum saya.
+    </span>
+    <br>
+    <br>
+    <br>
+      <ul style="margin-left: 80px;font-size: 16px;font-family: Arial;font-size: 16px;text-align: justify;color: #d2d3d3;">
+        <li>Dari geologi, teknik geofisika terbentuk pada tahun 1988 lalu memisahkan dirinya
+          dari geologi pada tahun 1998.</li>
+        <li>Dari meteorologi, tahun 1961 terbentuk departemen geofisika dan
+          meteorologi (GM) dengan himpunan mereka (HMGM) pada tahun 1998 terjadi perpecahan menjadi KMGP, KMO 
+          dan KMME</li>
+        <li>Dari fisika, terutama pada kelompok keahlian fisika bumi dan sistem kompleks.</li>
+      </ul>
   </div>
 </div>
 
-<div id="documents"><br><br></div>
-<div class="w3-row w3-center w3-deep-orange w3-padding-16">
-  <span class="w3-xxlarge w3-text-black w3-wide">Dokumen Resmi</span>
-</div>
-<div class="w3-row w3-center w3-deep-orange w3-padding-16">
-  <div class="w3-half w3-section">
-    <a href="/public/files/ANGGARAN DASAR DAN ANGGARAN RUMAH TANGGA HIMA TG TERRA ITB Amandemen 2022.pdf" class="w3-xlarge w3-text-black w3-wide" download>Anggaran Dasar dan Anggaran Rumah Tangga</a>
+
+<!-- Container (Kondisi Aku Sekarang) -->
+<div class="w3-container w3-padding-64 w3-text-black">
+  <h1 class="w3-xxlarge w3-large w3-center w3-padding-16">Kondisi Aku Sekarang : <br><em class="w3-large" >Click on my values</em> </h1>
+  <div class="w3-content">
+    <button id="dockekeluargaan" class="w3-button w3-wide w3-light-grey w3-round-xlarge w3-hide-small"  style="height:45px;width:30%" onclick="kekeluargaan()"><i class="fa fa-user"></i>Kekeluargaan</p></button>
+    <button id="dockekeluargaanm" class="w3-button w3-wide w3-light-grey w3-round-xlarge w3-hide-medium w3-hide-large" style="height:40px;width:74%;margin-left: 13%;" onclick="kekeluargaanm()"><i class="fa fa-user"></i>Kekeluargaan</p></button>
+  <br>
+  <br>
+  <div class="w3-light-grey w3-round-xlarge" style="height:40px;width:100%">
+    <div id="kekeluargaan" class="w3-large w3-padding-large progress-bar progress-bar-striped active w3-container w3-padding-small w3-deep-orange w3-round-xlarge" style="height:40px;width:10%">??<span class="w3-hide-small">%</span></div>
   </div>
-  <div class="w3-half w3-section">
-    <a href="/public/files/GDK HIMA TG TERRA ITB .pdf" class="w3-xlarge w3-text-black w3-wide" download>Grand Design Kaderisasi</a>
+  <br>
+  <br>
+  <button  id="docprofesionalitas" class="w3-button w3-wide w3-light-grey w3-round-xlarge w3-hide-small"  style="height:45px;width:35%" onclick="profesionalitas()"><i class="fa fa-laptop"></i>Profesionalitas</button>
+  <button  id="docprofesionalitasm" class="w3-button w3-wide w3-light-grey w3-round-xlarge w3-hide-medium w3-hide-large"  style="height:40px;width:86%;margin-left: 7%;" onclick="profesionalitasm()"><i class="fa fa-laptop"></i>Profesionalitas</button>
+  <br>
+  <br>
+  <div class="w3-light-grey w3-round-xlarge" style="height:40px;width:100%">
+    <div id="profesionalitas" class="w3-large w3-padding-large progress-bar progress-bar-striped active w3-container w3-padding-small w3-deep-orange w3-round-xlarge" style="height:40px;width:10%">??<span class="w3-hide-small">%</span></div>
   </div>
-  <!-- <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">150+</span><br>
-    Meetings
-  </div> -->
+  <br>
+  <br>
+  <button id="docsemangat" class="w3-button w3-wide w3-light-grey w3-round-xlarge w3-hide-small"  style="height:40px;width:25%" onclick="semangat()"><i class="fa fa-arrow-up"></i>Semangat</p></button>
+  <button id="docsemangatm" class="w3-center w3-button w3-wide w3-light-grey w3-round-xlarge w3-hide-medium w3-hide-large"  style="height:40px;width:60%;margin-left: 20%;" onclick="semangatm()"><i class="fa fa-arrow-up"></i>Semangat</p></button>
+  <br>
+  <br>
+  <div class="w3-light-grey w3-round-xlarge" style="height:40px;width:100%">
+    <div id="semangat" class="w3-large w3-padding-large  progress-bar progress-bar-striped active w3-container w3-deep-orange w3-round-xlarge" style="height:40px;width:10%">??<span class="w3-hide-small">%</span></div>
+  </div>
+  </div>
 </div>
 
-<div id='sejarahpenemu'>
-  <br><br><br>
-</div>
-
-<!-- Second Parallax Image with Portfolio Text -->
-<div class="w3-display-container w3-opacity-min">
+<!-- Second Parallax Image with Sejarah Pengurus -->
+<div id="sejarahpenemu" class="miniparallax4 w3-display-container">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-black w3-wide">Sejarah Penemu</span>
+    <h1 class="w3-xxlarge w3-text-white w3-wide">Sejarah Penemu</h1>
   </div>
 </div>
 
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64">
+<!-- Container (Sejarah Pengurus) -->
+<div class="w3-text-black w3-container w3-padding-64">
   <h3 class="w3-center w3-display-container w3-opacity-min">Tanggapan</h3>
   <p class="w3-center">Dari bertemu Soe Hok Gie, Idjon Djanbi, Habibie dan juga Soekarno, sebelum ada hal yang
     namanya semangat TERRA, terlihat bahwa walaupun namanya belum ada, tetapi tindakannya sudah.<br>
@@ -309,10 +464,10 @@ function onClick(element) {
 window.onscroll = function() {myFunction()};
 function myFunction() {
     var navbar = document.getElementById("myNavbar");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
+        navbar.className = "w3-bar w3-text-white" + " w3-card"  + " w3-black";
     } else {
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+        navbar.className = navbar.className.replace(" w3-card w3-black", "");
     }
 }
 
@@ -324,6 +479,141 @@ function toggleFunction() {
     } else {
         x.className = x.className.replace(" w3-show", "");
     }
+}
+
+function Opendoc() {
+    var x = document.getElementById("document");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+function kekeluargaan() {
+  var elem = document.getElementById("kekeluargaan");
+  var doc = document.getElementById("dockekeluargaan");
+  if (doc.className.indexOf(" w3-light-grey") == -1) {
+    doc.className += " w3-light-grey";
+    } else {
+      doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
+    }
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 50) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+
+function kekeluargaanm() {
+  var elem = document.getElementById("kekeluargaan");
+  var doc = document.getElementById("dockekeluargaanm");
+  if (doc.className.indexOf(" w3-light-grey") == -1) {
+    doc.className += " w3-light-grey";
+    } else {
+      doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
+    }
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 50) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+
+function profesionalitas() {
+  var elem = document.getElementById("profesionalitas");
+  var doc = document.getElementById("docprofesionalitas");
+  if (doc.className.indexOf(" w3-light-grey") == -1) {
+    doc.className += " w3-light-grey";
+    } else {
+      doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
+    }
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 50) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+
+function profesionalitasm() {
+  var elem = document.getElementById("profesionalitas");
+  var doc = document.getElementById("docprofesionalitasm");
+  if (doc.className.indexOf(" w3-light-grey") == -1) {
+    doc.className += " w3-light-grey";
+    } else {
+      doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
+    }
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 50) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+
+function semangat() {
+  var elem = document.getElementById("semangat");
+  var doc = document.getElementById("docsemangat");
+  if (doc.className.indexOf(" w3-light-grey") == -1) {
+    doc.className += " w3-light-grey";
+    } else {
+      doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
+    }
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 110) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+
+function semangatm() {
+  var elem = document.getElementById("semangat");
+  var doc = document.getElementById("docsemangatm");
+  if (doc.className.indexOf(" w3-light-grey") == -1) {
+    doc.className += " w3-light-grey";
+    } else {
+      doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
+    }
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 110) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
 }
 </script>
 
