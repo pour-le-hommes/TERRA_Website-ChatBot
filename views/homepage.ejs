@@ -36,28 +36,52 @@
   background-size: cover;
 }
 
-/* First image (Logo. Full height) */
+/* First image (Indonesia) */
 .miniparallax1 {
   background-image: url('/public/images/indonesia-flag-wrinkled-dark-background-3d-render_1379-584.jpg');
+  background-position: left;
   min-height: 100%;
+  background-size: 130%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+}
+.miniparallax1m {
+  background-image: url('/public/images/indonesia-flag-wrinkled-dark-background-3d-render_1379-584.jpg');
+  background-position: left;
+  min-height: 250px;
+  background-size: 150%;
+  background-repeat: no-repeat;
 }
 
-/* Second image (Portfolio) */
+/* Second image (Geophysics) */
 .miniparallax2 {
+  background-attachment: scroll;
   background-image: url("/public/images/geophysics.png");
-  background-color: #444;
-  background-size: 30%;
+  background-size: 100%;
   min-height: 100%;
 }
+.miniparallax2m {
+  background-image: url("/public/images/geophysics.png");
+  background-size: 100%;
+  min-height: 150%;
+}
 
-/* Third image (Contact) */
+/* Third image (Metaphysics) */
 .miniparallax3 {
   background-image: url("/public/images/zenstoic-iconrough_dark.png");
-  background-position: right;
-  background-color: #444;
-  background-size: 40%;
+  background-position: center;
+  background-attachment: scroll;
+  background-size: 110%;
   min-height: 100%;
 }
+.miniparallax3m {
+  background-image: url("/public/images/zenstoic-iconrough_dark.png");
+  background-position: right;
+  background-size: 100%;
+  min-height: 100%;
+}
+
+/* Fourth image (ITB) */
 .miniparallax4 {
   background-image: url("/public/images/Logo_Institut_Teknologi_Bandung.png");
   background-position: center;
@@ -71,13 +95,15 @@ h1 {
   font-size: 32px;
 }
 h2,h3{
-  font-family: "Arial Bold";
+  font-family: "Roboto";
   font-size: 22px;
+  letter-spacing: 3px;
 }
 h4,h5,h6 {
-  font-family: "Arial";
+  font-family: "Roboto";
   font-size: 16px;
   text-align: justify;
+  letter-spacing: 3px;
 }
 body, html {
   height: 100%;
@@ -87,9 +113,6 @@ body, html {
 .text-justify {
   display: flex;
   justify-content: space-around;
-}
-.clear {
-  opacity: 1;
 }
 #mnt {
   width: 100%;
@@ -113,16 +136,8 @@ body, html {
   background-color:#1F1A17;
   width: 100%;
 }
-.circle-bar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: 
-    radial-gradient(closest-side, white 79%, transparent 80% 100%),
-    conic-gradient(hotpink 75%, pink 0);    
-}
 .line1 {
-  width: 98%;
+  width: 91%;
   height: 15%;
   border: 3px solid #C4C4C4;
   border-radius: 50px 50px 50px 50px;
@@ -145,6 +160,28 @@ body, html {
   margin: 3px;
   display:inline-block;
 }
+.transision1,.transision2,.transision3 {
+  position: relative;
+  opacity: 0;
+  transition: 0.8s;
+  padding-top:1%;
+  padding-bottom:65%;
+}
+.transision1:hover,.transision2:hover,.transision3:hover {
+  opacity: 1;
+}
+.transision1{
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: brightness(50%);
+}
+.transision2{
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: brightness(40%);
+}
+.transision3{
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: brightness(30%);
+}
 
 .w3-wide {letter-spacing: 10px;}
 .w3-hover-opacity {cursor: pointer;}
@@ -155,6 +192,42 @@ body, html {
     background-attachment: scroll;
     min-height: 200px;
   }
+  .transision2,.transision3{
+    padding-top:5%;
+    padding-bottom:10%;
+  }
+  .transision1{
+    padding-top:10%;
+    padding-bottom: 27%;
+  }
+}
+
+/* Not Used ATM */
+.animate {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  visibility: visible;
+}
+.animate:hover {
+  background-color: #000000;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-direction: normal;  
+  animation-iteration-count: 1;
+  visibility: hidden;
+}
+@keyframes example {
+  0%   {left:0px; top:0px;opacity: 0;}
+  100% {background-color:rgb(15, 13, 13); left:0px; top:0px;}
+}
+.circle-bar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(closest-side, white 79%, transparent 80% 100%),
+    conic-gradient(hotpink 75%, pink 0);    
 }
 </style>
 </head>
@@ -176,7 +249,7 @@ body, html {
         <a href="/public/files/GDK HIMA TG TERRA ITB .pdf" class="w3-bar-item w3-button w3-animate-left" download>GDK</a>
       </div>
     </div>
-    <a href="#sejarahpenemu" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> MT ZEN</a>
+    <a href="./mtzen" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> MT ZEN</a>
     <a href="./register" class="w3-bar-item w3-button w3-hide-small"><i class="icon-pencil"></i> REGISTER</a>
     <a href="./about-me" class="w3-bar-item w3-button w3-hide-small w3-right"></a>
     <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
@@ -230,32 +303,84 @@ body, html {
     <div class="line3"></div>
 </div>
 
-
 <!-- Container (Maksud dan Tujuan TERRA) -->
 <div class="w3-container">
-  <h2 class="w3-xxlarge w3-padding-16 w3-center w3-text-white w3-round-xlarge">Maksud dan Tujuan Saya</h2>
-  <div id="mnt" class="w3-row-padding">
-    <div id="inmnt" class="miniparallax1 w3-deep-orange w3-row-padding w3-round-xlarge w3-opacity-max w3-hover-opacity-off" style="box-shadow:3px 3px 0 #444">
-      <h3 class="w3-row-padding w3-xlarge w3-round-xlarge w3-center">Pertama</h3>
-      <div class="w3-row-padding w3-padding-16">Ikut menunjang dan membantu penyelenggaraan pendidikan di ITB dalam pencapaian
-        tujuan pendidikan nasional.</div>
+  <h2 class="w3-xxlarge w3-padding-16 w3-center w3-text-black w3-round-xlarge">Maksud dan Tujuan Saya</h2>
+
+  <!-- Container Medium and Large (Maksud dan Tujuan TERRA) -->
+  <div id="mnt" class="w3-row-padding w3-hide-small">
+    <div id="inmnt" class="miniparallax1 w3-round-xlarge" style="box-shadow:3px 3px 0 #444">
+      <div class="transision1 w3-round-xlarge w3-text-white">
+        <h3 class="w3-row-padding w3-center">Pertama</h3>
+        <h5 class="w3-row-padding w3-center">
+          Ikut menunjang dan membantu penyelenggaraan pendidikan di ITB dalam pencapaian
+          tujuan pendidikan nasional.
+        </h5>
+      </div>
     </div>
 
-    <div id="inmnt" class="miniparallax2 w3-text-white w3-row-padding w3-round-xlarge w3-opacity w3-hover-opacity-off" style="box-shadow:3px 3px 0 #444">
-      <h3 class="w3-row-padding w3-xlarge w3-round-xlarge w3-center">Kedua</h3>
-      <div class="w3-row-padding w3-padding-16">Ikut membimbing dan menyalurkan cipta, karsa dan karya mahasiswa Teknik
-        Geofisika ITB dalam rangka membentuk sarjana teknik geofisika yang menjunjung
-        tinggi nilai-nilai kebenaran dan profesionalisme.</div>
+    <div id="inmnt" class="miniparallax2 w3-round-xlarge" style="box-shadow:3px 3px 0 #444">
+      <div class="transision2 w3-round-xlarge w3-text-white">
+        <h3 class="w3-row-padding w3-center">Kedua</h3>
+        <h5 class="w3-row-padding w3-center">
+          Ikut membimbing dan menyalurkan cipta, karsa dan karya mahasiswa Teknik
+          Geofisika ITB dalam rangka membentuk sarjana teknik geofisika yang menjunjung
+          tinggi nilai-nilai kebenaran dan profesionalisme.
+        </h5>
+      </div>
     </div>
 
-    <div id="inmnt" class="miniparallax3 w3-text-white w3-row-padding w3-round-xlarge w3-opacity w3-hover-opacity-off" style="box-shadow:3px 3px 0 #444">
-      <h3 class="w3-row-padding w3-xlarge w3-round-xlarge w3-center">Ketiga</h3>
-      <div class="w3-row-padding w3-padding-16">Memelihara dan mempererat rasa kekeluargaan serta mengusahakan kesejahteraan
-        materiel dan spritual anggota HIMA TG “TERRA” ITB dalam proses pembaharuan
-        menuju ke arah perbaikan dunia perguruan tinggi khususnya di ITB dan perguruan
-        tinggi di Indonesia pada umumnya.</div>
+    <div id="inmnt" class="miniparallax3 w3-round-xlarge" style="box-shadow:3px 3px 0 #444">
+      <div class="transision3 w3-round-xlarge w3-text-white">
+        <h3 class="w3-center" style="position: 5000px;">Ketiga</h3>
+        <h5 class="w3-row-padding w3-center">
+          Memelihara dan mempererat rasa kekeluargaan serta mengusahakan kesejahteraan
+          materiel dan spritual anggota HIMA TG “TERRA” ITB dalam proses pembaharuan
+          menuju ke arah perbaikan dunia perguruan tinggi khususnya di ITB dan perguruan
+          tinggi di Indonesia pada umumnya.
+        </h5>
+      </div>
     </div>
   </div>
+
+  <!-- Container Small (Maksud dan Tujuan TERRA) -->
+  <div class="w3-container w3-row w3-hide-large w3-hide-medium">
+
+    <div class="w3-col miniparallax1m w3-round-xlarge" style="box-shadow:3px 3px 0 #444">
+      <div class="w3-row-padding transision1 w3-round-xlarge w3-text-white">
+        <h3 class="w3-center">Pertama</h3>
+        <h5 class="w3-center">
+          Ikut menunjang dan membantu penyelenggaraan pendidikan di ITB dalam pencapaian
+          tujuan pendidikan nasional.
+        </h5>
+      </div>
+    </div>
+
+    <div class="w3-col miniparallax2m w3-round-xlarge" style="box-shadow:3px 3px 0 #444">
+      <div class="w3-row-padding transision2 w3-round-xlarge w3-text-white">
+        <h3 class="w3-center">Kedua</h3>
+        <h5 class="w3-center">
+          Ikut membimbing dan menyalurkan cipta, karsa dan karya mahasiswa Teknik
+          Geofisika ITB dalam rangka membentuk sarjana teknik geofisika yang menjunjung
+          tinggi nilai-nilai kebenaran dan profesionalisme.
+        </h5>
+      </div>
+    </div>
+
+    <div class="w3-col miniparallax3m w3-round-xlarge" style="box-shadow:3px 3px 0 #444">
+      <div class="w3-row-padding transision3 w3-round-xlarge w3-text-white">
+        <h3 class="w3-center">Ketiga</h3>
+        <h5 class="w3-center">
+          Memelihara dan mempererat rasa kekeluargaan serta mengusahakan kesejahteraan
+          materiel dan spritual anggota HIMA TG “TERRA” ITB dalam proses pembaharuan
+          menuju ke arah perbaikan dunia perguruan tinggi khususnya di ITB dan perguruan
+          tinggi di Indonesia pada umumnya.
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <!-- Container (Sejarah Lanjutan TERRA) -->
@@ -289,10 +414,9 @@ body, html {
   </div>
 </div>
 
-
 <!-- Container (Kondisi Aku Sekarang) -->
 <div class="w3-container w3-padding-64 w3-text-black">
-  <h1 class="w3-xxlarge w3-large w3-center w3-padding-16">Kondisi Aku Sekarang : <br><em class="w3-large" >Click on my values</em> </h1>
+  <h2 class="w3-xxlarge w3-large w3-center w3-padding-16">Kondisi Aku Sekarang : <br><em class="w3-large" >Click on my values</em> </h2>
   <div class="w3-content">
     <button id="dockekeluargaan" class="w3-button w3-wide w3-light-grey w3-round-xlarge w3-hide-small"  style="height:45px;width:30%" onclick="kekeluargaan()"><i class="fa fa-user"></i>Kekeluargaan</p></button>
     <button id="dockekeluargaanm" class="w3-button w3-wide w3-light-grey w3-round-xlarge w3-hide-medium w3-hide-large" style="height:40px;width:74%;margin-left: 13%;" onclick="kekeluargaanm()"><i class="fa fa-user"></i>Kekeluargaan</p></button>
@@ -325,7 +449,7 @@ body, html {
 <!-- Second Parallax Image with Sejarah Pengurus -->
 <div id="sejarahpenemu" class="miniparallax4 w3-display-container">
   <div class="w3-display-middle">
-    <h1 class="w3-xxlarge w3-text-white w3-wide">Sejarah Penemu</h1>
+    <h2 class="w3-xxlarge w3-text-white w3-wide">Sejarah Penemu</h2>
   </div>
 </div>
 
@@ -471,6 +595,17 @@ function myFunction() {
     }
 }
 
+// Used to toggle the mnt on screens when scrolling
+// window.onscroll = function() {mnt()};
+// function mnt() {
+//     var asd = document.getElementById("mnt");
+//     if (document.body.scrollTop < 45 || document.documentElement.scrollTop < 45) {
+//         asd.className = "w3-row-padding a";
+//     } else {
+//         asd.className = navbar.className.replace("a", " animate ");
+//     }
+// }
+
 // Used to toggle the menu on small screens when clicking on the menu button
 function toggleFunction() {
     var x = document.getElementById("navDemo");
@@ -481,6 +616,7 @@ function toggleFunction() {
     }
 }
 
+// Used to toggle the menu on documents when clicking on the menu button
 function Opendoc() {
     var x = document.getElementById("document");
     if (x.className.indexOf("w3-show") == -1) {
@@ -490,11 +626,13 @@ function Opendoc() {
     }
 }
 
+// Used to toggle the progress bar on screens when clicking on the values button
 function kekeluargaan() {
   var elem = document.getElementById("kekeluargaan");
   var doc = document.getElementById("dockekeluargaan");
   if (doc.className.indexOf(" w3-light-grey") == -1) {
     doc.className += " w3-light-grey";
+    doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     } else {
       doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     }
@@ -516,9 +654,10 @@ function kekeluargaanm() {
   var doc = document.getElementById("dockekeluargaanm");
   if (doc.className.indexOf(" w3-light-grey") == -1) {
     doc.className += " w3-light-grey";
-    } else {
-      doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
-    }
+    doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
+  } else {
+    doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
+  }
   var width = 1;
   var id = setInterval(frame, 10);
   function frame() {
@@ -537,6 +676,7 @@ function profesionalitas() {
   var doc = document.getElementById("docprofesionalitas");
   if (doc.className.indexOf(" w3-light-grey") == -1) {
     doc.className += " w3-light-grey";
+    doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     } else {
       doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     }
@@ -558,6 +698,7 @@ function profesionalitasm() {
   var doc = document.getElementById("docprofesionalitasm");
   if (doc.className.indexOf(" w3-light-grey") == -1) {
     doc.className += " w3-light-grey";
+    doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     } else {
       doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     }
@@ -579,6 +720,7 @@ function semangat() {
   var doc = document.getElementById("docsemangat");
   if (doc.className.indexOf(" w3-light-grey") == -1) {
     doc.className += " w3-light-grey";
+    doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     } else {
       doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     }
@@ -600,6 +742,7 @@ function semangatm() {
   var doc = document.getElementById("docsemangatm");
   if (doc.className.indexOf(" w3-light-grey") == -1) {
     doc.className += " w3-light-grey";
+    doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     } else {
       doc.className = doc.className.replace(" w3-light-grey", " w3-deep-orange");
     }

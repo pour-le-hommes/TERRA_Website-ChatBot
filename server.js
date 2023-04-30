@@ -50,8 +50,8 @@ app.get('/about-me',(req,res) =>{
     res.render('aboutpage',{text:'suppp'})
 })
 
-app.get('/testing', (req,res) =>{
-    res.render('testing')
+app.get('/mtzen', (req,res) =>{
+    res.render('mtzen')
 })
 
 app.listen(process.env.PORT||3000)
