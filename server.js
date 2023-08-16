@@ -24,7 +24,7 @@ const Line = require('./model/line')
 // });
 
 // Connect To Mongodb
-const url = 'mongodb+srv://testing:testing123@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
+const url = 'mongodb+srv://testing:testing@cluster0.ytucosn.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(url)
     .then((result) => app.listen(3000))
     .then(console.log('connected to Mongodb'))
